@@ -1,0 +1,37 @@
+{
+  "name": "generator-generator",
+  "version": "0.1.0",
+  "description": "Generator Generator for Yeoman",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/passy/generator-generator",
+  "bugs": "https://github.com/passy/generator-generator/issues",
+  "author": {
+    "name": "Pascal Hartig",
+    "email": "phartig@rdrei.net",
+    "url": "https://twitter.com/passy"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/passy/generator-generator.git"
+  },
+  "scripts": {
+    "test": "mocha test/test-*.js"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
