@@ -21,12 +21,9 @@ describe('<%= generatorName %> generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      ['package.json', /"name": "temp"/],
-      'Grunfile.js',
-      '.gitignore',
-      '.gitattributes',
+      // add files you expect to exist here.
       '.jshintrc',
-      'app/index.js',
+      '.editorconfig'
     ];
 
     helpers.mockPrompt(this.app, {

@@ -91,7 +91,6 @@ GeneratorGenerator.prototype.app = function app() {
 
   this.copy('editorconfig', 'app/templates/editorconfig');
   this.copy('jshintrc', 'app/templates/jshintrc');
-  this.copy('app/_component.json', 'app/templates/_component.json');
 };
 
 GeneratorGenerator.prototype.tests = function tests() {

@@ -47,40 +47,18 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
       return this.emit('error', err);
     }
 
-    // manually deal with the response, get back and store the results.
-    this.compassBootstrap = (/y/i).test(props.compassBootstrap);
+    this.someOption = (/y/i).test(props.someOption);
 
     cb();
   }.bind(this));
 };
 
-<%= _.capitalize(generatorName) %>Generator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js');
-};
-
-<%= _.capitalize(generatorName) %>Generator.prototype.packageJSON = function packageJSON() {
-  this.template('_package.json', 'package.json');
-  this.template('_component.json', 'component.json');
-};
-
-<%= _.capitalize(generatorName) %>Generator.prototype.git = function git() {
-  this.copy('gitignore', '.gitignore');
-  this.copy('gitattributes', '.gitattributes');
-};
-
-<%= _.capitalize(generatorName) %>Generator.prototype.bower = function bower() {
-  this.copy('bowerrc', '.bowerrc');
-  this.copy('_component.json', 'component.json');
-};
-
-<%= _.capitalize(generatorName) %>Generator.prototype.jshint = function jshint() {
-  this.copy('jshintrc', '.jshintrc');
-};
-
-<%= _.capitalize(generatorName) %>Generator.prototype.editorConfig = function editorConfig() {
-  this.copy('editorconfig', '.editorconfig');
-};
-
 <%= _.capitalize(generatorName) %>Generator.prototype.app = function app() {
   this.mkdir('app');
+  this.mkdir('app/templates');
+};
+
+<%= _.capitalize(generatorName) %>Generator.prototype.projectfiles = function projectfiles() {
+  this.copy('editorconfig', '.editorconfig');
+  this.copy('jshintrc', '.jshintrc');
 };
