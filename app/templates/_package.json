@@ -1,17 +1,37 @@
 {
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
-  "dependencies": {},
+  "description": "A generator for Yeoman",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>",
+  "bugs": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>/issues",
+  "author": {
+    "name": "<%= githubUser %>",
+    "email": "user@example.net",
+    "url": "https://github.com/<%= githubUser %>"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>.git"
+  },
+  "scripts": {
+    "test": "mocha test/test-*.js"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.10.2"
+  },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-watch": "~0.3.1",
-    "grunt-contrib-concat": "~0.1.2",
-    "grunt-contrib-uglify": "~0.1.1",
-    "grunt-contrib-jshint": "~0.1.1",
-    "matchdep": "~0.1.1"
+    "mocha": "~1.8.1"
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }

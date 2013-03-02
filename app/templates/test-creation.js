@@ -5,14 +5,14 @@ var path    = require('path');
 var helpers = require('yeoman-generator').test;
 
 
-describe('Generator generator', function () {
+describe('<%= generatorName %> generator', function () {
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('generator:app', [
+      this.app = helpers.createGenerator('<%= generatorName %>:app', [
         '../../app'
       ]);
       done();
@@ -22,15 +22,15 @@ describe('Generator generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       ['package.json', /"name": "temp"/],
+      'Grunfile.js',
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
-      'app/index.js'
+      'app/index.js',
     ];
 
     helpers.mockPrompt(this.app, {
-      'githubUser': 'passy',
-      'generatorName': 'temp'
+      'someOption': 'Y'
     });
 
     this.app.run({}, function () {

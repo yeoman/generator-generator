@@ -7,7 +7,7 @@ Yo dawg, I heard you like generators?
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
 - Install the generator **locally**: `npm install generator-generator`
-- Run: `yo generator`
+- Run: `yo generator:app`
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License) |
