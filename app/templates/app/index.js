@@ -60,6 +60,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
 
 <%= _.capitalize(generatorName) %>Generator.prototype.packageJSON = function packageJSON() {
   this.template('_package.json', 'package.json');
+  this.template('_component.json', 'component.json');
 };
 
 <%= _.capitalize(generatorName) %>Generator.prototype.git = function git() {
