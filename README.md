@@ -10,7 +10,7 @@ sensible defaults.
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
 - Install the generator **locally**: `npm install generator-generator`
-- Run: `yo generator:app`
+- Run: `yo generator:app` (Be sure to include `:app` as `generator` alone is part of yeoman itself.)
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License) |
