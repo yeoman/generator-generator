@@ -6,6 +6,30 @@
 `generator-generator` scaffolds out a new basic Yeoman generator with some
 sensible defaults.
 
+## How is this different from the built-in generator?
+
+The built-in `yo generator` command only generates an `index.js` file for you.
+`generator-generator` instead comes with a full project directory structure:
+
+    .
+    ├── app
+    │   ├── index.js
+    │   └── templates
+    │       ├── editorconfig
+    │       └── jshintrc
+    ├── LICENSE
+    ├── package.json
+    ├── README.md
+    └── test
+        ├── temp
+        │   └── app
+        │       └── templates
+        ├── test-creation.js
+        └── test-load.js
+
+Last but not least, you don't need to copy-paste the ASCII Art Yeoman anymore.
+\o/
+
 ## Getting started
 - Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
