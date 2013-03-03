@@ -17,13 +17,14 @@ The built-in `yo generator` command only generates an `index.js` file for you.
     │   └── templates
     │       ├── editorconfig
     │       └── jshintrc
+    ├── .editorconfig
+    ├── .gitattributes
+    ├── .gitignore
+    ├── .jshintrc
     ├── LICENSE
     ├── package.json
     ├── README.md
     └── test
-        ├── temp
-        │   └── app
-        │       └── templates
         ├── test-creation.js
         └── test-load.js
 
