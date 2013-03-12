@@ -25,6 +25,7 @@ describe('Generator generator', function () {
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
+      '.travis.yml',
       'app/index.js'
     ];
 

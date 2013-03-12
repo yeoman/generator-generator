@@ -25,6 +25,7 @@ GeneratorGenerator.prototype.projectfiles = function projectfiles() {
   this.template('Gruntfile.js');
   this.template('_package.json', 'package.json');
   this.template('jshintrc', '.jshintrc');
+  this.template('travis.yml', '.travis.yml');
 };
 
 GeneratorGenerator.prototype.gitfiles = function gitfiles() {
