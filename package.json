@@ -18,13 +18,13 @@
     "url": "https://github.com/passy/generator-generator.git"
   },
   "scripts": {
-    "test": "mocha test/test-*.js"
+    "test": "mocha"
   },
   "dependencies": {
     "yeoman-generator": "~0.10.2"
   },
   "devDependencies": {
-    "mocha": "~1.8.1"
+    "mocha": "~1.9.0"
   },
   "engines": {
     "node": ">=0.8.0"
