@@ -24,9 +24,7 @@ function GeneratorGenerator() {
   this.currentYear = (new Date()).getFullYear();
 
   this.on('end', function () {
-    console.log('\nI\'m all done. Just run ' +
-                'npm install'.bold.yellow +
-                ' to install the required dependencies.');
+    this.npmInstall();
   });
 }
 
