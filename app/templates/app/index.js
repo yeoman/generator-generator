@@ -10,7 +10,7 @@ function <%= _.capitalize(generatorName) %>Generator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    console.log('\nI\'m all done. Just run ' + 'npm install & bower install'.bold.yellow + ' to install the required dependencies.');
+    this.installDependencies();
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -38,7 +38,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
   var prompts = [{
     name: 'someOption',
     message: 'Would you like to enable this option?',
-    default: 'Y/n',
+    default: true,
     warning: 'Yes: Enabling this will be totally awesome!'
   }];
 
@@ -47,7 +47,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
       return this.emit('error', err);
     }
 
-    this.someOption = (/y/i).test(props.someOption);
+    this.someOption = props.someOption;
 
     cb();
   }.bind(this));
