@@ -4,9 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 
 
-module.exports = <%= _.capitalize(generatorName) %>Generator;
-
-function <%= _.capitalize(generatorName) %>Generator(args, options, config) {
+var <%= _.capitalize(generatorName) %>Generator = module.exports = function <%= _.capitalize(generatorName) %>Generator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -14,7 +12,7 @@ function <%= _.capitalize(generatorName) %>Generator(args, options, config) {
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
-}
+};
 
 util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.NamedBase);
 
