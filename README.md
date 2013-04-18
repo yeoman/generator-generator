@@ -46,6 +46,8 @@ It's already there! \o/
 
 * 0.2
     * Added subgenerator for subgenerators
+    * Generated generator now generates package.json, component.json and
+      installs them by default.
 
 * 0.1.1
     * Upgraded mocha to 1.9.0

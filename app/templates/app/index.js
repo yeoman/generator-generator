@@ -54,6 +54,9 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
 <%= _.capitalize(generatorName) %>Generator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/templates');
+
+  this.copy('_package.json', 'package.json');
+  this.copy('_component.json', 'component.json');
 };
 
 <%= _.capitalize(generatorName) %>Generator.prototype.projectfiles = function projectfiles() {

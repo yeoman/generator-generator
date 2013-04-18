@@ -87,10 +87,14 @@ GeneratorGenerator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/templates');
   this.template('app/index.js');
+};
 
+GeneratorGenerator.prototype.templates = function copyTemplates() {
   this.copy('editorconfig', 'app/templates/editorconfig');
   this.copy('jshintrc', 'app/templates/jshintrc');
   this.copy('travis.yml', 'app/templates/travis.yml');
+  this.copy('app/templates/_package.json', 'app/templates/_package.json');
+  this.copy('app/templates/_component.json', 'app/templates/_component.json');
 };
 
 GeneratorGenerator.prototype.tests = function tests() {
