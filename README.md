@@ -6,6 +6,11 @@
 `generator-generator` scaffolds out a new basic Yeoman generator with some
 sensible defaults.
 
+## Commands
+
+* `yo generator:app` shows a wizard for generating a new generator
+* `yo generator:subgenerator NAME` generates a subgenerator with the name NAME
+
 ## How is this different from the built-in generator?
 
 The built-in `yo generator` command only generates an `index.js` file for you.
@@ -38,6 +43,9 @@ It's already there! \o/
 - Run: `yo generator:app` (Be sure to include `:app` as `generator` alone is part of yeoman itself.)
 
 ## Changelog
+
+* 0.2
+    * Added subgenerator for subgenerators
 
 * 0.1.1
     * Upgraded mocha to 1.9.0
