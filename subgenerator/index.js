@@ -5,6 +5,11 @@ var yeoman = require('yeoman-generator');
 var SubGeneratorGenerator = module.exports = function SubGeneratorGenerator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
+  if (!this.name) {
+    this.log.error('You have to provide a name for the subgenerator.');
+    process.exit(1);
+  }
+
   this.generatorName = this.name;
   this.dirname = this._.dasherize(this.name);
 };
