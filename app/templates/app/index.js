@@ -36,7 +36,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
   var prompts = [{
     name: 'someOption',
     message: 'Would you like to enable this option?',
-    default: true,
+    default: 'Y/n',
     warning: 'Yes: Enabling this will be totally awesome!'
   }];
 
@@ -45,7 +45,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Nam
       return this.emit('error', err);
     }
 
-    this.someOption = props.someOption;
+    this.someOption = (/y/i).test(props.someOption);
 
     cb();
   }.bind(this));
