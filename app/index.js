@@ -16,7 +16,7 @@ var extractGeneratorName = function (_, appname) {
 };
 
 
-function GeneratorGenerator() {
+function GeneratorGenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname,
@@ -24,7 +24,9 @@ function GeneratorGenerator() {
   this.currentYear = (new Date()).getFullYear();
 
   this.on('end', function () {
-    this.npmInstall();
+    if (!options['skip-install']) {
+      this.npmInstall();
+    }
   });
 }
 
