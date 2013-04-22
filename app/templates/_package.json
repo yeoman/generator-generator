@@ -5,17 +5,17 @@
   "keywords": [
     "yeoman-generator"
   ],
-  "homepage": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>",
-  "bugs": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>/issues",
+  "homepage": "<%= githubUrl %>/<%= _.slugify(appname) %>",
+  "bugs": "<%= githubUrl %>/<%= _.slugify(appname) %>/issues",
   "author": {
-    "name": "<%= githubUser %>",
-    "email": "user@example.net",
-    "url": "https://github.com/<%= githubUser %>"
+    "name": "<%= realname %>",
+    "email": "<%= email %>",
+    "url": "<%= githubUrl %>"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>.git"
+    "url": "git://github.com/<%= githubUser %>/<%= _.slugify(appname) %>.git"
   },
   "scripts": {
     "test": "mocha"

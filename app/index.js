@@ -4,6 +4,11 @@ var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
+var GitHubApi = require('github');
+var github = new GitHubApi({
+  version: '3.0.0'
+});
+
 var extractGeneratorName = function (_, appname) {
   var slugged = _.slugify(appname),
     match = slugged.match(/^generator-(.+)/);
@@ -15,6 +20,16 @@ var extractGeneratorName = function (_, appname) {
   return slugged;
 };
 
+var githubUserInfo = function (name, cb) {
+  github.user.getFrom({
+    user: name
+  }, function (err, res) {
+    if (err) {
+      throw err;
+    }
+    cb(JSON.parse(JSON.stringify(res)));
+  });
+};
 
 function GeneratorGenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
@@ -67,6 +82,17 @@ GeneratorGenerator.prototype.askFor = function askFor() {
 
     this.githubUser = props.githubUser;
     this.generatorName = props.generatorName;
+    done();
+  }.bind(this));
+};
+
+GeneratorGenerator.prototype.userInfo = function userInfo() {
+  var done = this.async();
+
+  githubUserInfo(this.githubUser, function (res) {
+    this.realname = res.name;
+    this.email = res.email;
+    this.githubUrl = res.html_url;
     done();
   }.bind(this));
 };
