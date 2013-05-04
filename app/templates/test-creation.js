@@ -29,7 +29,7 @@ describe('<%= generatorName %> generator', function () {
     helpers.mockPrompt(this.app, {
       'someOption': 'Y'
     });
-
+    this.app.options['skip-install'] = true;
     this.app.run({}, function () {
       helpers.assertFiles(expected);
       done();
