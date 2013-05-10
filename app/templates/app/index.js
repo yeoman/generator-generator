@@ -14,7 +14,7 @@ var <%= _.capitalize(generatorName) %>Generator = module.exports = function <%= 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.NamedBase);
+util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Base);
 
 <%= _.capitalize(generatorName) %>Generator.prototype.askFor = function askFor() {
   var cb = this.async();
