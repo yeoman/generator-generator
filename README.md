@@ -1,5 +1,5 @@
 # Yeoman Generator for Yeoman Generators
-[![Build Status](https://secure.travis-ci.org/passy/generator-generator.png?branch=master)](https://travis-ci.org/passy/generator-generator)
+[![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.png?branch=master)](https://travis-ci.org/yeoman/generator-generator)
 
 ![Yo dawg, I heard you like generators?](http://i.imgur.com/2gqiift.jpg)
 
