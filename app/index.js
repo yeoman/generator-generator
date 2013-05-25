@@ -122,7 +122,7 @@ GeneratorGenerator.prototype.templates = function copyTemplates() {
   this.copy('jshintrc', 'app/templates/jshintrc');
   this.copy('travis.yml', 'app/templates/travis.yml');
   this.copy('app/templates/_package.json', 'app/templates/_package.json');
-  this.copy('app/templates/_component.json', 'app/templates/_component.json');
+  this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
 };
 
 GeneratorGenerator.prototype.tests = function tests() {
