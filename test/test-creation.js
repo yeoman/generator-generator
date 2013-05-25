@@ -29,7 +29,7 @@ describe('Generator generator', function () {
       '.travis.yml',
       'app/index.js',
       'app/templates/_package.json',
-      'app/templates/_component.json',
+      'app/templates/_bower.json',
     ];
 
     helpers.mockPrompt(this.app, {
