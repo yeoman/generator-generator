@@ -45,7 +45,7 @@ function GeneratorGenerator(args, options) {
   });
 }
 
-util.inherits(GeneratorGenerator, yeoman.generators.NamedBase);
+util.inherits(GeneratorGenerator, yeoman.generators.Base);
 
 GeneratorGenerator.prototype.askFor = function askFor() {
   var done = this.async();
@@ -82,6 +82,7 @@ GeneratorGenerator.prototype.askFor = function askFor() {
 
     this.githubUser = props.githubUser;
     this.generatorName = props.generatorName;
+    this.appname = 'generator-' + this.generatorName;
     done();
   }.bind(this));
 };
@@ -90,6 +91,7 @@ GeneratorGenerator.prototype.userInfo = function userInfo() {
   var done = this.async();
 
   githubUserInfo(this.githubUser, function (res) {
+    /*jshint camelcase:false */
     this.realname = res.name;
     this.email = res.email;
     this.githubUrl = res.html_url;
