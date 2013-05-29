@@ -22,7 +22,7 @@ describe('Generator generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      ['package.json', /"name": "temp"/],
+      ['package.json', /"name": "generator-temp"/],
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
