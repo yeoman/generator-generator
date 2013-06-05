@@ -75,11 +75,7 @@ GeneratorGenerator.prototype.askFor = function askFor() {
     'default': generatorName
   }];
 
-  this.prompt(prompts, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
+  this.prompt(prompts, function (props) {
     this.githubUser = props.githubUser;
     this.generatorName = props.generatorName;
     this.appname = 'generator-' + this.generatorName;
