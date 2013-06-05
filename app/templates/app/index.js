@@ -34,18 +34,14 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Bas
   console.log(welcome);
 
   var prompts = [{
+    type: 'confirm',
     name: 'someOption',
     message: 'Would you like to enable this option?',
-    default: 'Y/n',
-    warning: 'Yes: Enabling this will be totally awesome!'
+    default: true
   }];
 
-  this.prompt(prompts, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
-    this.someOption = (/y/i).test(props.someOption);
+  this.prompt(prompts, function (props) {
+    this.someOption = props.someOption;
 
     cb();
   }.bind(this));
