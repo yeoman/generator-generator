@@ -19,19 +19,8 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Bas
 <%= _.capitalize(generatorName) %>Generator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // welcome message
-  var welcome =
-  '\n     _-----_' +
-  '\n    |       |' +
-  '\n    |' + '--(o)--'.red + '|   .--------------------------.' +
-  '\n   `---------´  |    ' + 'Welcome to Yeoman,'.yellow.bold + '    |' +
-  '\n    ' + '( '.yellow + '_' + '´U`'.yellow + '_' + ' )'.yellow + '   |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' +
-  '\n    /___A___\\   \'__________________________\'' +
-  '\n     |  ~  |'.yellow +
-  '\n   __' + '\'.___.\''.yellow + '__' +
-  '\n ´   ' + '`  |'.red + '° ' + '´ Y'.red + ' `\n';
-
-  console.log(welcome);
+  // have Yeoman greet the user.
+  console.log(this.yeoman);
 
   var prompts = [{
     type: 'confirm',
