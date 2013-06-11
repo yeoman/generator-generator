@@ -1,7 +1,7 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path    = require('path');
+var path = require('path');
 var helpers = require('yeoman-generator').test;
 
 
@@ -32,8 +32,15 @@ describe('Generator generator', function () {
       'app/templates/_bower.json',
     ];
 
+    // Patch the user info to not run into rate limits on travis
+    this.app.userInfo = function () {
+      this.realname = 'Tyrion Lannister';
+      this.email = 'imp@casterlyrock.com';
+      this.githubUrl = 'https://github.com/imp';
+    };
+
     helpers.mockPrompt(this.app, {
-      'githubUser': 'passy',
+      'githubUser': 'imp',
       'generatorName': 'temp'
     });
 
