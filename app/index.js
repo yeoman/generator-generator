@@ -57,11 +57,11 @@ GeneratorGenerator.prototype.askFor = function askFor() {
   var prompts = [{
     name: 'githubUser',
     message: 'Would you mind telling me your username on Github?',
-    'default': 'someuser'
+    default: 'someuser'
   }, {
     name: 'generatorName',
     message: 'What\'s the base name of your generator?',
-    'default': generatorName
+    default: generatorName
   }];
 
   this.prompt(prompts, function (props) {
