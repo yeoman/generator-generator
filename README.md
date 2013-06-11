@@ -43,6 +43,10 @@ you.
 
 ## Changelog
 
+* 0.2.2
+    * Updated dependencies.
+
+
 * 0.2.1
     * The name specified in the prompt is now used in `package.json`.
     * `generator-generator` officially replaced the built-in generator that was
