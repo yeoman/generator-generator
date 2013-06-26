@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 
 
-var <%= _.capitalize(generatorName) %>Generator = module.exports = function <%= _.capitalize(generatorName) %>Generator(args, options, config) {
+var <%= _.classify(generatorName) %>Generator = module.exports = function <%= _.classify(generatorName) %>Generator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
@@ -14,9 +14,9 @@ var <%= _.capitalize(generatorName) %>Generator = module.exports = function <%= 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Base);
+util.inherits(<%= _.classify(generatorName) %>Generator, yeoman.generators.Base);
 
-<%= _.capitalize(generatorName) %>Generator.prototype.askFor = function askFor() {
+<%= _.classify(generatorName) %>Generator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // have Yeoman greet the user.
@@ -36,7 +36,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Bas
   }.bind(this));
 };
 
-<%= _.capitalize(generatorName) %>Generator.prototype.app = function app() {
+<%= _.classify(generatorName) %>Generator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/templates');
 
@@ -44,7 +44,7 @@ util.inherits(<%= _.capitalize(generatorName) %>Generator, yeoman.generators.Bas
   this.copy('_bower.json', 'bower.json');
 };
 
-<%= _.capitalize(generatorName) %>Generator.prototype.projectfiles = function projectfiles() {
+<%= _.classify(generatorName) %>Generator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
 };
