@@ -36,9 +36,7 @@ you.
         └── test-load.js
 
 ## Getting started
-- Make sure you have [yo](https://github.com/yeoman/yo) installed:
-    `npm install -g yo`
-- Install the generator: `npm install -g generator-generator`
+- Install: `npm install -g generator-generator`
 - Run: `yo generator`
 
 ## Changelog
