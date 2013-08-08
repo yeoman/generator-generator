@@ -41,9 +41,12 @@ you.
 
 ## Changelog
 
+* 0.3.0
+    * Updated for generator 0.13.0.
+    * Added yo peer dependency.
+
 * 0.2.2
     * Updated dependencies.
-
 
 * 0.2.1
     * The name specified in the prompt is now used in `package.json`.
