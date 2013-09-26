@@ -4,10 +4,19 @@ var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
-var GitHubApi = require('github');
-var github = new GitHubApi({
+var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy || process.env.HTTPS_PROXY || null;
+var githubOptions = {
   version: '3.0.0'
-});
+};
+
+if (proxy) {
+  githubOptions.proxy = {};
+  githubOptions.proxy.host = proxy.split(':')[0];
+  githubOptions.proxy.port = proxy.split(':')[1];
+}
+
+var GitHubApi = require('github');
+var github = new GitHubApi(githubOptions);
 
 var extractGeneratorName = function (_, appname) {
   var slugged = _.slugify(appname),
