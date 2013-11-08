@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '0.8'
+  - '0.10'
+before_install:
+  - currentfolder=<%= "${PWD##*/}" %>
+  - if [ "$currentfolder" != '<%= _.slugify(appname) %>' ]; then cd .. && eval "mv $currentfolder <%= _.slugify(appname) %>" && cd <%= _.slugify(appname) %>; fi
+
