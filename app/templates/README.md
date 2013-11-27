@@ -19,6 +19,8 @@ Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](
 $ npm install -g yo
 ```
 
+If npm is down, you are npm help @ [scalenpm.org](https://scalenpm.org)
+
 ### Yeoman Generators
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
@@ -28,6 +30,8 @@ To install <%= appname %> from npm, run:
 ```
 $ npm install -g <%= _.slugify(appname) %>
 ```
+
+If npm is down, you are npm help @ [scalenpm.org](https://scalenpm.org)
 
 Finally, initiate the generator:
 
