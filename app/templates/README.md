@@ -2,7 +2,6 @@
 
 A generator for [Yeoman](http://yeoman.io).
 
-
 ## Getting Started
 
 ### What is Yeoman?
