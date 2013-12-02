@@ -38,5 +38,6 @@
     {
       "type": "MIT"
     }
-  ]
+  ],
+  "preferGlobal": true
 }
