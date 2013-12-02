@@ -5,7 +5,9 @@ var url = require('url');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
+/* jshint -W106 */
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy || process.env.HTTPS_PROXY || null;
+/* jshint +W106 */
 var githubOptions = {
   version: '3.0.0'
 };
