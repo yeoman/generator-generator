@@ -98,6 +98,7 @@ GeneratorGenerator.prototype.projectfiles = function projectfiles() {
   this.template('_package.json', 'package.json');
   this.template('editorconfig', '.editorconfig');
   this.template('jshintrc', '.jshintrc');
+  this.template('npmignore', '.npmignore');
   this.template('_travis.yml', '.travis.yml');
   this.template('README.md');
   this.template('LICENSE');
