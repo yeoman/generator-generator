@@ -35,7 +35,8 @@
   },
   "licenses": [
     {
-      "type": "MIT"
+      "type": "MIT",
+      "url" : "https://github.com/<%= githubUser %>/<%= _.slugify(appname) %>/blob/master/LICENSE"
     }
   ]
 }

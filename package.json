@@ -36,7 +36,8 @@
   },
   "licenses": [
     {
-      "type": "MIT"
+      "type": "MIT",
+      "url" : "https://github.com/yeoman/generator-generator/blob/master/LICENSE"
     }
   ]
 }
