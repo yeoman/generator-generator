@@ -46,8 +46,7 @@ var githubUserInfo = function (name, cb) {
 function GeneratorGenerator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname,
-                                                        '../package.json')));
+  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
   this.currentYear = (new Date()).getFullYear();
 
   this.on('end', function () {
