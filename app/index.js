@@ -102,7 +102,6 @@ GeneratorGenerator.prototype.projectfiles = function projectfiles() {
   this.template('jshintrc', '.jshintrc');
   this.template('_travis.yml', '.travis.yml');
   this.template('README.md');
-  this.template('LICENSE');
 };
 
 GeneratorGenerator.prototype.gitfiles = function gitfiles() {

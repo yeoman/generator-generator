@@ -72,5 +72,7 @@ guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-s
 Especially important is to make sure Yeoman is up-to-date, and providing the
 command or commands that cause the issue.
 
+
 ## License
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+MIT © Pascal Hartig <phartig@rdrei.net> and other contributors
