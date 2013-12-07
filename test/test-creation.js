@@ -26,6 +26,7 @@ describe('Generator generator', function () {
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
+      '.npmignore',
       ['.travis.yml', /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/],
       'app/index.js',
       'app/templates/_package.json',
