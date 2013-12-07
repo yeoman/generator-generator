@@ -38,5 +38,9 @@
     {
       "type": "MIT"
     }
+  ],
+  "files": [
+    "app",
+    "subgenerator"
   ]
 }
