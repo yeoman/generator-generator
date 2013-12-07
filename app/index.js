@@ -1,5 +1,4 @@
 'use strict';
-
 var path = require('path');
 var url = require('url');
 var util = require('util');
@@ -22,8 +21,8 @@ var GitHubApi = require('github');
 var github = new GitHubApi(githubOptions);
 
 var extractGeneratorName = function (_, appname) {
-  var slugged = _.slugify(appname),
-    match = slugged.match(/^generator-(.+)/);
+  var slugged = _.slugify(appname);
+  var match = slugged.match(/^generator-(.+)/);
 
   if (match && match.length === 2) {
     return match[1].toLowerCase();
@@ -62,7 +61,7 @@ GeneratorGenerator.prototype.askFor = function askFor() {
   var done = this.async();
   var generatorName = extractGeneratorName(this._, this.appname);
 
-  // have Yeoman greet the user.
+  // have Yeoman greet the user
   console.log(this.yeoman);
 
   var prompts = [{
