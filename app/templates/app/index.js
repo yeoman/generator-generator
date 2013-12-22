@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
 
 
 var <%= _.classify(generatorName) %>Generator = module.exports = function <%= _.classify(generatorName) %>Generator(args, options, config) {
@@ -19,8 +20,11 @@ util.inherits(<%= _.classify(generatorName) %>Generator, yeoman.generators.Base)
 <%= _.classify(generatorName) %>Generator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
+  // have Yeoman greet the user
   console.log(this.yeoman);
+
+  // replace it with a short and sweet description of your generator
+  console.log(chalk.magenta('You\'re using the fantastic <%= _.classify(generatorName) %> generator.'));
 
   var prompts = [{
     type: 'confirm',

@@ -3,6 +3,8 @@ var path = require('path');
 var url = require('url');
 var util = require('util');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
+
 
 /* jshint -W106 */
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy || process.env.HTTPS_PROXY || null;
@@ -63,6 +65,7 @@ GeneratorGenerator.prototype.askFor = function askFor() {
 
   // have Yeoman greet the user
   console.log(this.yeoman);
+  console.log(chalk.magenta('Create your own magical generator with superpowers!'));
 
   var prompts = [{
     name: 'githubUser',
