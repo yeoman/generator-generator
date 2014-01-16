@@ -3,7 +3,9 @@
   "version": "0.4.1",
   "description": "Generator Generator for Yeoman",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "generator",
+    "inception"
   ],
   "homepage": "https://github.com/yeoman/generator-generator",
   "bugs": "https://github.com/yeoman/generator-generator/issues",
@@ -21,7 +23,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0",
+    "yeoman-generator": "~0.16.0",
     "github": "~0.1.8",
     "chalk": "~0.4.0"
   },
@@ -32,7 +34,7 @@
     "yo": ">=1.0.0"
   },
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
   "licenses": [
