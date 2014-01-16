@@ -11,8 +11,7 @@
     "url": "<%= githubUrl %>"
   },
   "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.2.10"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "mocha"
@@ -24,7 +23,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.14.0",
+    "yeoman-generator": "~0.16.0",
     "chalk": "~0.4.0"
   },
   "devDependencies": {
