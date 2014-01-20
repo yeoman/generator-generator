@@ -22,11 +22,9 @@ describe('Generator generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      ['package.json', /"name": "generator-temp"/],
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
-      ['.travis.yml', /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/],
       'app/index.js',
       'app/templates/_package.json',
       'app/templates/_bower.json',
@@ -46,6 +44,11 @@ describe('Generator generator', function () {
 
     this.app.run({}, function () {
       helpers.assertFile(expected);
+      helpers.assertFileContent('package.json',  /"name": "generator-temp"/);
+      helpers.assertFileContent(
+        '.travis.yml',
+        /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/
+      );
       done();
     });
   });
