@@ -44,95 +44,93 @@ var githubUserInfo = function (name, cb) {
   });
 };
 
-function GeneratorGenerator(args, options) {
-  yeoman.generators.Base.apply(this, arguments);
+var GeneratorGenerator = yeoman.generators.Base.extend({
+  init: function () {
+    this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
+    this.currentYear = (new Date()).getFullYear();
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
-  this.currentYear = (new Date()).getFullYear();
+    this.on('end', function () {
+      if (!this.options['skip-install']) {
+        this.npmInstall();
+      }
+    });
+  },
 
-  this.on('end', function () {
-    if (!options['skip-install']) {
-      this.npmInstall();
+  askFor: function () {
+    var done = this.async();
+    var generatorName = extractGeneratorName(this._, this.appname);
+
+    // have Yeoman greet the user
+    console.log(this.yeoman);
+    console.log(chalk.magenta('Create your own magical generator with superpowers!'));
+
+    var prompts = [{
+      name: 'githubUser',
+      message: 'Would you mind telling me your username on GitHub?',
+      default: 'someuser'
+    }, {
+      name: 'generatorName',
+      message: 'What\'s the base name of your generator?',
+      default: generatorName
+    }];
+
+    this.prompt(prompts, function (props) {
+      this.githubUser = props.githubUser;
+      this.generatorName = props.generatorName;
+      this.appname = 'generator-' + this.generatorName;
+      done();
+    }.bind(this));
+  },
+
+  enforceFolderName: function () {
+    if (this.appname !== this._.last(this.destinationRoot().split(path.sep))) {
+      this.destinationRoot(this.appname);
     }
-  });
-}
+  },
 
-util.inherits(GeneratorGenerator, yeoman.generators.Base);
+  userInfo: function () {
+    var done = this.async();
 
-GeneratorGenerator.prototype.askFor = function askFor() {
-  var done = this.async();
-  var generatorName = extractGeneratorName(this._, this.appname);
+    githubUserInfo(this.githubUser, function (res) {
+      /*jshint camelcase:false */
+      this.realname = res.name;
+      this.email = res.email;
+      this.githubUrl = res.html_url;
+      done();
+    }.bind(this));
+  },
 
-  // have Yeoman greet the user
-  console.log(this.yeoman);
-  console.log(chalk.magenta('Create your own magical generator with superpowers!'));
+  projectfiles: function () {
+    this.template('_package.json', 'package.json');
+    this.template('editorconfig', '.editorconfig');
+    this.template('jshintrc', '.jshintrc');
+    this.template('_travis.yml', '.travis.yml');
+    this.template('README.md');
+  },
 
-  var prompts = [{
-    name: 'githubUser',
-    message: 'Would you mind telling me your username on GitHub?',
-    default: 'someuser'
-  }, {
-    name: 'generatorName',
-    message: 'What\'s the base name of your generator?',
-    default: generatorName
-  }];
+  gitfiles: function () {
+    this.copy('gitattributes', '.gitattributes');
+    this.copy('gitignore', '.gitignore');
+  },
 
-  this.prompt(prompts, function (props) {
-    this.githubUser = props.githubUser;
-    this.generatorName = props.generatorName;
-    this.appname = 'generator-' + this.generatorName;
-    done();
-  }.bind(this));
-};
+  app: function () {
+    this.mkdir('app');
+    this.mkdir('app/templates');
+    this.template('app/index.js');
+  },
 
-GeneratorGenerator.prototype.enforceFolderName = function enforceFolderName() {
-  if (this.appname !== this._.last(this.destinationRoot().split(path.sep))) {
-    this.destinationRoot(this.appname);
+  templates: function () {
+    this.copy('editorconfig', 'app/templates/editorconfig');
+    this.copy('jshintrc', 'app/templates/jshintrc');
+    this.copy('app/templates/_package.json', 'app/templates/_package.json');
+    this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
+  },
+
+  tests: function () {
+    this.mkdir('test');
+    this.template('test-load.js', 'test/test-load.js');
+    this.template('test-creation.js', 'test/test-creation.js');
   }
-};
-
-GeneratorGenerator.prototype.userInfo = function userInfo() {
-  var done = this.async();
-
-  githubUserInfo(this.githubUser, function (res) {
-    /*jshint camelcase:false */
-    this.realname = res.name;
-    this.email = res.email;
-    this.githubUrl = res.html_url;
-    done();
-  }.bind(this));
-};
-
-GeneratorGenerator.prototype.projectfiles = function projectfiles() {
-  this.template('_package.json', 'package.json');
-  this.template('editorconfig', '.editorconfig');
-  this.template('jshintrc', '.jshintrc');
-  this.template('_travis.yml', '.travis.yml');
-  this.template('README.md');
-};
-
-GeneratorGenerator.prototype.gitfiles = function gitfiles() {
-  this.copy('gitattributes', '.gitattributes');
-  this.copy('gitignore', '.gitignore');
-};
-
-GeneratorGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
-  this.template('app/index.js');
-};
-
-GeneratorGenerator.prototype.templates = function copyTemplates() {
-  this.copy('editorconfig', 'app/templates/editorconfig');
-  this.copy('jshintrc', 'app/templates/jshintrc');
-  this.copy('app/templates/_package.json', 'app/templates/_package.json');
-  this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
-};
-
-GeneratorGenerator.prototype.tests = function tests() {
-  this.mkdir('test');
-  this.template('test-load.js', 'test/test-load.js');
-  this.template('test-creation.js', 'test/test-creation.js');
-};
+});
 
 module.exports = GeneratorGenerator;
