@@ -45,7 +45,7 @@ describe('Generator generator', function () {
     });
 
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
+      helpers.assertFile(expected);
       done();
     });
   });
@@ -72,7 +72,7 @@ describe('Subgenerator subgenerator', function () {
     ];
 
     this.app.run({}, function () {
-      helpers.assertFiles(expected);
+      helpers.assertFile(expected);
       done();
     });
   });
