@@ -85,6 +85,12 @@ GeneratorGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
+GeneratorGenerator.prototype.enforceFolderName = function enforceFolderName() {
+  if (this.appname !== this._.last(this.destinationRoot().split(path.sep))) {
+    this.destinationRoot(this.appname);
+  }
+};
+
 GeneratorGenerator.prototype.userInfo = function userInfo() {
   var done = this.async();
 
