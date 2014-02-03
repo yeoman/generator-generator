@@ -5,50 +5,52 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 
-var <%= _.classify(generatorName) %>Generator = module.exports = function <%= _.classify(generatorName) %>Generator(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
+var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
+  init: function () {
+    this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
 
-  this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
-  });
+    this.on('end', function () {
+      if (!this.options['skip-install']) {
+        this.npmInstall();
+      }
+    });
+  },
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
-};
+  askFor: function () {
+    var done = this.async();
 
-util.inherits(<%= _.classify(generatorName) %>Generator, yeoman.generators.Base);
+    // have Yeoman greet the user
+    console.log(this.yeoman);
 
-<%= _.classify(generatorName) %>Generator.prototype.askFor = function askFor() {
-  var cb = this.async();
+    // replace it with a short and sweet description of your generator
+    console.log(chalk.magenta('You\'re using the fantastic <%= _.classify(generatorName) %> generator.'));
 
-  // have Yeoman greet the user
-  console.log(this.yeoman);
+    var prompts = [{
+      type: 'confirm',
+      name: 'someOption',
+      message: 'Would you like to enable this option?',
+      default: true
+    }];
 
-  // replace it with a short and sweet description of your generator
-  console.log(chalk.magenta('You\'re using the fantastic <%= _.classify(generatorName) %> generator.'));
+    this.prompt(prompts, function (props) {
+      this.someOption = props.someOption;
 
-  var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
+      done();
+    }.bind(this));
+  },
 
-  this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+  app: function () {
+    this.mkdir('app');
+    this.mkdir('app/templates');
 
-    cb();
-  }.bind(this));
-};
+    this.copy('_package.json', 'package.json');
+    this.copy('_bower.json', 'bower.json');
+  },
 
-<%= _.classify(generatorName) %>Generator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
+  projectfiles: function () {
+    this.copy('editorconfig', '.editorconfig');
+    this.copy('jshintrc', '.jshintrc');
+  }
+});
 
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
-};
-
-<%= _.classify(generatorName) %>Generator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
-};
+module.exports = <%= _.classify(generatorName) %>Generator;
