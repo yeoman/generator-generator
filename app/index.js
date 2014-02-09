@@ -1,7 +1,6 @@
 'use strict';
 var path = require('path');
 var url = require('url');
-var util = require('util');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
@@ -14,9 +13,11 @@ var githubOptions = {
 };
 
 if (proxy) {
-  githubOptions.proxy = {};
-  githubOptions.proxy.host = url.parse(proxy).hostname;
-  githubOptions.proxy.port = url.parse(proxy).port;
+  var proxyUrl = url.parse(proxy);
+  githubOptions.proxy = {
+    host: proxyUrl.hostname,
+    port: proxyUrl.port
+  };
 }
 
 var GitHubApi = require('github');
