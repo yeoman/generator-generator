@@ -7,7 +7,7 @@ var chalk = require('chalk');
 
 var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
   init: function () {
-    this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
+    this.pkg = require('../package.json');
 
     this.on('end', function () {
       if (!this.options['skip-install']) {
