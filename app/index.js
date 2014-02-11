@@ -61,9 +61,11 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
     var done = this.async();
     var generatorName = extractGeneratorName(this._, this.appname);
 
-    // have Yeoman greet the user
-    console.log(this.yeoman);
-    console.log(chalk.magenta('Create your own magical generator with superpowers!'));
+    if(!global.YEOMAN_MUTE) {
+      // have Yeoman greet the user
+      this.log(this.yeoman);
+      this.log(chalk.magenta('Create your own magical generator with superpowers!'));
+    }
 
     var prompts = [{
       name: 'githubUser',

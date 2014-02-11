@@ -19,11 +19,13 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
 
-    // have Yeoman greet the user
-    console.log(this.yeoman);
+    if(!global.YEOMAN_MUTE) {
+      // have Yeoman greet the user
+      this.log(this.yeoman);
 
-    // replace it with a short and sweet description of your generator
-    console.log(chalk.magenta('You\'re using the fantastic <%= _.classify(generatorName) %> generator.'));
+      // replace it with a short and sweet description of your generator
+      this.log(chalk.magenta('You\'re using the fantastic <%= _.classify(generatorName) %> generator.'));
+    }
 
     var prompts = [{
       type: 'confirm',
