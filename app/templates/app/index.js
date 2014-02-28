@@ -11,14 +11,14 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
 
     this.on('end', function () {
       if (!this.options['skip-install']) {
-        this.npmInstall();
+        this.installDependencies();
       }
     });
   },
 
   askFor: function () {
     var done = this.async();
-    
+
     // have Yeoman greet the user
     this.log(this.yeoman);
 
