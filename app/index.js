@@ -39,7 +39,7 @@ var githubUserInfo = function (name, cb) {
     user: name
   }, function (err, res) {
     if (err) {
-      throw err;
+      throw new Error(err.message + '\n\nCannot fetch your github profile. Make sure you\'ve typed it correctly.');
     }
     cb(JSON.parse(JSON.stringify(res)));
   });
