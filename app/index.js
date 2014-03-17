@@ -25,6 +25,13 @@ if (proxy) {
 var GitHubApi = require('github');
 var github = new GitHubApi(githubOptions);
 
+if (process.env.GITHUB_TOKEN) {
+  github.authenticate({
+    type: 'oauth',
+    token: process.env.GITHUB_TOKEN
+  });
+}
+
 var extractGeneratorName = function (_, appname) {
   var slugged = _.slugify(appname);
   var match = slugged.match(/^generator-(.+)/);

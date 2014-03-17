@@ -13,6 +13,14 @@ Maintainer: [Pascal Hartig](https://github.com/passy)
 - Install: `npm install -g generator-generator`
 - Run: `yo generator`
 
+If during generation you get an error like `API rate limit exceeded`, you need to log in to GitHub
+and [create a new API token](https://github.com/settings/tokens/new), then add:
+```bash
+export GITHUB_TOKEN='YOUR_NEW_TOKEN'
+```
+to your `.bashrc`, `.zshrc`, `.profile` or another file that is run on shell initialization. In new terminal shells
+you shouldn't see this error anymore.
+
 
 ## Commands
 
