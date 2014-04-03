@@ -1,4 +1,4 @@
-# generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.png?branch=master)](https://travis-ci.org/yeoman/generator-generator)
+# generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator)
 
 > Yeoman generator for Yeoman generators  
 > Scaffolds out a new basic Yeoman generator with some sensible defaults.
