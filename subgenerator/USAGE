@@ -1,0 +1,9 @@
+Description:
+    Creates a sub-generator to scaffold a specific piece of an application
+
+Example:
+    yo generator:subgenerator <name>
+
+    This will create:
+        your-sub-generator-name/index.js: Main sub-generator script
+        your-sub-generator-name/templates/somefile.js: A file placeholder
