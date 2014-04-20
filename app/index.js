@@ -3,6 +3,7 @@ var path = require('path');
 var url = require('url');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var npmName = require('npm-name');
 
 
 /* jshint -W106 */
@@ -60,10 +61,11 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
     var generatorName = extractGeneratorName(this._, this.appname);
+    var log = this.log;
     // have Yeoman greet the user
-    this.log(this.yeoman);
-    this.log(chalk.magenta('Create your own magical generator with superpowers!'));
-  
+    log(this.yeoman);
+    log(chalk.magenta('Create your own magical generator with superpowers!'));
+
 
     var prompts = [{
       name: 'githubUser',
@@ -72,7 +74,19 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
     }, {
       name: 'generatorName',
       message: 'What\'s the base name of your generator?',
-      default: generatorName
+      default: generatorName,
+      filter: function (input) {
+        var done = this.async();
+        var name = 'generator-' + input;
+
+        npmName(name, function (err, available) {
+          if (!available) {
+            log.info(chalk.yellow(name) + ' already exists on npm. You might want to use another name.');
+          }
+
+          done(input);
+        });
+      }
     }];
 
     this.prompt(prompts, function (props) {
