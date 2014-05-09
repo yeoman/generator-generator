@@ -60,39 +60,59 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
 
   askFor: function () {
     var done = this.async();
-    var generatorName = extractGeneratorName(this._, this.appname);
-    var log = this.log;
-    // have Yeoman greet the user
-    log(this.yeoman);
-    log(chalk.magenta('Create your own magical generator with superpowers!'));
 
+    // have Yeoman greet the user
+    this.log(this.yeoman);
+    this.log(chalk.magenta('Create your own magical generator with superpowers!'));
 
     var prompts = [{
       name: 'githubUser',
       message: 'Would you mind telling me your username on GitHub?',
       default: 'someuser'
-    }, {
+    }];
+
+    this.prompt(prompts, function (props) {
+      this.githubUser = props.githubUser;
+
+      done();
+    }.bind(this));
+  },
+
+  askForGeneratorName: function () {
+    var done = this.async();
+    var generatorName = extractGeneratorName(this._, this.appname);
+
+    var prompts = [{
       name: 'generatorName',
       message: 'What\'s the base name of your generator?',
-      default: generatorName,
-      filter: function (input) {
+      default: generatorName
+    }, {
+      type: 'confirm',
+      name: 'pkgName',
+      message: 'The name above already exists on npm, choose another?',
+      default: true,
+      when: function(answers) {
         var done = this.async();
-        var name = 'generator-' + input;
+        var name = 'generator-' + answers.generatorName;
 
         npmName(name, function (err, available) {
           if (!available) {
-            log.info(chalk.yellow(name) + ' already exists on npm. You might want to use another name.');
+            done(true);
           }
 
-          done(input);
+          done(false);
         });
       }
     }];
 
     this.prompt(prompts, function (props) {
-      this.githubUser = props.githubUser;
+      if (props.pkgName) {
+        return this.askForGeneratorName();
+      }
+
       this.generatorName = props.generatorName;
       this.appname = 'generator-' + this.generatorName;
+
       done();
     }.bind(this));
   },
