@@ -2,6 +2,7 @@
 var path = require('path');
 var url = require('url');
 var yeoman = require('yeoman-generator');
+var yosay = require('yosay');
 var chalk = require('chalk');
 var npmName = require('npm-name');
 
@@ -61,9 +62,7 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
 
-    // have Yeoman greet the user
-    this.log(this.yeoman);
-    this.log(chalk.magenta('Create your own magical generator with superpowers!'));
+    this.log(yosay('Create your own Yeoman generator with superpowers!'));
 
     var prompts = [{
       name: 'githubUser',
