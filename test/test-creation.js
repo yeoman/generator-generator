@@ -2,8 +2,10 @@
 'use strict';
 
 var path = require('path');
-var helpers = require('yeoman-generator').test;
-
+var yeoman = require('yeoman-generator')
+var helpers = yeoman.test;
+var assert = yeoman.assert;
+var fs = require('fs');
 
 describe('Generator generator', function () {
   beforeEach(function (done) {
@@ -61,9 +63,14 @@ describe('Subgenerator subgenerator', function () {
         return done(err);
       }
 
+      var mockPkgData = { files: [] };
+      fs.writeFileSync('package.json', JSON.stringify(mockPkgData, null, 2));
+
       this.app = helpers.createGenerator('generator:subgenerator', [
         '../../subgenerator'
       ], ['foo']);
+      this.app.conflicter.force = true;
+
       done();
     }.bind(this));
   });
@@ -75,8 +82,11 @@ describe('Subgenerator subgenerator', function () {
     ];
 
     this.app.run({}, function () {
+      var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+      assert.equal(pkg.files[0], 'foo');
       helpers.assertFile(expected);
       done();
     });
+
   });
 });

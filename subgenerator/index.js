@@ -10,6 +10,11 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.NamedBase.extend(
     //   this.log.error('You have to provide a name for the subgenerator.');
     //   process.exit(1);
     // }
+    
+    var pkg = this.dest.readJSON('package.json');
+    pkg.files = pkg.files || [];
+    pkg.files.push(this.name);
+    this.dest.write('package.json', JSON.stringify(pkg, null, 2));
 
     this.generatorName = this.name;
     this.dirname = this._.dasherize(this.name);
