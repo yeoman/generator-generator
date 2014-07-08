@@ -5,7 +5,6 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-
 var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require('../package.json');
@@ -21,7 +20,9 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay('Welcome to the marvelous <%= _.classify(generatorName) %> generator!'));
+    this.log(yosay(
+      'Welcome to the <%= superb %> <%= _.classify(generatorName) %> generator!'
+    ));
 
     var prompts = [{
       type: 'confirm',
