@@ -5,10 +5,11 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 var npmName = require('npm-name');
-
+var superb = require('superb');
 
 /* jshint -W106 */
-var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy || process.env.HTTPS_PROXY || null;
+var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy ||
+  process.env.HTTPS_PROXY || null;
 /* jshint +W106 */
 var githubOptions = {
   version: '3.0.0'
@@ -48,7 +49,8 @@ var githubUserInfo = function (name, cb) {
     user: name
   }, function (err, res) {
     if (err) {
-      throw new Error(err.message + '\n\nCannot fetch your github profile. Make sure you\'ve typed it correctly.');
+      throw new Error(err.message +
+        '\n\nCannot fetch your github profile. Make sure you\'ve typed it correctly.');
     }
     cb(JSON.parse(JSON.stringify(res)));
   });
@@ -157,6 +159,7 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
   app: function () {
     this.mkdir('app');
     this.mkdir('app/templates');
+    this.superb = superb();
     this.template('app/index.js');
   },
 
