@@ -1,16 +1,8 @@
 'use strict';
-var util = require('util');
 var yeoman = require('yeoman-generator');
 
-var SubGeneratorGenerator = module.exports = yeoman.generators.NamedBase.extend({
-  init: function () {
-    // yeoman.generators.NamedBase.apply(this, arguments);
-
-    // if (!this.name) {
-    //   this.log.error('You have to provide a name for the subgenerator.');
-    //   process.exit(1);
-    // }
-    
+var SubGeneratorGenerator = yeoman.generators.NamedBase.extend({
+  initializing: function () {
     var pkg = this.dest.readJSON('package.json');
     pkg.files = pkg.files || [];
     pkg.files.push(this.name);
@@ -20,10 +12,12 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.NamedBase.extend(
     this.dirname = this._.dasherize(this.name);
   },
 
-  template: function () {
+  writing: function () {
     this.mkdir(this.dirname);
     this.mkdir(this.dirname + '/templates');
     this.copy('index.js', this.dirname + '/index.js');
     this.copy('templates/somefile.js', this.dirname + '/templates/somefile.js');
   }
 });
+
+module.exports = SubGeneratorGenerator;
