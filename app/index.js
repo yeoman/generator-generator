@@ -55,7 +55,7 @@ var githubUserInfo = function (name, cb) {
   });
 };
 
-var GeneratorGenerator = yeoman.generators.Base.extend({
+var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
@@ -96,7 +96,6 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
         when: function (answers) {
           var done = this.async();
           var name = 'generator-' + answers.generatorName;
-
           npmName(name, function (err, available) {
             if (!available) {
               done(true);
@@ -109,7 +108,7 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
 
       this.prompt(prompts, function (props) {
         if (props.pkgName) {
-          return this.askForGeneratorName();
+          return this.prompting.askForGeneratorName.call(this);
         }
 
         this.generatorName = props.generatorName;
@@ -181,5 +180,3 @@ var GeneratorGenerator = yeoman.generators.Base.extend({
     }
   }
 });
-
-module.exports = GeneratorGenerator;
