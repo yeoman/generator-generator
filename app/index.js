@@ -124,6 +124,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
       if (this.appname !== this._.last(this.destinationRoot().split(path.sep))) {
         this.destinationRoot(this.appname);
       }
+      this.config.save();
     },
 
     userInfo: function () {

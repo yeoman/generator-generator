@@ -25,14 +25,14 @@
   "dependencies": {
     "chalk": "^0.5.0",
     "github": "^0.2.1",
-    "mockery": "^1.4.0",
     "npm-name": "^0.2.0",
     "superb": "^1.0.0",
     "yeoman-generator": "^0.17.2",
     "yosay": "^0.3.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "^1.21.4",
+    "mockery": "^1.4.0"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

@@ -5,12 +5,12 @@ var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var fs = require('fs');
-var osenv = require('osenv');
+var os = require('os');
 
 describe('generator:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../subgenerator'))
-      .inDir(path.join(__dirname, './tmp'), function (dir) {
+      .inDir(path.join(os.tmpdir(), '/yeoman-test'), function (dir) {
         fs.writeFileSync(path.join(dir, 'package.json'), '{"name": "generator-foo", "files":[]}');
       })
       .withArguments(['foo', '--force'])

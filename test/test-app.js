@@ -5,7 +5,7 @@ var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
-var osenv = require('osenv');
+var os = require('os');
 
 describe('generator:app', function () {
   before(function (done) {
@@ -24,7 +24,7 @@ describe('generator:app', function () {
       };
     });
     helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(__dirname, 'tmp'))
+      .inDir(path.join(os.tmpdir(), '/yeoman-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
         githubUser: 'imp',
@@ -40,6 +40,7 @@ describe('generator:app', function () {
 
   it('creates files', function () {
     var expected = [
+      '.yo-rc.json',
       '.gitignore',
       '.gitattributes',
       '.jshintrc',
