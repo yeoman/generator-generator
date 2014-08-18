@@ -169,8 +169,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
 
     tests: function () {
       this.mkdir('test');
-      this.template('test-load.js', 'test/test-load.js');
-      this.template('test-creation.js', 'test/test-creation.js');
+      this.template('test-app.js', 'test/test-app.js');
     }
   },
 

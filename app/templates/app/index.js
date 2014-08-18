@@ -47,9 +47,7 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    if (!this.options['skip-install']) {
-      this.installDependencies();
-    }
+    this.installDependencies();
   }
 });
 

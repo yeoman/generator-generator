@@ -5,6 +5,7 @@ var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
+var osenv = require('osenv');
 
 describe('generator:app', function () {
   before(function (done) {
@@ -23,7 +24,7 @@ describe('generator:app', function () {
       };
     });
     helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(__dirname, './temp'))
+      .inDir(path.join(__dirname, 'tmp'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
         githubUser: 'imp',

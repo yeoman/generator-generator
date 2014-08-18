@@ -1,0 +1,6 @@
+{
+  "name": "generator-foo",
+  "files": [
+    "foo"
+  ]
+}
