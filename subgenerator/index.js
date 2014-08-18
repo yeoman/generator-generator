@@ -13,11 +13,11 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.NamedBase.extend(
   },
 
   writing: function () {
-    this.mkdir(this.dirname);
-    this.mkdir(this.dirname + '/templates');
-    this.mkdir('test');
-    this.copy('index.js', this.dirname + '/index.js');
-    this.copy('templates/somefile.js', this.dirname + '/templates/somefile.js');
-    this.copy('test-subgenerator.js', 'test/test-'+ this.dirname +'.js');
+    this.dest.mkdir(this.dirname);
+    this.dest.mkdir(this.dirname + '/templates');
+    this.dest.mkdir('test');
+    this.template('index.js', this.dirname + '/index.js');
+    this.src.copy('templates/somefile.js', this.dirname + '/templates/somefile.js');
+    this.template('test-subgenerator.js', 'test/test-'+ this.dirname +'.js');
   }
 });

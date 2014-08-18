@@ -33,16 +33,16 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
-      this.mkdir('app');
-      this.mkdir('app/templates');
+      this.dest.mkdir('app');
+      this.dest.mkdir('app/templates');
 
-      this.copy('_package.json', 'package.json');
-      this.copy('_bower.json', 'bower.json');
+      this.src.copy('_package.json', 'package.json');
+      this.src.copy('_bower.json', 'bower.json');
     },
 
     projectfiles: function () {
-      this.copy('editorconfig', '.editorconfig');
-      this.copy('jshintrc', '.jshintrc');
+      this.src.copy('editorconfig', '.editorconfig');
+      this.src.copy('jshintrc', '.jshintrc');
     }
   },
 

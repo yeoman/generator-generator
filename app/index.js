@@ -150,26 +150,26 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
     },
 
     gitfiles: function () {
-      this.copy('gitattributes', '.gitattributes');
-      this.copy('gitignore', '.gitignore');
+      this.src.copy('gitattributes', '.gitattributes');
+      this.src.copy('gitignore', '.gitignore');
     },
 
     app: function () {
-      this.mkdir('app');
-      this.mkdir('app/templates');
+      this.dest.mkdir('app');
+      this.dest.mkdir('app/templates');
       this.superb = superb();
       this.template('app/index.js');
     },
 
     templates: function () {
-      this.copy('editorconfig', 'app/templates/editorconfig');
-      this.copy('jshintrc', 'app/templates/jshintrc');
-      this.copy('app/templates/_package.json', 'app/templates/_package.json');
-      this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
+      this.src.copy('editorconfig', 'app/templates/editorconfig');
+      this.src.copy('jshintrc', 'app/templates/jshintrc');
+      this.src.copy('app/templates/_package.json', 'app/templates/_package.json');
+      this.src.copy('app/templates/_bower.json', 'app/templates/_bower.json');
     },
 
     tests: function () {
-      this.mkdir('test');
+      this.dest.mkdir('test');
       this.template('test-app.js', 'test/test-app.js');
     }
   },

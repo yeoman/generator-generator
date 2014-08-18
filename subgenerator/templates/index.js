@@ -9,7 +9,7 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.NamedBase.exte
   },
 
   writing: function () {
-    this.copy('somefile.js', 'somefile.js');
+    this.src.copy('somefile.js', 'somefile.js');
   }
 });
 
