@@ -18,7 +18,7 @@ describe('<%= generatorName %>:app', function () {
   });
 
   it('creates files', function () {
-    helpers.assertFile([
+    assert.file([
       'bower.json',
       'package.json',
       '.editorconfig',

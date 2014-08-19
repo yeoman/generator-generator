@@ -48,15 +48,15 @@ describe('generator:app', function () {
       'app/templates/_package.json',
       'app/templates/_bower.json',
     ];
-    helpers.assertFile(expected);
+    assert.file(expected);
   });
 
   it('fills package.json with correct information', function () {
-    helpers.assertFileContent('package.json',  /"name": "generator-temp"/);
+    assert.fileContent('package.json',  /"name": "generator-temp"/);
   });
 
   it('setup travis.CI config', function () {
-    helpers.assertFileContent(
+    assert.fileContent(
       '.travis.yml',
       /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/
     );

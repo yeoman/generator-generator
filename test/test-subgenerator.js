@@ -22,7 +22,7 @@ describe('generator:app', function () {
       'foo/index.js',
       'foo/templates/somefile.js',
     ];
-    helpers.assertFile(expected);
+    assert.file(expected);
   });
 
   it('update package.json file array', function () {

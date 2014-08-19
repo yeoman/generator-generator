@@ -15,7 +15,7 @@ describe('<%= generatorName %>:<%= dirname %>', function () {
   });
 
   it('creates files', function () {
-    helpers.assertFile([
+    assert.file([
       'somefile.js'
     ]);
   });
