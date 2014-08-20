@@ -1,7 +1,16 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 
-var SubGeneratorGenerator = module.exports = yeoman.generators.NamedBase.extend({
+var SubGeneratorGenerator = module.exports = yeoman.generators.Base.extend({
+  constructor: function () {
+    yeoman.generators.Base.apply(this, arguments);
+    this.argument('name', {
+      required: true,
+      type: String,
+      desc: 'The subgenerator name'
+    });
+  },
+
   initializing: function () {
     var pkg = this.dest.readJSON('package.json');
     pkg.files = pkg.files || [];

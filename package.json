@@ -27,7 +27,7 @@
     "github": "^0.2.1",
     "npm-name": "^0.2.0",
     "superb": "^1.0.0",
-    "yeoman-generator": "^0.17.2",
+    "yeoman-generator": "^0.17.3",
     "yosay": "^0.3.0"
   },
   "devDependencies": {
