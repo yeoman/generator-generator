@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var chalk = require('chalk');
 var yosay = require('yosay');
 
 var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
@@ -14,7 +15,7 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the <%= superb %> <%= _.classify(generatorName) %> generator!'
+      'Welcome to the <%= superb %> ' + chalk.red('<%= _.classify(generatorName) %>') + ' generator!'
     ));
 
     var prompts = [{
