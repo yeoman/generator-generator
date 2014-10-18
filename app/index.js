@@ -44,13 +44,19 @@ var extractGeneratorName = function (_, appname) {
   return slugged;
 };
 
-var githubUserInfo = function (name, cb) {
+var emptyGithubRes = {
+  name: '',
+  email: '',
+  html_url: ''
+};
+
+var githubUserInfo = function (name, cb, log) {
   github.user.getFrom({
     user: name
   }, function (err, res) {
     if (err) {
-      throw new Error(err.message +
-        '\n\nCannot fetch your github profile. Make sure you\'ve typed it correctly.');
+      log.error('Cannot fetch your github profile. Make sure you\'ve typed it correctly.');
+      res = emptyGithubRes;
     }
     cb(JSON.parse(JSON.stringify(res)));
   });
@@ -137,7 +143,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
         this.email = res.email;
         this.githubUrl = res.html_url;
         done();
-      }.bind(this));
+      }.bind(this), this.log);
     }
   },
 
