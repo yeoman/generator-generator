@@ -1,4 +1,3 @@
-/*global describe, beforeEach, it*/
 'use strict';
 
 var path = require('path');
@@ -18,7 +17,7 @@ describe('generator:app', function () {
               name: 'Tyrion Lannister',
               email: 'imp@casterlyrock.com',
               html_url: 'https://github.com/imp'
-            }))
+            }));
           }
         }
       };
@@ -35,7 +34,7 @@ describe('generator:app', function () {
   });
 
   after(function () {
-    mockery.disable()
+    mockery.disable();
   });
 
   it('creates files', function () {
