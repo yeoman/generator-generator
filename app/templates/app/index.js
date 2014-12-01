@@ -15,7 +15,7 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the <%= superb %> ' + chalk.red('<%= _.classify(generatorName) %>') + ' generator!'
+      'Welcome to the <%= superb.replace('\'', '\\\'') %>' + chalk.red('<%= _.classify(generatorName) %>') + ' generator!'
     ));
 
     var prompts = [{
