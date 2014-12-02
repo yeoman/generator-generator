@@ -1,11 +1,9 @@
 'use strict';
-var util = require('util');
-var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
+module.exports = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
   },
@@ -62,5 +60,3 @@ var <%= _.classify(generatorName) %>Generator = yeoman.generators.Base.extend({
     });
   }
 });
-
-module.exports = <%= _.classify(generatorName) %>Generator;

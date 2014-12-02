@@ -6,6 +6,8 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var npmName = require('npm-name');
 var superb = require('superb');
+var _ = require('lodash');
+var _s = require('underscore.string');
 
 /* jshint -W106 */
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy ||
@@ -33,8 +35,8 @@ if (process.env.GITHUB_TOKEN) {
   });
 }
 
-var extractGeneratorName = function (_, appname) {
-  var slugged = _.slugify(appname);
+var extractGeneratorName = function (appname) {
+  var slugged = _s.slugify(appname);
   var match = slugged.match(/^generator-(.+)/);
 
   if (match && match.length === 2) {
@@ -89,7 +91,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
 
     askForGeneratorName: function () {
       var done = this.async();
-      var generatorName = extractGeneratorName(this._, this.appname);
+      var generatorName = extractGeneratorName(this.appname);
 
       var prompts = [{
         name: 'generatorName',
@@ -97,7 +99,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
         default: generatorName
       }, {
         type: 'confirm',
-        name: 'pkgName',
+        name: 'askNameAgain',
         message: 'The name above already exists on npm, choose another?',
         default: true,
         when: function (answers) {
@@ -114,7 +116,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
       }];
 
       this.prompt(prompts, function (props) {
-        if (props.pkgName) {
+        if (props.askNameAgain) {
           return this.prompting.askForGeneratorName.call(this);
         }
 
@@ -128,7 +130,7 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
 
   configuring: {
     enforceFolderName: function () {
-      if (this.appname !== this._.last(this.destinationRoot().split(path.sep))) {
+      if (this.appname !== _.last(this.destinationRoot().split(path.sep))) {
         this.destinationRoot(this.appname);
       }
       this.config.save();
@@ -157,33 +159,31 @@ var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
     },
 
     gitfiles: function () {
-      this.src.copy('gitattributes', '.gitattributes');
-      this.src.copy('gitignore', '.gitignore');
+      this.copy('gitattributes', '.gitattributes');
+      this.copy('gitignore', '.gitignore');
     },
 
     app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
       this.superb = superb();
       this.template('app/index.js');
     },
 
     templates: function () {
-      this.src.copy('editorconfig', 'app/templates/editorconfig');
-      this.src.copy('jshintrc', 'app/templates/jshintrc');
-      this.src.copy('app/templates/_package.json', 'app/templates/_package.json');
-      this.src.copy('app/templates/_bower.json', 'app/templates/_bower.json');
+      this.copy('editorconfig', 'app/templates/editorconfig');
+      this.copy('jshintrc', 'app/templates/jshintrc');
+      this.copy('app/templates/_package.json', 'app/templates/_package.json');
+      this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
     },
 
     tests: function () {
-      this.dest.mkdir('test');
       this.template('test-app.js', 'test/test-app.js');
     }
   },
 
-  end: function () {
-    if (!this.options['skip-install']) {
-      this.npmInstall();
-    }
+  install: function () {
+    this.installDependencies({
+      skipInstall: this.options['skip-install'],
+      bower: false
+    });
   }
 });

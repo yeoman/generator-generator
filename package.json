@@ -25,13 +25,15 @@
   "dependencies": {
     "chalk": "^0.5.1",
     "github": "^0.2.1",
+    "lodash": "^2.4.1",
     "npm-name": "^1.0.1",
     "superb": "^1.0.0",
-    "yeoman-generator": "^0.17.3",
+    "underscore.string": "^2.4.0",
+    "yeoman-generator": "^0.18.1",
     "yosay": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^1.21.4",
+    "mocha": "^2.0.1",
     "mockery": "^1.4.0"
   },
   "peerDependencies": {

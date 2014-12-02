@@ -4,4 +4,3 @@ node_js:
 before_install:
   - currentfolder=<%= "${PWD##*/}" %>
   - if [ "$currentfolder" != '<%= _.slugify(appname) %>' ]; then cd .. && eval "mv $currentfolder <%= _.slugify(appname) %>" && cd <%= _.slugify(appname) %>; fi
-

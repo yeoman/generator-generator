@@ -1,16 +1,21 @@
 'use strict';
-var util = require('util');
 var yeoman = require('yeoman-generator');
 
-
-var <%= _.classify(generatorName) %>Generator = yeoman.generators.NamedBase.extend({
+module.exports = yeoman.generators.Base.extend({
   initializing: function () {
     this.log('You called the <%= generatorName %> subgenerator with the argument ' + this.name + '.');
+
+    this.argument('name', {
+      required: true,
+      type: String,
+      desc: 'The subgenerator name'
+    });
   },
 
   writing: function () {
-    this.src.copy('somefile.js', 'somefile.js');
+    this.fs.copy(
+      this.templatePath('somefile.js'),
+      this.destinationPath('somefile.js')
+    );
   }
 });
-
-module.exports = <%= _.classify(generatorName) %>Generator;

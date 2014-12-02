@@ -9,19 +9,18 @@ var os = require('os');
 describe('generator:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../subgenerator'))
-      .inDir(path.join(os.tmpdir(), '/yeoman-test'), function (dir) {
-        fs.writeFileSync(path.join(dir, 'package.json'), '{"name": "generator-foo", "files":[]}');
-      })
       .withArguments(['foo', '--force'])
+      .on('ready', function () {
+        fs.writeFileSync('package.json', '{"name": "generator-foo", "files":[]}');
+      })
       .on('end', done);
   });
 
   it('creates files', function () {
-    var expected = [
+    assert.file([
       'foo/index.js',
-      'foo/templates/somefile.js',
-    ];
-    assert.file(expected);
+      'foo/templates/somefile.js'
+    ]);
   });
 
   it('update package.json file array', function () {

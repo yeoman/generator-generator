@@ -23,7 +23,6 @@ describe('generator:app', function () {
       };
     });
     helpers.run(path.join(__dirname, '../app'))
-      .inDir(path.join(os.tmpdir(), '/yeoman-test'))
       .withOptions({ 'skip-install': true })
       .withPrompts({
         githubUser: 'imp',
