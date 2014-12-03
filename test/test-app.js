@@ -22,6 +22,10 @@ describe('generator:app', function () {
         }
       };
     });
+    mockery.registerMock('superb', function () {
+      return 'cat\'s meow';
+    });
+
     helpers.run(path.join(__dirname, '../app'))
       .withOptions({ 'skip-install': true })
       .withPrompts({
@@ -58,5 +62,9 @@ describe('generator:app', function () {
       '.travis.yml',
       /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/
     );
+  });
+
+  it('escapes possible apostrophes from superb in index.js', function () {
+    assert.fileContent('app/index.js', /Welcome to the cat\\'s meow/);
   });
 });
