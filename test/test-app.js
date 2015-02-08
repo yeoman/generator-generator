@@ -60,7 +60,7 @@ describe('generator:app', function () {
   it('setup travis.CI config', function () {
     assert.fileContent(
       '.travis.yml',
-      /if \[ "\$currentfolder" != 'generator-temp' \]; then cd .. \&\& eval "mv \$currentfolder generator-temp" && cd generator-temp; fi/
+      /node_js/
     );
   });
 
