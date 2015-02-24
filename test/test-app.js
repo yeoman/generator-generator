@@ -1,14 +1,12 @@
 'use strict';
-
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
-var os = require('os');
 
 describe('generator:app', function () {
   before(function (done) {
-    mockery.enable({ warnOnUnregistered: false });
+    mockery.enable({warnOnUnregistered: false});
     mockery.registerMock('github', function () {
       return {
         user: {
@@ -22,12 +20,13 @@ describe('generator:app', function () {
         }
       };
     });
+
     mockery.registerMock('superb', function () {
       return 'cat\'s meow';
     });
 
     helpers.run(path.join(__dirname, '../app'))
-      .withOptions({ 'skip-install': true })
+      .withOptions({'skip-install': true})
       .withPrompts({
         githubUser: 'imp',
         generatorName: 'temp',

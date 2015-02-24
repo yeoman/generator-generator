@@ -1,10 +1,8 @@
 'use strict';
-
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var fs = require('fs');
-var os = require('os');
 
 describe('generator:app', function () {
   before(function (done) {

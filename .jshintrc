@@ -4,22 +4,11 @@
   "bitwise": true,
   "camelcase": true,
   "curly": true,
-  "eqeqeq": true,
   "immed": true,
-  "indent": 2,
-  "latedef": true,
   "newcap": true,
   "noarg": true,
-  "quotmark": "single",
   "undef": true,
-  "unused": true,
+  "unused": "vars",
   "strict": true,
-  "globals": {
-    "before": true,
-    "beforeEach": true,
-    "after": true,
-    "afterEach": true,
-    "describe": true,
-    "it": true
-  }
+  "mocha": true
 }

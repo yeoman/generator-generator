@@ -1,7 +1,6 @@
 # generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator)
 
-> Yeoman generator for Yeoman generators  
-> Scaffolds out a new basic Yeoman generator with some sensible defaults.
+> Generate a Yeoman generator
 
 Maintainer: [Pascal Hartig](https://github.com/passy)
 
@@ -48,30 +47,6 @@ Scaffolds out a complete project directory structure for you:
     └── test
         ├── test-creation.js
         └── test-load.js
-
-
-## Changelog
-
-* 0.3.0
-    * Updated for generator 0.13.0.
-    * Added yo peer dependency.
-
-* 0.2.2
-    * Updated dependencies.
-
-* 0.2.1
-    * The name specified in the prompt is now used in `package.json`.
-    * `generator-generator` officially replaced the built-in generator that was
-      bundled with yo.
-
-* 0.2
-    * Added subgenerator for subgenerators
-    * Generated generator now generates package.json, component.json and
-      installs them by default.
-
-* 0.1.1
-    * Upgraded mocha to 1.9.0
-    * Include `.travis.yml`
 
 
 ## Contributing
