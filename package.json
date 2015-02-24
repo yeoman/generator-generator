@@ -23,7 +23,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "chalk": "^0.5.1",
+    "chalk": "^1.0.0",
     "github": "^0.2.1",
     "lodash": "^2.4.1",
     "npm-name": "^1.0.1",
