@@ -46,6 +46,7 @@ describe('generator:app', function () {
       '.gitattributes',
       '.jshintrc',
       'app/index.js',
+      'app/prompts.js',
       'app/templates/_package.json',
       'app/templates/_bower.json',
     ];
