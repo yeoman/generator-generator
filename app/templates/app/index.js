@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var prompts = require('./prompts.js');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
@@ -16,15 +17,9 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= _.classify(generatorName) %>') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+      this.props = props;
+      // To access props use this.props.someOption;
 
       done();
     }.bind(this));
