@@ -1,7 +1,7 @@
 'use strict';
 var path = require('path');
 var url = require('url');
-var yeoman = require('yeoman-generator');
+var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var npmName = require('npm-name');
@@ -64,7 +64,7 @@ var githubUserInfo = function (name, cb, log) {
   });
 };
 
-var GeneratorGenerator = module.exports = yeoman.generators.Base.extend({
+var GeneratorGenerator = module.exports = generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
