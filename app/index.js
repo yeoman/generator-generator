@@ -36,14 +36,13 @@ if (process.env.GITHUB_TOKEN) {
 }
 
 var extractGeneratorName = function (appname) {
-  var slugged = _s.slugify(appname);
-  var match = slugged.match(/^generator-(.+)/);
+  var match = appname.match(/^generator-(.+)/);
 
   if (match && match.length === 2) {
     return match[1].toLowerCase();
   }
 
-  return slugged;
+  return appname;
 };
 
 var emptyGithubRes = {
@@ -92,7 +91,6 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     askForGeneratorName: function () {
       var done = this.async();
       var generatorName = extractGeneratorName(this.appname);
-
       var prompts = [{
         name: 'generatorName',
         message: 'What\'s the base name of your generator?',
@@ -121,7 +119,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
         }
 
         this.generatorName = props.generatorName;
-        this.appname = 'generator-' + this.generatorName;
+        this.appname = _s.slugify('generator-' + this.generatorName);
 
         done();
       }.bind(this));
@@ -164,8 +162,14 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     },
 
     app: function () {
-      this.superb = superb();
-      this.template('app/index.js');
+      this.fs.copyTpl(
+        this.templatePath('app/index.js'),
+        this.destinationPath('app/index.js'),
+        {
+          superb: superb(),
+          generatorName: _s.classify(this.generatorName)
+        }
+      );
     },
 
     templates: function () {
@@ -181,9 +185,6 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
   },
 
   install: function () {
-    this.installDependencies({
-      skipInstall: this.options['skip-install'],
-      bower: false
-    });
+    this.installDependencies({ bower: false });
   }
 });

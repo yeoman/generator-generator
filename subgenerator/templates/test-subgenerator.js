@@ -7,8 +7,8 @@ var helpers = require('yeoman-generator').test;
 describe('<%= generatorName %>:<%= dirname %>', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../<%= dirname %>'))
-      .withArguments('name', '--force')
-      .withOptions({ 'skip-install': true })
+      .withArguments('name')
+      .withOptions({ skipInstall: true, force: true })
       .on('end', done);
   });
 

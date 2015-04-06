@@ -1,17 +1,14 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= appname %>",
   "version": "0.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "<%= githubUser %>/<%= _.slugify(appname) %>",
+  "repository": "<%= githubUser %>/<%= appname %>",
   "author": {
     "name": "<%= realname %>",
     "email": "<%= email %>",
     "url": "<%= githubUrl %>"
-  },
-  "engines": {
-    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "mocha"
@@ -23,7 +20,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.18.9",
+    "yeoman-generator": "^0.19.0",
     "chalk": "^1.0.0",
     "yosay": "^1.0.2"
   },

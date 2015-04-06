@@ -25,8 +25,12 @@ describe('generator:app', function () {
       return 'cat\'s meow';
     });
 
+    mockery.registerMock('npm-name', function (name, fn) {
+      fn(null, true);
+    });
+
     helpers.run(path.join(__dirname, '../app'))
-      .withOptions({'skip-install': true})
+      .withOptions({skipInstall: true})
       .withPrompts({
         githubUser: 'imp',
         generatorName: 'temp',

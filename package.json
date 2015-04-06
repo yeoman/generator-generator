@@ -23,11 +23,11 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "github": "^0.2.1",
-    "lodash": "^2.4.1",
+    "lodash": "^3.6.0",
     "npm-name": "^1.0.1",
     "superb": "^1.0.0",
-    "underscore.string": "^2.4.0",
-    "yeoman-generator": "^0.18.1",
+    "underscore.string": "^3.0.3",
+    "yeoman-generator": "^0.19.0",
     "yosay": "^1.0.0"
   },
   "devDependencies": {

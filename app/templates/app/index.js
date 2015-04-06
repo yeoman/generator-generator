@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= _.classify(generatorName) %>') + ' generator!'
+      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= generatorName %>') + ' generator!'
     ));
 
     var prompts = [{
@@ -56,8 +56,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    this.installDependencies({
-      skipInstall: this.options['skip-install']
-    });
+    this.installDependencies();
   }
 });

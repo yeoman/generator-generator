@@ -1,4 +1,4 @@
-# <%= appname %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= _.slugify(appname) %>.png?branch=master)](https://travis-ci.org/<%= githubUser %>/<%= _.slugify(appname) %>)
+# <%= appname %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= appname %>.png?branch=master)](https://travis-ci.org/<%= githubUser %>/<%= appname %>)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -26,7 +26,7 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can th
 To install <%= appname %> from npm, run:
 
 ```bash
-npm install -g <%= _.slugify(appname) %>
+npm install -g <%= appname %>
 ```
 
 Finally, initiate the generator:
