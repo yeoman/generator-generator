@@ -1,11 +1,12 @@
 'use strict';
+var fs = require('fs');
 var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
 
 describe('generator:app', function () {
-  before(function (done) {
+  before(function () {
     mockery.enable({warnOnUnregistered: false});
     mockery.registerMock('github', function () {
       return {
@@ -29,45 +30,86 @@ describe('generator:app', function () {
       fn(null, true);
     });
 
-    helpers.run(path.join(__dirname, '../app'))
-      .withOptions({skipInstall: true})
-      .withPrompts({
-        githubUser: 'imp',
-        generatorName: 'temp',
-        pkgName: false
-      })
-      .on('end', done);
   });
 
   after(function () {
     mockery.disable();
   });
 
-  it('creates files', function () {
-    var expected = [
-      '.yo-rc.json',
-      '.gitignore',
-      '.gitattributes',
-      '.jshintrc',
-      'app/index.js',
-      'app/templates/_package.json',
-      'app/templates/_bower.json',
-    ];
-    assert.file(expected);
+  describe('defaults', function () {
+    before(function (done) {
+      helpers.run(path.join(__dirname, '../app'))
+        .withPrompts({
+          githubUser: 'imp',
+          generatorName: 'temp',
+          pkgName: false
+        })
+        .on('end', done);
+    });
+
+    it('creates files', function () {
+      var expected = [
+        '.yo-rc.json',
+        '.gitignore',
+        '.gitattributes',
+        '.jshintrc',
+        'generators/app/index.js',
+        'generators/app/templates/_package.json',
+        'generators/app/templates/_bower.json',
+        'generators/app/templates/jshintrc',
+        'generators/app/templates/editorconfig'
+      ];
+      assert.file(expected);
+    });
+
+    it('fills package.json with correct information', function () {
+      assert.fileContent('package.json',  /"name": "generator-temp"/);
+    });
+
+    it('update package.json file array', function () {
+      var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+      assert.equal(pkg.files[0], 'generators');
+    });
+
+    it('setup travis.CI config', function () {
+      assert.fileContent(
+        '.travis.yml',
+        /node_js/
+      );
+    });
+
+    it('escapes possible apostrophes from superb in index.js', function () {
+      assert.fileContent('generators/app/index.js', /Welcome to the cat\\'s meow/);
+    });
   });
 
-  it('fills package.json with correct information', function () {
-    assert.fileContent('package.json',  /"name": "generator-temp"/);
-  });
+  describe('--flat', function () {
+    before(function (done) {
+      helpers.run(path.join(__dirname, '../app'))
+        .withOptions({
+          flat: true
+        })
+        .withPrompts({
+          githubUser: 'imp',
+          generatorName: 'temp',
+          pkgName: false
+        })
+        .on('end', done);
+    });
 
-  it('setup travis.CI config', function () {
-    assert.fileContent(
-      '.travis.yml',
-      /node_js/
-    );
-  });
+    it('creates flat files structure', function () {
+      assert.file([
+        'app/index.js',
+        'app/templates/_package.json',
+        'app/templates/_bower.json',
+        'app/templates/jshintrc',
+        'app/templates/editorconfig'
+      ]);
+    });
 
-  it('escapes possible apostrophes from superb in index.js', function () {
-    assert.fileContent('app/index.js', /Welcome to the cat\\'s meow/);
+    it('update package.json file array', function () {
+      var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+      assert.equal(pkg.files[0], 'app');
+    });
   });
 });

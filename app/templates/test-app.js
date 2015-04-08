@@ -7,7 +7,7 @@ var os = require('os');
 
 describe('<%= generatorName %>:app', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../app'))
+    helpers.run(path.join(__dirname, '../<%= prefix %>app'))
       .withOptions({ skipInstall: true })
       .withPrompts({ someOption: true })
       .on('end', done);

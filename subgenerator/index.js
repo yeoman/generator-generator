@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 var yeoman = require('yeoman-generator');
 var _s = require('underscore.string');
 
@@ -13,12 +14,17 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.Base.extend({
   },
 
   initializing: function () {
-    this.dirname = _s.dasherize(this.name);
+    var prefix = this.config.get('structure') === 'flat' ? '' : 'generators/'
+    this.generatorFolder = _s.dasherize(this.name);
+    this.dirname = path.join(prefix, this.generatorFolder);
     var pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    pkg.files = pkg.files || [];
-    pkg.files.push(this.dirname);
-    this.fs.write(this.destinationPath('package.json'), JSON.stringify(pkg, null, 2));
+    if (this.config.get('structure') === 'flat') {
+      pkg.files = pkg.files || [];
+      pkg.files.push(this.dirname);
+      this.fs.write(this.destinationPath('package.json'), JSON.stringify(pkg, null, 2));
+    }
     this.generatorName = _s.classify(pkg.name.replace(/^generator-/, ''));
+
   },
 
   writing: function () {
@@ -33,7 +39,7 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.Base.extend({
     );
     this.fs.copyTpl(
       this.templatePath('test-subgenerator.js'),
-      this.destinationPath('test/'+ this.dirname +'.js'),
+      this.destinationPath('test/'+ this.generatorFolder +'.js'),
       { generatorName: this.generatorName, dirname: this.dirname }
     );
   }

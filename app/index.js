@@ -64,9 +64,25 @@ var githubUserInfo = function (name, cb, log) {
 };
 
 var GeneratorGenerator = module.exports = generators.Base.extend({
+  constructor: function () {
+    generators.Base.apply(this, arguments);
+
+    this.option('flat', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      description: 'When specified, generators will be created at the top level of the project.'
+    });
+
+  },
+
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
+
+    this.config.set('structure', this.options.flat ? 'flat' : 'nested');
+    this.generatorsPrefix = this.options.flat ? '' : 'generators/';
+    this.appGeneratorDir = this.options.flat ? 'app' : 'generators';
   },
 
   prompting: {
@@ -164,7 +180,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     app: function () {
       this.fs.copyTpl(
         this.templatePath('app/index.js'),
-        this.destinationPath('app/index.js'),
+        this.destinationPath(this.generatorsPrefix, 'app/index.js'),
         {
           superb: superb(),
           generatorName: _s.classify(this.generatorName)
@@ -173,14 +189,33 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     },
 
     templates: function () {
-      this.copy('editorconfig', 'app/templates/editorconfig');
-      this.copy('jshintrc', 'app/templates/jshintrc');
-      this.copy('app/templates/_package.json', 'app/templates/_package.json');
-      this.copy('app/templates/_bower.json', 'app/templates/_bower.json');
+      this.fs.copy(
+        this.templatePath('editorconfig'),
+        this.destinationPath(this.generatorsPrefix, 'app/templates/editorconfig')
+      );
+      this.fs.copy(
+        this.templatePath('jshintrc'),
+        this.destinationPath(this.generatorsPrefix, 'app/templates/jshintrc')
+      );
+      this.fs.copy(
+        this.templatePath('app/templates/_package.json'),
+        this.destinationPath(this.generatorsPrefix, 'app/templates/_package.json')
+      );
+      this.fs.copy(
+        this.templatePath('app/templates/_bower.json'),
+        this.destinationPath(this.generatorsPrefix, 'app/templates/_bower.json')
+      );
     },
 
     tests: function () {
-      this.template('test-app.js', 'test/test-app.js');
+      this.fs.copyTpl(
+        this.templatePath('test-app.js'),
+        this.destinationPath('test/test-app.js'),
+        {
+          prefix: this.generatorsPrefix,
+          generatorName: this.generatorName
+        }
+      );
     }
   },
 

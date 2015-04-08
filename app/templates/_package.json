@@ -14,7 +14,7 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "<%= appGeneratorDir %>"
   ],
   "keywords": [
     "yeoman-generator"
