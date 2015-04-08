@@ -33,7 +33,7 @@ var SubGeneratorGenerator = module.exports = yeoman.generators.Base.extend({
     );
     this.fs.copyTpl(
       this.templatePath('test-subgenerator.js'),
-      this.destinationPath('test/test-'+ this.dirname +'.js'),
+      this.destinationPath('test/'+ this.dirname +'.js'),
       { generatorName: this.generatorName, dirname: this.dirname }
     );
   }

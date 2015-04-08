@@ -20,7 +20,8 @@ describe('generator:subgenerator', function () {
   it('creates files', function () {
     assert.file([
       'foo/index.js',
-      'foo/templates/somefile.js'
+      'foo/templates/somefile.js',
+      'test/foo.js'
     ]);
   });
 
