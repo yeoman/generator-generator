@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
-    "github": "^0.2.1",
     "lodash": "^3.6.0",
     "npm-name": "^1.0.1",
     "superb": "^1.0.0",
