@@ -8,19 +8,6 @@ var mockery = require('mockery');
 describe('generator:app', function () {
   before(function () {
     mockery.enable({warnOnUnregistered: false});
-    mockery.registerMock('github', function () {
-      return {
-        user: {
-          getFrom: function (data, cb) {
-            cb(null, JSON.stringify({
-              name: 'Tyrion Lannister',
-              email: 'imp@casterlyrock.com',
-              html_url: 'https://github.com/imp'
-            }));
-          }
-        }
-      };
-    });
 
     mockery.registerMock('superb', function () {
       return 'cat\'s meow';

@@ -9,32 +9,6 @@ var superb = require('superb');
 var _ = require('lodash');
 var _s = require('underscore.string');
 
-/* jshint -W106 */
-var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy ||
-  process.env.HTTPS_PROXY || null;
-/* jshint +W106 */
-var githubOptions = {
-  version: '3.0.0'
-};
-
-if (proxy) {
-  var proxyUrl = url.parse(proxy);
-  githubOptions.proxy = {
-    host: proxyUrl.hostname,
-    port: proxyUrl.port
-  };
-}
-
-var GitHubApi = require('github');
-var github = new GitHubApi(githubOptions);
-
-if (process.env.GITHUB_TOKEN) {
-  github.authenticate({
-    type: 'oauth',
-    token: process.env.GITHUB_TOKEN
-  });
-}
-
 var extractGeneratorName = function (appname) {
   var match = appname.match(/^generator-(.+)/);
 
@@ -43,24 +17,6 @@ var extractGeneratorName = function (appname) {
   }
 
   return appname;
-};
-
-var emptyGithubRes = {
-  name: '',
-  email: '',
-  html_url: ''
-};
-
-var githubUserInfo = function (name, cb, log) {
-  github.user.getFrom({
-    user: name
-  }, function (err, res) {
-    if (err) {
-      log.error('Cannot fetch your github profile. Make sure you\'ve typed it correctly.');
-      res = emptyGithubRes;
-    }
-    cb(JSON.parse(JSON.stringify(res)));
-  });
 };
 
 var GeneratorGenerator = module.exports = generators.Base.extend({
@@ -87,6 +43,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
 
   prompting: {
     askFor: function () {
+      var self = this;
       var done = this.async();
 
       this.log(yosay('Create your own ' + chalk.red('Yeoman') + ' generator with superpowers!'));
@@ -94,7 +51,17 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
       var prompts = [{
         name: 'githubUser',
         message: 'Would you mind telling me your username on GitHub?',
-        default: 'someuser'
+        default: function() {
+          var done = this.async();
+
+          self.user.github.username(function (err, username) {
+            if (err) {
+              done('someuser');
+            }
+
+            done(username);
+          });
+        }
       }];
 
       this.prompt(prompts, function (props) {
@@ -151,15 +118,9 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     },
 
     userInfo: function () {
-      var done = this.async();
-
-      githubUserInfo(this.githubUser, function (res) {
-        /*jshint camelcase:false */
-        this.realname = res.name;
-        this.email = res.email;
-        this.githubUrl = res.html_url;
-        done();
-      }.bind(this), this.log);
+      this.realname = this.user.git.name();
+      this.email = this.user.git.email();
+      this.githubUrl = 'https://github.com/' + this.githubUser;
     }
   },
 
