@@ -9,16 +9,19 @@ var superb = require('superb');
 var _ = require('lodash');
 var _s = require('underscore.string');
 
-/* jshint -W106 */
-var proxy = process.env.http_proxy || process.env.HTTP_PROXY || process.env.https_proxy ||
-  process.env.HTTPS_PROXY || null;
-/* jshint +W106 */
+var proxy = process.env.http_proxy ||
+  process.env.HTTP_PROXY ||
+  process.env.https_proxy ||
+  process.env.HTTPS_PROXY ||
+  null;
+
 var githubOptions = {
   version: '3.0.0'
 };
 
 if (proxy) {
   var proxyUrl = url.parse(proxy);
+
   githubOptions.proxy = {
     host: proxyUrl.hostname,
     port: proxyUrl.port
@@ -59,11 +62,12 @@ var githubUserInfo = function (name, cb, log) {
       log.error('Cannot fetch your github profile. Make sure you\'ve typed it correctly.');
       res = emptyGithubRes;
     }
+
     cb(JSON.parse(JSON.stringify(res)));
   });
 };
 
-var GeneratorGenerator = module.exports = generators.Base.extend({
+module.exports = generators.Base.extend({
   constructor: function () {
     generators.Base.apply(this, arguments);
 
@@ -73,13 +77,11 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
       defaults: false,
       description: 'When specified, generators will be created at the top level of the project.'
     });
-
   },
 
   initializing: function () {
     this.pkg = require('../package.json');
     this.currentYear = (new Date()).getFullYear();
-
     this.config.set('structure', this.options.flat ? 'flat' : 'nested');
     this.generatorsPrefix = this.options.flat ? '' : 'generators/';
     this.appGeneratorDir = this.options.flat ? 'app' : 'generators';
@@ -99,7 +101,6 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
 
       this.prompt(prompts, function (props) {
         this.githubUser = props.githubUser;
-
         done();
       }.bind(this));
     },
@@ -107,6 +108,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
     askForGeneratorName: function () {
       var done = this.async();
       var generatorName = extractGeneratorName(this.appname);
+
       var prompts = [{
         name: 'generatorName',
         message: 'What\'s the base name of your generator?',
@@ -119,6 +121,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
         when: function (answers) {
           var done = this.async();
           var name = 'generator-' + answers.generatorName;
+
           npmName(name, function (err, available) {
             if (!available) {
               done(true);
@@ -147,6 +150,7 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
       if (this.appname !== _.last(this.destinationRoot().split(path.sep))) {
         this.destinationRoot(this.appname);
       }
+
       this.config.save();
     },
 
@@ -154,7 +158,6 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
       var done = this.async();
 
       githubUserInfo(this.githubUser, function (res) {
-        /*jshint camelcase:false */
         this.realname = res.name;
         this.email = res.email;
         this.githubUrl = res.html_url;
@@ -193,14 +196,17 @@ var GeneratorGenerator = module.exports = generators.Base.extend({
         this.templatePath('editorconfig'),
         this.destinationPath(this.generatorsPrefix, 'app/templates/editorconfig')
       );
+
       this.fs.copy(
         this.templatePath('jshintrc'),
         this.destinationPath(this.generatorsPrefix, 'app/templates/jshintrc')
       );
+
       this.fs.copy(
         this.templatePath('app/templates/_package.json'),
         this.destinationPath(this.generatorsPrefix, 'app/templates/_package.json')
       );
+
       this.fs.copy(
         this.templatePath('app/templates/_bower.json'),
         this.destinationPath(this.generatorsPrefix, 'app/templates/_bower.json')

@@ -29,7 +29,6 @@ describe('generator:app', function () {
     mockery.registerMock('npm-name', function (name, fn) {
       fn(null, true);
     });
-
   });
 
   after(function () {
@@ -59,6 +58,7 @@ describe('generator:app', function () {
         'generators/app/templates/jshintrc',
         'generators/app/templates/editorconfig'
       ];
+
       assert.file(expected);
     });
 
