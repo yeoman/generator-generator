@@ -75,7 +75,7 @@ module.exports = generators.Base.extend({
       type: Boolean,
       required: false,
       defaults: false,
-      description: 'When specified, generators will be created at the top level of the project.'
+      desc: 'When specified, generators will be created at the top level of the project.'
     });
   },
 
