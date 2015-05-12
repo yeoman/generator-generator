@@ -32,21 +32,24 @@ you shouldn't see this error anymore.
 Scaffolds out a complete project directory structure for you:
 
     .
-    ├── app
-    │   ├── index.js
-    │   └── templates
-    │       ├── editorconfig
-    │       └── jshintrc
+    ├── generators
+    │   └── app
+    │       ├── index.js
+    │       └── templates
+    │           ├── _bower.json
+    │           ├── _package.json
+    │           ├── editorconfig
+    │           └── jshintrc
     ├── .editorconfig
     ├── .gitattributes
     ├── .gitignore
     ├── .jshintrc
-    ├── LICENSE
+    ├── .travis.yml
+    ├── .yo-rc.json
     ├── package.json
     ├── README.md
     └── test
-        ├── test-creation.js
-        └── test-load.js
+        └── test-app.js
 
 
 ## Contributing
