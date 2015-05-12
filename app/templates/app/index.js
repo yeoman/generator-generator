@@ -5,7 +5,7 @@ var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
-    this.pkg = require('../package.json');
+    this.pkg = require('../../package.json');
   },
 
   prompting: function () {
@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= generatorName %>') + ' generator!'
+      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= generatorName %>') generator!'
     ));
 
     var prompts = [{
