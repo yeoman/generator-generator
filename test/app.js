@@ -39,8 +39,8 @@ describe('generator:app', function () {
     before(function (done) {
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
+          name: 'temp',
           githubUser: 'imp',
-          generatorName: 'temp',
           pkgName: false
         })
         .on('end', done);

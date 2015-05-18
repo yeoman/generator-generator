@@ -8,6 +8,6 @@ Example:
         README.md: Description and minimal user instructions
         package.json: Development packages installed by npm
 
-        app/index.js: Main generator script
-        app/templates/: Templates for files created by your generator
+        generator/app/index.js: Main generator script
+        generator/app/templates/: Templates for files created by your generator
         test/: Unit tests for your generator

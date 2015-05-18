@@ -1,14 +1,14 @@
 'use strict';
 
 var path = require('path');
-var assert = require('yeoman-generator').assert;
+var assert = require('yeoman-assert');
 var helpers = require('yeoman-generator').test;
 
 describe('<%= generatorName %>:app', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../<%= prefix %>app'))
-      .withOptions({ skipInstall: true })
-      .withPrompts({ someOption: true })
+    helpers.run(path.join(__dirname, '../generators/app'))
+      .withOptions({skipInstall: true})
+      .withPrompts({someOption: true})
       .on('end', done);
   });
 

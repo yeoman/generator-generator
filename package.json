@@ -4,17 +4,14 @@
   "description": "Generate a Yeoman generator",
   "keywords": [
     "yeoman-generator",
+    "yeoman",
     "generator",
     "inception",
     "init",
     "create",
     "boilerplate"
   ],
-  "author": {
-    "name": "Pascal Hartig",
-    "email": "phartig@rdrei.net",
-    "url": "http://yeoman.io"
-  },
+  "author": "Yeoman team",
   "main": "app/index.js",
   "repository": "yeoman/generator-generator",
   "scripts": {
@@ -22,16 +19,16 @@
   },
   "dependencies": {
     "chalk": "^1.0.0",
-    "github": "^0.2.1",
+    "deep-extend": "^0.4.0",
+    "generator-node": "^1.4.0",
+    "inquirer-npm-name": "^1.0.0",
     "lodash": "^3.6.0",
-    "npm-name": "^1.0.1",
     "superb": "^1.0.0",
-    "underscore.string": "^3.0.3",
-    "yeoman-generator": "^0.19.0",
+    "yeoman-generator": "^0.20.2",
     "yosay": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": "^2.2.5",
     "mockery": "^1.4.0"
   },
   "license": "MIT",
