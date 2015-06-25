@@ -7,3 +7,10 @@ Example:
     This will create:
         your-sub-generator-name/index.js: Main sub-generator script
         your-sub-generator-name/templates/somefile.js: A file placeholder
+
+    yo generator:subgenerator <name> --coffee
+
+    This will create:
+        your-sub-generator-name/index.js: Script to render coffeescript file
+        your-sub-generator-name/index.coffee: Main sub-generator coffeescript
+        your-sub-generator-name/templates/somefile.js: A file placeholder

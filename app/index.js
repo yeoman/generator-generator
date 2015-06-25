@@ -77,6 +77,13 @@ module.exports = generators.Base.extend({
       defaults: false,
       desc: 'When specified, generators will be created at the top level of the project.'
     });
+
+    this.option('coffee', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'When specified, will scaffold a coffeescript version.'
+    });
   },
 
   initializing: function () {
@@ -85,6 +92,7 @@ module.exports = generators.Base.extend({
     this.config.set('structure', this.options.flat ? 'flat' : 'nested');
     this.generatorsPrefix = this.options.flat ? '' : 'generators/';
     this.appGeneratorDir = this.options.flat ? 'app' : 'generators';
+    this.forCoffeeScript = this.options.coffee ? true : false;
   },
 
   prompting: {
@@ -182,13 +190,19 @@ module.exports = generators.Base.extend({
 
     app: function () {
       this.fs.copyTpl(
-        this.templatePath('app/index.js'),
-        this.destinationPath(this.generatorsPrefix, 'app/index.js'),
+        this.templatePath('app/index.' + (this.forCoffeeScript ? 'coffee' : 'js')),
+        this.destinationPath(this.generatorsPrefix, 'app/index.' + (this.forCoffeeScript ? 'coffee' : 'js')),
         {
           superb: superb(),
           generatorName: _s.classify(this.generatorName)
         }
       );
+      if(this.forCoffeeScript) {
+        this.fs.copyTpl(
+          this.templatePath('app/index.coffee.js'),
+          this.destinationPath(this.generatorsPrefix, 'app/index.js')
+        );
+      }
     },
 
     templates: function () {
@@ -215,13 +229,19 @@ module.exports = generators.Base.extend({
 
     tests: function () {
       this.fs.copyTpl(
-        this.templatePath('test-app.js'),
-        this.destinationPath('test/test-app.js'),
+        this.templatePath('test-app.' + (this.forCoffeeScript ? 'coffee' : 'js')),
+        this.destinationPath('test/test-app.' + (this.forCoffeeScript ? 'coffee' : 'js')),
         {
           prefix: this.generatorsPrefix,
           generatorName: this.generatorName
         }
       );
+      if(this.forCoffeeScript) {
+        this.fs.copyTpl(
+          this.templatePath('test-app.coffee.js'),
+          this.destinationPath('test/test-app.js')
+        );
+      }
     }
   },
 
