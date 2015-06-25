@@ -11,6 +11,12 @@ module.exports = yeoman.generators.Base.extend({
       type: String,
       desc: 'The subgenerator name'
     });
+    this.option('coffee', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'When specified, will scaffold a coffeescript version.'
+    });
   },
 
   initializing: function () {
@@ -26,6 +32,7 @@ module.exports = yeoman.generators.Base.extend({
     }
 
     this.generatorName = _s.classify(pkg.name.replace(/^generator-/, ''));
+    this.forCoffeeScript = this.options.coffee ? true : false;
   },
 
   writing: function () {
@@ -35,15 +42,27 @@ module.exports = yeoman.generators.Base.extend({
     );
 
     this.fs.copyTpl(
-      this.templatePath('index.js'),
-      this.destinationPath(this.dirname, '/index.js'),
+      this.templatePath('index.' + (this.forCoffeeScript ? 'coffee' : 'js')),
+      this.destinationPath(this.dirname, '/index.' + (this.forCoffeeScript ? 'coffee' : 'js')),
       { generatorName: this.generatorName }
     );
 
     this.fs.copyTpl(
-      this.templatePath('test-subgenerator.js'),
-      this.destinationPath('test/' + this.generatorFolder + '.js'),
+      this.templatePath('test-subgenerator.' + (this.forCoffeeScript ? 'coffee' : 'js')),
+      this.destinationPath('test/' + this.generatorFolder + (this.forCoffeeScript ? '.coffee' : '.js')),
       { generatorName: this.generatorName, dirname: this.dirname }
     );
+
+    if (this.forCoffeeScript) {
+      this.fs.copyTpl(
+        this.templatePath('index.coffee.js'),
+        this.destinationPath(this.dirname, '/index.js')
+      );
+      this.fs.copyTpl(
+        this.templatePath('test-subgenerator.coffee.js'),
+        this.destinationPath('test/' + this.generatorFolder + '.js'),
+        { generatorFolder: this.generatorFolder}
+      );
+    }
   }
 });
