@@ -1,20 +1,20 @@
 {
-  "name": "<%= appname %>",
+  "name": "<%= generatorName %>",
   "version": "0.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "<%= githubUser %>/<%= appname %>",
+  "repository": "<%= githubUser.login %>/<%= generatorName %>",
   "author": {
-    "name": "<%= realname %>",
-    "email": "<%= email %>",
-    "url": "<%= githubUrl %>"
+    "name": "<%= githubUser.name || githubUser.login %>",
+    "email": "<%= githubUser.email %>",
+    "url": "<%= githubUser.htmlUrl %>"
   },
   "scripts": {
     "test": "mocha"
   },
   "files": [
-    "<%= appGeneratorDir %>"
+    "app"
   ],
   "keywords": [
     "yeoman-generator"

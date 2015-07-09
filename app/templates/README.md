@@ -1,4 +1,4 @@
-# <%= appname %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= appname %>.png?branch=master)](https://travis-ci.org/<%= githubUser %>/<%= appname %>)
+# <%= generatorName %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= generatorName %>.png?branch=master)](https://travis-ci.org/<%= githubUser.login %>/<%= generatorName %>)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,10 +23,10 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install <%= appname %> from npm, run:
+To install <%= generatorName %> from npm, run:
 
 ```bash
-npm install -g <%= appname %>
+npm install -g <%= generatorName %>
 ```
 
 Finally, initiate the generator:
@@ -39,9 +39,14 @@ yo <%= generatorName %>
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+If you'd like to get to know Yeoman better, check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
 
 ## License
 
 MIT
+
+
+## About
+
+*generated with [generator-generator](https://github.com/yeoman/generator-generator)*

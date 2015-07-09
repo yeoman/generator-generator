@@ -1,5 +1,5 @@
 {
-  "name": "generator-generator",
+  "name": "generator-zckrs-generator",
   "version": "0.8.1",
   "description": "Generate a Yeoman generator",
   "keywords": [
@@ -21,14 +21,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
-    "github": "^0.2.1",
+    "chalk": "^1.1.0",
+    "gh-got": "^1.1.0",
     "lodash": "^3.6.0",
     "npm-name": "^1.0.1",
-    "superb": "^1.0.0",
     "underscore.string": "^3.0.3",
-    "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.0"
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
     "mocha": "*",

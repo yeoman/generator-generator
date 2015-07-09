@@ -1,57 +1,47 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
 var yosay = require('yosay');
+var chalk = require('chalk');
 
-module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
-    var done = this.async();
+var SuperbGenerator = yeoman.generators.Base.extend({
 
-    // Have Yeoman greet the user.
+  /**
+   * Extend default class 'Base' of yeoman-generator
+   * @return {SuperbGenerator} a new sub class
+   */
+  constructor: function constructor() {
+    yeoman.generators.Base.apply(this, arguments);
+
+    // Define arguments
+    this.argument('generatorName', {
+      type: String,
+      required: false
+    });
+
+    // Create data object for templating
+    this.props = {
+      version: require('../package.json').version
+    };
+
+    // Print message
     this.log(yosay(
-      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= generatorName %>') + ' generator!'
+      'Create your own ' +
+      chalk.yellow('Yeoman') +
+      ' generator with superpowers!'
     ));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
-      done();
-    }.bind(this));
-  },
-
-  writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
-    },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
-    }
-  },
-
-  install: function () {
-    this.installDependencies();
   }
 });
+
+/**
+ * Require our custom run loop with priorities
+ * http://yeoman.io/authoring/running-context.html#the_run_loop
+ */
+require('./src/initializing')(SuperbGenerator);
+require('./src/prompting')(SuperbGenerator);
+require('./src/configuring')(SuperbGenerator);
+require('./src/writing')(SuperbGenerator);
+require('./src/install')(SuperbGenerator);
+require('./src/end')(SuperbGenerator);
+
+module.exports = SuperbGenerator;
