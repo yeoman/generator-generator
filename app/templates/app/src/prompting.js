@@ -5,13 +5,13 @@ var _s = require('underscore.string');
 
 var npmName = require('npm-name');
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(<%= _s.classify(generatorName) %>) {
 
   /**
    * Where you prompt users for options (where you'd call `this.prompt()`)
    * @type {Object}
    */
-  SuperbGenerator.prototype.prompting = {
+  <%= _s.classify(generatorName) %>.prototype.prompting = {
     /**
      * Ask a Github username to init `package.json` generated
      */

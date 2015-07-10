@@ -2,13 +2,13 @@
 
 var ghGot = require('gh-got');
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(<%= _s.classify(generatorName) %>) {
 
   /**
    * Configure the project
    * and saving configurations in `.yo-rc.json`
    */
-  SuperbGenerator.prototype.configuring = {
+  <%= _s.classify(generatorName) %>.prototype.configuring = {
     /**
      * Fetch Github user info via API
      */

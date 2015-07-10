@@ -1,12 +1,12 @@
 'use strict';
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(<%= _s.classify(generatorName) %>) {
 
   /**
    * Where you write the generator specific files
    * @type {Object}
    */
-  SuperbGenerator.prototype.writing = {
+  <%= _s.classify(generatorName) %>.prototype.writing = {
     /*
      * Aplly templating on files
      */
