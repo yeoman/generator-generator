@@ -3,12 +3,15 @@
   "version": "0.8.1",
   "description": "Generate a Yeoman generator",
   "keywords": [
+    "javascript",
     "yeoman-generator",
     "generator",
     "inception",
     "init",
     "create",
-    "boilerplate"
+    "boilerplate",
+    "template",
+    "scaffold"
   ],
   "author": {
     "name": "Pascal Hartig",

@@ -14,12 +14,7 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
      * or the parameter of the generator
      */
     defaultName: function defaultName() {
-      this.generatorName = this.generatorName || path.basename(process.cwd());
-      var match = this.generatorName.match(/^generator-(.+)/);
-
-      if (match && match.length === 2) {
-        this.generatorName = match[1].toLowerCase();
-      }
+      this.appName = this.appName || path.basename(process.cwd());
       console.log('initializing ');
     }
   };

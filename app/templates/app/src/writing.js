@@ -11,7 +11,7 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
      * Aplly templating on files
      */
     copyTpl: function copyTpl() {
-      this.fs.copy(this.templatePath() + '/**', this.destinationPath(), this.props);
+      this.fs.copyTpl(this.templatePath() + '/**', this.destinationPath(), this.props);
     },
 
     /*
@@ -23,10 +23,11 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
 			}.bind(this);
 
       mv('_package.json', 'package.json');
-			mv('_travis.yml', 'travis.yml');
+      mv('_README.md', 'README.md');
       mv('editorconfig', '.editorconfig');
-			mv('gitattributes', '.gitattributes');
-			mv('gitignore', '.gitignore');
+      mv('gitattributes', '.gitattributes');
+      mv('gitignore', '.gitignore');
+      mv('travis.yml', '.travis.yml');
     },
 
     recap: function recap() {

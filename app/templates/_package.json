@@ -1,30 +1,42 @@
 {
   "name": "<%= generatorName %>",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Yeoman generator",
-  "license": "MIT",
-  "main": "app/index.js",
-  "repository": "<%= githubUser.login %>/<%= generatorName %>",
+  "keywords": [
+    "javascript",
+    "yeoman-generator",
+    "generator",
+    "inception",
+    "init",
+    "create",
+    "boilerplate",
+    "template",
+    "scaffold"
+  ],
   "author": {
     "name": "<%= githubUser.name || githubUser.login %>",
     "email": "<%= githubUser.email %>",
     "url": "<%= githubUser.htmlUrl %>"
   },
+  "main": "app/index.js",
+  "repository": "<%= githubUser.login %>/<%= generatorName %>",
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "app"
-  ],
-  "keywords": [
-    "yeoman-generator"
-  ],
   "dependencies": {
-    "yeoman-generator": "^0.19.0",
-    "chalk": "^1.0.0",
-    "yosay": "^1.0.2"
+    "chalk": "^1.1.0",
+    "gh-got": "^1.1.0",
+    "lodash": "^3.6.0",
+    "npm-name": "^1.0.1",
+    "underscore.string": "^3.0.3",
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
     "mocha": "*"
-  }
+  },
+  "license": "MIT",
+  "files": [
+    "app"
+  ]
 }

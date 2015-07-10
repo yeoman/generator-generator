@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var _s = require('underscore.string');
-
 var npmName = require('npm-name');
 
 module.exports = function(SuperbGenerator) {

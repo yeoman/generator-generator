@@ -26,10 +26,11 @@ module.exports = function(SuperbGenerator) {
       }.bind(this);
 
       mv('_package.json', 'package.json');
-      mv('_travis.yml', 'travis.yml');
+      mv('_README.md', 'README.md');
       mv('editorconfig', '.editorconfig');
       mv('gitattributes', '.gitattributes');
       mv('gitignore', '.gitignore');
+      mv('travis.yml', '.travis.yml');
     },
 
     recap: function recap() {

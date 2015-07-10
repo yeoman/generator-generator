@@ -1,0 +1,17 @@
+{
+  "name": "<%%= appName %>",
+  "version": "0.0.1",
+  "description": "Yeoman generator",
+  "keywords": [
+    "javascript"
+  ],
+  "author": {
+    "name": "<%%= githubUser.name || githubUser.login %>",
+    "email": "<%%= githubUser.email %>",
+    "url": "<%%= githubUser.htmlUrl %>"
+  },
+  "repository": "<%%= githubUser.login %>/<%%= appName %>",
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}

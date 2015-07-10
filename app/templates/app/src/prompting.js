@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var _s = require('underscore.string');
-
 var npmName = require('npm-name');
 
 module.exports = function(<%= _s.classify(generatorName) %>) {
@@ -41,14 +40,14 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
       var prompts = [
         {
           type: 'input',
-          name: 'generatorName',
-          message: 'What\'s the base name of your generator?',
-          default: this.generatorName
+          name: 'appName',
+          message: 'What\'s the name of your application?',
+          default: this.appName
         },
         {
           when: function (answers) {
             var done = this.async();
-            var name = 'generator-' + answers.generatorName;
+            var name = answers.appName;
 
             npmName(name, function (err, available) {
               if (!available) {
@@ -70,7 +69,7 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
           return this.prompting.askForGeneratorName.call(this);
         }
 
-        answers.generatorName = _s.slugify(_s.humanize('generator-' + answers.generatorName));
+        answers.appName = _s.slugify(_s.humanize(answers.appName));
 
         this.props = _.merge(this.props, answers);
 

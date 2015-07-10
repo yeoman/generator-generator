@@ -14,7 +14,7 @@ var <%= _s.classify(generatorName) %> = yeoman.generators.Base.extend({
     yeoman.generators.Base.apply(this, arguments);
 
     // Define arguments
-    this.argument('generatorName', {
+    this.argument('appName', {
       type: String,
       required: false
     });

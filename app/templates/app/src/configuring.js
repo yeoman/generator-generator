@@ -26,9 +26,10 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
           }
 
           this.props.githubUser = {
-            name: this.props.githubUser,
+            name: data.name,
+            login: data.login,
             email: data.email,
-            html_url: data.html_url
+            htmlUrl: data.html_url
           }
 
           done();
