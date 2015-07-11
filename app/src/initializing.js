@@ -20,7 +20,6 @@ module.exports = function(SuperbGenerator) {
       if (match && match.length === 2) {
         this.generatorName = match[1].toLowerCase();
       }
-      console.log('initializing ');
     }
   };
 

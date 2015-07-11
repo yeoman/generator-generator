@@ -12,19 +12,19 @@ module.exports = function(SuperbGenerator) {
     /**
      * Fetch Github user info via API
      */
-    userInfo: function userInfo() {
+    fetchUserInfo: function fetchUserInfo() {
       var done = this.async();
-
       ghGot('users/' + this.props.githubUser, function (err, data) {
+
           if (err) {
             this.log.error('Cannot fetch your Github profile. Make sure you\'ve typed it correctly.');
             data = {
               name: this.props.githubUser,
+              login: this.props.githubUser,
               email: '',
               html_url: ''
             };
           }
-
           this.props.githubUser = {
             name: data.name,
             login: data.login,

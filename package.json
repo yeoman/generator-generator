@@ -33,8 +33,15 @@
     "yosay": "^1.0.4"
   },
   "devDependencies": {
+    "bluebird": "^2.9.33",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.1.0",
+    "fixture-stdout": "^0.2.1",
     "mocha": "*",
-    "mockery": "^1.4.0"
+    "mockery": "^1.4.0",
+    "mz": "^2.0.0",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
   },
   "license": "MIT",
   "files": [
