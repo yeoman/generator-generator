@@ -1,13 +1,8 @@
 'use strict';
 
-var inception = require('../inception');
-
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
-chai.should();
-chai.use(chaiAsPromised);
-
 var assert = require('yeoman-generator').assert;
+
+var inception = require('../inception');
 
 describe('generator-generator inception tests', function () {
   var sampleGenerator;
