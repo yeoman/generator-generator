@@ -1,6 +1,6 @@
 {
-  "name": "generator-zckrs-generator",
-  "version": "0.8.1",
+  "name": "generator-yeoman-generator",
+  "version": "1.0.0",
   "description": "Generate a Yeoman generator",
   "keywords": [
     "javascript",
@@ -14,14 +14,14 @@
     "scaffold"
   ],
   "author": {
-    "name": "Pascal Hartig",
-    "email": "phartig@rdrei.net",
-    "url": "http://yeoman.io"
+    "name": "Mehdy Dara",
+    "email": "mdara@eleven-labs.com",
+    "url": "https://github.com/zckrs"
   },
   "main": "app/index.js",
-  "repository": "yeoman/generator-generator",
+  "repository": "yeoman/generator-yeoman-generator",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/_mocha test/node && ./node_modules/.bin/_mocha test/inception"
   },
   "dependencies": {
     "chalk": "^1.1.0",
@@ -36,8 +36,7 @@
     "bluebird": "^2.9.33",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.1.0",
-    "fixture-stdout": "^0.2.1",
-    "mocha": "*",
+    "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "mz": "^2.0.0",
     "sinon": "^1.15.3",
@@ -45,7 +44,6 @@
   },
   "license": "MIT",
   "files": [
-    "app",
-    "subgenerator"
+    "app"
   ]
 }

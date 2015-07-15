@@ -17,8 +17,8 @@ describe('generator-generator inception tests', function () {
   describe('with an existing user on Github', function () {
     before(function() {
       return inception.prepare({}, {
-        githubUser: 'jonathanong',
-        generatorName: 'unitTest'
+        githubUser: 'zckrs',
+        generatorName: 'newAwesomeTech'
       }).then(function(generator) {
         sampleGenerator = generator;
       });

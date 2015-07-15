@@ -23,7 +23,7 @@ function prepare(optionCase, promptCase) {
 
   return testDirectory(tempDir).then(function() {
     var sampleGenerator = helpers.createGenerator(
-      'zckrs-generator',
+      'yeoman-generator',
       ['../../../app'],
       false,
       options
@@ -32,7 +32,6 @@ function prepare(optionCase, promptCase) {
 
     return sampleGenerator;
   });
-
 }
 
 function run(generator) {
