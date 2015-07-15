@@ -33,7 +33,6 @@ describe('generator-generator initializing script', function () {
       Generator.prototype.initializing.defaultName.should.have.been.called;
       context.generatorName.should.be.equal('temp');
     });
-
     it('`generatorName` can be "generator-"', function() {
       context.generatorName = 'generator-';
 
@@ -42,7 +41,6 @@ describe('generator-generator initializing script', function () {
       Generator.prototype.initializing.defaultName.should.have.been.called;
       context.generatorName.should.be.equal('generator-');
     });
-
     it('should define default `generatorName` based on cwd if no argument', function() {
       context.generatorName = undefined;
 
@@ -51,7 +49,6 @@ describe('generator-generator initializing script', function () {
       Generator.prototype.initializing.defaultName.should.have.been.called;
       context.generatorName.should.be.equal(process.cwd().split(path.sep).pop().replace('generator-', ''));
     });
-
     it('should define default `generatorName` based on first argument', function() {
       context.generatorName = 'temp-generator';
 

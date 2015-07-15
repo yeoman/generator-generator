@@ -31,14 +31,12 @@ describe('generator-generator index script', function () {
       yeoman.generators.Base.apply.should.have.been.called;
       context.argument.should.have.been.called;
     });
-
     it('should init `props` object with current package version', function() {
       Generator.prototype.constructor.call(context);
 
       yeoman.generators.Base.apply.should.have.been.called;
       context.props.should.be.deep.equal({version: require('../../package.json').version});
     });
-
     it('should print YoSay message', function() {
       Generator.prototype.constructor.call(context);
 

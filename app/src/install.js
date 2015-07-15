@@ -7,7 +7,6 @@ module.exports = function(SuperbGenerator) {
    */
   SuperbGenerator.prototype.install = function install() {
     this.installDependencies({bower: false});
-    console.log('install ');
   };
 
 };

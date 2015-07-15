@@ -31,10 +31,6 @@ module.exports = function(SuperbGenerator) {
       mv('gitattributes', '.gitattributes');
       mv('gitignore', '.gitignore');
       mv('travis.yml', '.travis.yml');
-    },
-
-    recap: function recap() {
-      console.log('writing ');
     }
   };
 

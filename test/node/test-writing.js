@@ -13,7 +13,6 @@ describe('generator-generator writing script', function () {
   var context;
 
   describe('copyTpl', function () {
-
     it('should fetch user info on Github API', function() {
       sinon.spy(Generator.prototype.writing, 'copyTpl');
       context = {

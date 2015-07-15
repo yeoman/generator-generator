@@ -75,9 +75,7 @@ module.exports = function(SuperbGenerator) {
 
         done();
       }.bind(this));
-    },
-    recap: function recap() {
-      console.log('prompting ');
     }
   };
+
 };

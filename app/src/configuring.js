@@ -16,23 +16,23 @@ module.exports = function(SuperbGenerator) {
       var done = this.async();
       ghGot('users/' + this.props.githubUser, function (err, data) {
 
-          if (err) {
-            this.log.error('Cannot fetch your Github profile. Make sure you\'ve typed it correctly.');
-            data = {
-              name: this.props.githubUser,
-              login: this.props.githubUser,
-              email: '',
-              html_url: ''
-            };
-          }
-          this.props.githubUser = {
-            name: data.name,
-            login: data.login,
-            email: data.email,
-            htmlUrl: data.html_url
-          }
+        if (err) {
+          this.log.error('Cannot fetch your Github profile. Make sure you\'ve typed it correctly.');
+          data = {
+            name: this.props.githubUser,
+            login: this.props.githubUser,
+            email: '',
+            html_url: ''
+          };
+        }
+        this.props.githubUser = {
+          name: data.name,
+          login: data.login,
+          email: data.email,
+          htmlUrl: data.html_url
+        }
 
-          done();
+        done();
       }.bind(this));
     },
 
@@ -41,9 +41,6 @@ module.exports = function(SuperbGenerator) {
      */
     setYoRc: function setYoRc() {
       this.config.set('props', this.props);
-    },
-    recap: function recap() {
-      console.log('configuring ');
     }
   };
 
