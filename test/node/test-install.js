@@ -8,7 +8,7 @@ chai.use(sinonChai);
 
 var Generator = require('../../app/index.js');
 
-describe('generator-generator install script', function () {
+describe('generator-yeoman-generator install script', function () {
   var context;
 
   it('should install dependencies', function() {

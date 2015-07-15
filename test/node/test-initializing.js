@@ -10,7 +10,7 @@ chai.use(sinonChai);
 
 var Generator = require('../../app/index.js');
 
-describe('generator-generator initializing script', function () {
+describe('generator-yeoman-generator initializing script', function () {
 
   describe('defaultName', function () {
     var context = {};

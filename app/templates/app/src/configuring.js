@@ -12,7 +12,7 @@ module.exports = function(<%= s.classify(generatorName) %>) {
     /**
      * Fetch Github user info via API
      */
-    userInfo: function userInfo() {
+    fetchUserInfo: function fetchUserInfo() {
       var done = this.async();
 
       ghGot('users/' + this.props.githubUser, function (err, data) {
@@ -20,8 +20,9 @@ module.exports = function(<%= s.classify(generatorName) %>) {
             this.log.error('Cannot fetch your Github profile. Make sure you\'ve typed it correctly.');
             data = {
               name: this.props.githubUser,
+              login: this.props.githubUser,
               email: '',
-              html_url: ''
+              html_url: '' // eslint-disable-line camelcase
             };
           }
 
@@ -30,7 +31,7 @@ module.exports = function(<%= s.classify(generatorName) %>) {
             login: data.login,
             email: data.email,
             htmlUrl: data.html_url
-          }
+          };
 
           done();
       }.bind(this));
@@ -41,9 +42,6 @@ module.exports = function(<%= s.classify(generatorName) %>) {
      */
     setYoRc: function setYoRc() {
       this.config.set('props', this.props);
-    },
-    recap: function recap() {
-      console.log('configuring ');
     }
   };
 

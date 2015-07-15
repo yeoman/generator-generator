@@ -7,7 +7,6 @@ module.exports = function(<%= s.classify(generatorName) %>) {
    */
   <%= s.classify(generatorName) %>.prototype.install = function install() {
     this.installDependencies({bower: false});
-    console.log('install ');
   };
 
 };

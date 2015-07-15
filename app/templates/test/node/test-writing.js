@@ -26,7 +26,6 @@ describe('generator-yeoman-generator writing script', function () {
       Generator.prototype.writing.copyTpl.call(context);
 
       Generator.prototype.writing.copyTpl.should.have.been.called;
-      context.props.s.should.be.exist;
       context.fs.copyTpl.should.have.been.calledWith(context.templatePath() + '/**', context.destinationPath(), context.props);
 
       Generator.prototype.writing.copyTpl.restore();

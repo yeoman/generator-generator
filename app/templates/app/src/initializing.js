@@ -15,7 +15,6 @@ module.exports = function(<%= s.classify(generatorName) %>) {
      */
     defaultName: function defaultName() {
       this.appName = this.appName || path.basename(process.cwd());
-      console.log('initializing ');
     }
   };
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var _s = require('underscore.string');
+var s = require('underscore.string');
 var npmName = require('npm-name');
 
 module.exports = function(<%= s.classify(generatorName) %>) {
@@ -31,10 +31,10 @@ module.exports = function(<%= s.classify(generatorName) %>) {
     },
 
     /**
-     * Ask a generator base name
-     * and check if generator name is avaible on NPM
+     * Ask a app name
+     * and check if app name is avaible on NPM
      */
-    askForGeneratorName: function askForGeneratorName() {
+    askForAppName: function askForAppName() {
       var done = this.async();
 
       var prompts = [
@@ -46,15 +46,15 @@ module.exports = function(<%= s.classify(generatorName) %>) {
         },
         {
           when: function (answers) {
-            var done = this.async();
+            var cb = this.async();
             var name = answers.appName;
 
             npmName(name, function (err, available) {
-              if (!available) {
-                done(true);
+              if (!available || err) {
+                cb(true);
               }
 
-              done(false);
+              cb(false);
             });
           },
           type: 'confirm',
@@ -66,7 +66,7 @@ module.exports = function(<%= s.classify(generatorName) %>) {
 
       this.prompt(prompts, function (answers) {
         if (answers.askNameAgain) {
-          return this.prompting.askForGeneratorName.call(this);
+          return this.prompting.askForAppName.call(this);
         }
 
         answers.appName = s.slugify(s.humanize(answers.appName));
@@ -75,9 +75,6 @@ module.exports = function(<%= s.classify(generatorName) %>) {
 
         done();
       }.bind(this));
-    },
-    recap: function recap() {
-      console.log('prompting ');
     }
   };
 };

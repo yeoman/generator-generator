@@ -20,7 +20,7 @@ mockery.registerMock('gh-got', ghGotMock);
 
 var Generator = require('../../app/index.js');
 
-describe('generator-yeoman-generator configuring script', function () {
+describe('generator configuring script', function () {
   var context = {
     async: function () { return function () {}; }
   };

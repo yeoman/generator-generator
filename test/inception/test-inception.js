@@ -4,7 +4,7 @@ var assert = require('yeoman-generator').assert;
 
 var inception = require('../inception');
 
-describe('generator-generator inception tests', function () {
+describe('generator-yeoman-generator inception tests', function () {
   var sampleGenerator;
 
   this.timeout(100000);

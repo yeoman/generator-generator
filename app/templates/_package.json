@@ -33,7 +33,13 @@
     "yosay": "^1.0.4"
   },
   "devDependencies": {
-    "mocha": "*"
+    "bluebird": "^2.9.33",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.2.5",
+    "mockery": "^1.4.0",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
   },
   "license": "MIT",
   "files": [

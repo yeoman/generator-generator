@@ -8,7 +8,7 @@ chai.use(sinonChai);
 
 var Generator = require('../../app/index.js');
 
-describe('generator-yeoman-generator prompting script', function () {
+describe('generator prompting script', function () {
   var context = {
     async: function () {return function () {}; }
   };
@@ -32,18 +32,18 @@ describe('generator-yeoman-generator prompting script', function () {
     });
   });
 
-  describe('askForGeneratorName', function () {
-    it('should define `generatorName` slugify', function() {
-      sinon.spy(Generator.prototype.prompting, 'askForGeneratorName');
+  describe('askForAppName', function () {
+    it('should define `appName` slugify', function() {
+      sinon.spy(Generator.prototype.prompting, 'askForAppName');
 
-      context.prompt = sinon.stub().yields({generatorName: 'sampleNewGenerator'});
+      context.prompt = sinon.stub().yields({appName: 'newApp'});
 
-      Generator.prototype.prompting.askForGeneratorName.call(context);
+      Generator.prototype.prompting.askForAppName.call(context);
 
-      Generator.prototype.prompting.askForGeneratorName.should.have.been.called;
-      context.props.should.be.deep.equal({ generatorName: 'generator-sample-new-generator' });
+      Generator.prototype.prompting.askForAppName.should.have.been.called;
+      context.props.should.be.deep.equal({ appName: 'new-app' });
 
-      Generator.prototype.prompting.askForGeneratorName.restore();
+      Generator.prototype.prompting.askForAppName.restore();
     });
   });
 

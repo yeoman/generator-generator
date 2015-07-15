@@ -28,6 +28,8 @@ module.exports = function(SuperbGenerator) {
       mv('_package.json', 'package.json');
       mv('_README.md', 'README.md');
       mv('editorconfig', '.editorconfig');
+      mv('eslintignore', '.eslintignore');
+      mv('eslintrc', '.eslintrc');
       mv('gitattributes', '.gitattributes');
       mv('gitignore', '.gitignore');
       mv('travis.yml', '.travis.yml');
