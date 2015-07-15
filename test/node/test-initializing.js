@@ -8,8 +8,6 @@ var sinonChai = require('sinon-chai');
 chai.should();
 chai.use(sinonChai);
 
-var yeoman = require('yeoman-generator');
-
 var Generator = require('../../app/index.js');
 
 describe('generator-generator initializing script', function () {

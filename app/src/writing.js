@@ -1,6 +1,6 @@
 'use strict';
 
-var _s = require('underscore.string');
+var s = require('underscore.string');
 
 module.exports = function(SuperbGenerator) {
 
@@ -13,7 +13,7 @@ module.exports = function(SuperbGenerator) {
      * Aplly templating on files
      */
     copyTpl: function copyTpl() {
-      this.props._s = _s;
+      this.props.s = s;
       this.fs.copyTpl(this.templatePath() + '/**', this.destinationPath(), this.props);
     },
 

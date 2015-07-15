@@ -2,12 +2,12 @@
 
 var chalk = require('chalk');
 
-module.exports = function(<%= _s.classify(generatorName) %>) {
+module.exports = function(<%= s.classify(generatorName) %>) {
 
   /**
    * Called last, cleanup, say good bye, etc
    */
-   <%= _s.classify(generatorName) %>.prototype.end = function end() {
+   <%= s.classify(generatorName) %>.prototype.end = function end() {
      console.log('end ');
      this.log(JSON.stringify(this.props, null, 4));
      this.log(

@@ -1,6 +1,5 @@
 'use strict';
 
-var mockery = require('mockery');
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
@@ -27,7 +26,7 @@ describe('generator-generator writing script', function () {
       Generator.prototype.writing.copyTpl.call(context);
 
       Generator.prototype.writing.copyTpl.should.have.been.called;
-      context.props._s.should.be.exist;
+      context.props.s.should.be.exist;
       context.fs.copyTpl.should.have.been.calledWith(context.templatePath() + '/**', context.destinationPath(), context.props);
 
       Generator.prototype.writing.copyTpl.restore();

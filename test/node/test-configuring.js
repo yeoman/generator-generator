@@ -7,8 +7,6 @@ var sinonChai = require('sinon-chai');
 chai.should();
 chai.use(sinonChai);
 
-var mockery = require('mockery');
-
 mockery.enable({
   warnOnReplace: false,
   warnOnUnregistered: false,
@@ -24,7 +22,7 @@ var Generator = require('../../app/index.js');
 
 describe('generator-generator configuring script', function () {
   var context = {
-    async: function () {return function () {}}
+    async: function () { return function () {}; }
   };
 
   describe('fetchUserInfo', function () {
@@ -43,7 +41,7 @@ describe('generator-generator configuring script', function () {
         name: 'Sample User',
         login: 'sampleUser',
         email: 'sampleUser@azerty.com',
-        html_url: 'https://github.com/sampleUser'
+        html_url: 'https://github.com/sampleUser' // eslint-disable-line camelcase
       });
 
       context.props.githubUser = 'sampleUser';

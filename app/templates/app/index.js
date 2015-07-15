@@ -4,11 +4,11 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-var <%= _s.classify(generatorName) %> = yeoman.generators.Base.extend({
+var <%= s.classify(generatorName) %> = yeoman.generators.Base.extend({
 
   /**
    * Extend default class 'Base' of yeoman-generator
-   * @return {<%= _s.classify(generatorName) %>} a new sub class
+   * @return {<%= s.classify(generatorName) %>} a new sub class
    */
   constructor: function constructor() {
     yeoman.generators.Base.apply(this, arguments);
@@ -37,11 +37,11 @@ var <%= _s.classify(generatorName) %> = yeoman.generators.Base.extend({
  * Require our custom run loop with priorities
  * http://yeoman.io/authoring/running-context.html#the_run_loop
  */
-require('./src/initializing')(<%= _s.classify(generatorName) %>);
-require('./src/prompting')(<%= _s.classify(generatorName) %>);
-require('./src/configuring')(<%= _s.classify(generatorName) %>);
-require('./src/writing')(<%= _s.classify(generatorName) %>);
-require('./src/install')(<%= _s.classify(generatorName) %>);
-require('./src/end')(<%= _s.classify(generatorName) %>);
+require('./src/initializing')(<%= s.classify(generatorName) %>);
+require('./src/prompting')(<%= s.classify(generatorName) %>);
+require('./src/configuring')(<%= s.classify(generatorName) %>);
+require('./src/writing')(<%= s.classify(generatorName) %>);
+require('./src/install')(<%= s.classify(generatorName) %>);
+require('./src/end')(<%= s.classify(generatorName) %>);
 
-module.exports = <%= _s.classify(generatorName) %>;
+module.exports = <%= s.classify(generatorName) %>;

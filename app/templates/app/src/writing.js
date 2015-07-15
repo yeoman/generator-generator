@@ -1,12 +1,12 @@
 'use strict';
 
-module.exports = function(<%= _s.classify(generatorName) %>) {
+module.exports = function(<%= s.classify(generatorName) %>) {
 
   /**
    * Where you write the generator specific files
    * @type {Object}
    */
-  <%= _s.classify(generatorName) %>.prototype.writing = {
+  <%= s.classify(generatorName) %>.prototype.writing = {
     /*
      * Aplly templating on files
      */

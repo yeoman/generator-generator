@@ -2,13 +2,13 @@
 
 var ghGot = require('gh-got');
 
-module.exports = function(<%= _s.classify(generatorName) %>) {
+module.exports = function(<%= s.classify(generatorName) %>) {
 
   /**
    * Configure the project
    * and saving configurations in `.yo-rc.json`
    */
-  <%= _s.classify(generatorName) %>.prototype.configuring = {
+  <%= s.classify(generatorName) %>.prototype.configuring = {
     /**
      * Fetch Github user info via API
      */

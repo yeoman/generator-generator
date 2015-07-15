@@ -22,7 +22,7 @@ module.exports = function(SuperbGenerator) {
             name: this.props.githubUser,
             login: this.props.githubUser,
             email: '',
-            html_url: ''
+            html_url: '' // eslint-disable-line camelcase
           };
         }
         this.props.githubUser = {
@@ -30,7 +30,7 @@ module.exports = function(SuperbGenerator) {
           login: data.login,
           email: data.email,
           htmlUrl: data.html_url
-        }
+        };
 
         done();
       }.bind(this));

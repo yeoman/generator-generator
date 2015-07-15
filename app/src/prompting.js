@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var _s = require('underscore.string');
+var s = require('underscore.string');
 var npmName = require('npm-name');
 
 module.exports = function(SuperbGenerator) {
@@ -46,15 +46,15 @@ module.exports = function(SuperbGenerator) {
         },
         {
           when: function (answers) {
-            var done = this.async();
+            var cb = this.async();
             var name = 'generator-' + answers.generatorName;
 
             npmName(name, function (err, available) {
-              if (!available) {
-                done(true);
+              if (!available || err) {
+                cb(true);
               }
 
-              done(false);
+              cb(false);
             });
           },
           type: 'confirm',
@@ -69,7 +69,7 @@ module.exports = function(SuperbGenerator) {
           return this.prompting.askForGeneratorName.call(this);
         }
 
-        answers.generatorName = _s.slugify(_s.humanize('generator-' + answers.generatorName));
+        answers.generatorName = s.slugify(s.humanize('generator-' + answers.generatorName));
 
         this.props = _.merge(this.props, answers);
 

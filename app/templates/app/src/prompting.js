@@ -4,13 +4,13 @@ var _ = require('lodash');
 var _s = require('underscore.string');
 var npmName = require('npm-name');
 
-module.exports = function(<%= _s.classify(generatorName) %>) {
+module.exports = function(<%= s.classify(generatorName) %>) {
 
   /**
    * Where you prompt users for options (where you'd call `this.prompt()`)
    * @type {Object}
    */
-  <%= _s.classify(generatorName) %>.prototype.prompting = {
+  <%= s.classify(generatorName) %>.prototype.prompting = {
     /**
      * Ask a Github username to init `package.json` generated
      */
@@ -69,7 +69,7 @@ module.exports = function(<%= _s.classify(generatorName) %>) {
           return this.prompting.askForGeneratorName.call(this);
         }
 
-        answers.appName = _s.slugify(_s.humanize(answers.appName));
+        answers.appName = s.slugify(s.humanize(answers.appName));
 
         this.props = _.merge(this.props, answers);
 

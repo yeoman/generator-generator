@@ -43,7 +43,7 @@ describe('generator-generator inception tests', function () {
           '.yo-rc.json',
           'CONTRIBUTING.md',
           'package.json',
-          'README.md',
+          'README.md'
         ];
 
         assert.file(expected);

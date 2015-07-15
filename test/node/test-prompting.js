@@ -6,13 +6,11 @@ var sinonChai = require('sinon-chai');
 chai.should();
 chai.use(sinonChai);
 
-var yeoman = require('yeoman-generator');
-
 var Generator = require('../../app/index.js');
 
 describe('generator-generator prompting script', function () {
   var context = {
-    async: function () {return function () {}}
+    async: function () {return function () {}; }
   };
 
   beforeEach(function() {

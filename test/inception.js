@@ -1,6 +1,5 @@
 'use strict';
 
-var fs = require('mz/fs');
 var path = require('path');
 var _ = require('lodash');
 var Promise = require('bluebird');
@@ -15,7 +14,6 @@ var skipOptions = {
 };
 
 var tempDir = path.join(__dirname, 'tmp/work');
-var depsDir = path.join(__dirname, 'tmp/deps');
 
 function prepare(optionCase, promptCase) {
   var options = _.extend({}, optionCase, skipOptions);
