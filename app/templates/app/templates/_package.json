@@ -6,11 +6,11 @@
     "javascript"
   ],
   "author": {
-    "name": "<%%= githubUser.name || githubUser.login %>",
-    "email": "<%%= githubUser.email %>",
-    "url": "<%%= githubUser.htmlUrl %>"
+    "name": "<%%= gitUser.name || gitUser.login %>",
+    "email": "<%%= gitUser.email %>",
+    "url": "<%%= gitUser.htmlUrl %>"
   },
-  "repository": "<%%= githubUser.login %>/<%%= appName %>",
+  "repository": "<%%= gitUser.login %>/<%%= appName %>",
   "dependencies": {},
   "devDependencies": {},
   "license": "MIT"

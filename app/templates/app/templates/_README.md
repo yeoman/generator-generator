@@ -1,6 +1,6 @@
 # <%%= appName %>
 
-[![Build Status](https://secure.travis-ci.org/<%%= githubUser.login %>/<%%= appName %>.png?branch=master)](https://travis-ci.org/<%%= githubUser.login %>/<%%= appName %>)
+[![Build Status](https://secure.travis-ci.org/<%%= gitUser.login %>/<%%= appName %>.png?branch=master)](https://travis-ci.org/<%%= gitUser.login %>/<%%= appName %>)
 
 > **{...}**
 
@@ -26,7 +26,7 @@ $ npm install
 
 ## Changelog
 
-[All changes listed in the GitHub releases](https://github.com/<%%= githubUser.login %>/<%%= appName %>/releases).
+[All changes listed in the GitHub releases](https://github.com/<%%= gitUser.login %>/<%%= appName %>/releases).
 
 
 ## Contributing
@@ -36,4 +36,4 @@ See the [guidelines](CONTRIBUTING.md).
 
 ## License
 
-MIT © [<%%= githubUser.name %>](https://github.com/<%%= githubUser.login %>)
+MIT © [<%%= gitUser.name %>](https://github.com/<%%= gitUser.login %>)

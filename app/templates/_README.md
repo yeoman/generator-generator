@@ -1,6 +1,6 @@
 # <%= generatorName %>
 
-[![Build Status](https://secure.travis-ci.org/<%= githubUser.login %>/<%= generatorName %>.png?branch=master)](https://travis-ci.org/<%= githubUser.login %>/<%= generatorName %>)
+[![Build Status](https://secure.travis-ci.org/<%= gitUser.login %>/<%= generatorName %>.png?branch=master)](https://travis-ci.org/<%= gitUser.login %>/<%= generatorName %>)
 
 > [Yeoman](http://yeoman.io) generator for **{...}**
 
@@ -40,7 +40,7 @@ $ yo <%= generatorName.replace('generator-', '') %>
 
 ## Changelog
 
-[All changes listed in the GitHub releases](https://github.com/<%= githubUser.login %>/<%= generatorName %>/releases).
+[All changes listed in the GitHub releases](https://github.com/<%= gitUser.login %>/<%= generatorName %>/releases).
 
 
 ## Contributing
@@ -50,7 +50,7 @@ See the [guidelines](CONTRIBUTING.md).
 
 ## License
 
-MIT © [<%= githubUser.name %>](https://github.com/<%= githubUser.login %>)
+MIT © [<%= gitUser.name %>](https://github.com/<%= gitUser.login %>)
 
 
 ***

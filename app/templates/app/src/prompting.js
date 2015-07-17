@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var s = require('underscore.string');
-var npmName = require('npm-name');
 
 module.exports = function(<%= s.classify(generatorName) %>) {
 
@@ -12,19 +11,20 @@ module.exports = function(<%= s.classify(generatorName) %>) {
    */
   <%= s.classify(generatorName) %>.prototype.prompting = {
     /**
-     * Ask a Github username to init `package.json` generated
+     * Ask a Github username
      */
     askForGithubUser: function askForGithubUser() {
       var done = this.async();
 
       this.prompt({
         type: 'input',
-        name: 'githubUser',
+        name: 'githubUsername',
         message: 'Would you mind telling me your username on GitHub?',
-        default: 'someUser'
+        default: this.gitUser.login
       }, function (answers) {
 
-        this.props = _.merge(this.props, answers);
+        this.props.gitUser = this.gitUser;
+        this.props.gitUser.login = answers.githubUsername;
 
         done();
       }.bind(this));
@@ -37,37 +37,12 @@ module.exports = function(<%= s.classify(generatorName) %>) {
     askForAppName: function askForAppName() {
       var done = this.async();
 
-      var prompts = [
-        {
-          type: 'input',
-          name: 'appName',
-          message: 'What\'s the name of your application?',
-          default: this.appName
-        },
-        {
-          when: function (answers) {
-            var cb = this.async();
-            var name = answers.appName;
-
-            npmName(name, function (err, available) {
-              if (!available || err) {
-                cb(true);
-              }
-
-              cb(false);
-            });
-          },
-          type: 'confirm',
-          name: 'askNameAgain',
-          message: 'The name above already exists on NPM, choose another?',
-          default: true
-        }
-      ];
-
-      this.prompt(prompts, function (answers) {
-        if (answers.askNameAgain) {
-          return this.prompting.askForAppName.call(this);
-        }
+      this.prompt({
+        type: 'input',
+        name: 'appName',
+        message: 'What\'s the name of your application?',
+        default: this.appName
+      }, function (answers) {
 
         answers.appName = s.slugify(s.humanize(answers.appName));
 
@@ -77,4 +52,5 @@ module.exports = function(<%= s.classify(generatorName) %>) {
       }.bind(this));
     }
   };
+
 };

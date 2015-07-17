@@ -49,6 +49,12 @@ describe('generator-yeoman-generator inception tests', function () {
         assert.file(expected);
       });
     });
+
+    it('should pass test', function () {
+      return inception.test().then(function () {
+
+      });
+    });
   });
 
 });

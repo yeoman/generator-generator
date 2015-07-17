@@ -25,9 +25,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.0",
-    "gh-got": "^1.1.0",
     "lodash": "^3.6.0",
-    "npm-name": "^1.0.1",
     "underscore.string": "^3.0.3",
     "yeoman-generator": "^0.20.1",
     "yosay": "^1.0.4"
@@ -36,8 +34,9 @@
     "bluebird": "^2.9.33",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.1.0",
+    "cross-spawn": "^1.0.4",
+    "eslint": "^0.24.1",
     "mocha": "^2.2.5",
-    "mockery": "^1.4.0",
     "sinon": "^1.15.3",
     "sinon-chai": "^2.8.0"
   },

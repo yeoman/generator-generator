@@ -33,6 +33,7 @@ module.exports = function(SuperbGenerator) {
       mv('gitattributes', '.gitattributes');
       mv('gitignore', '.gitignore');
       mv('travis.yml', '.travis.yml');
+      mv('test/eslintrc', 'test/.eslintrc');
     }
   };
 

@@ -18,15 +18,22 @@ describe('generator prompting script', function () {
   });
 
   describe('askForGithubUser', function () {
-    it('should define `githubUser`', function() {
+    it('should define `gitUser`', function() {
       sinon.spy(Generator.prototype.prompting, 'askForGithubUser');
 
-      context.prompt = sinon.stub().yields({githubUser: 'testUser'});
+      context.gitUser = {
+        login: 'testUser'
+      };
+
+      context.prompt = sinon.stub().yields({githubUsername: 'testUser'});
 
       Generator.prototype.prompting.askForGithubUser.call(context);
 
       Generator.prototype.prompting.askForGithubUser.should.have.been.called;
-      context.props.should.be.deep.equal({ githubUser: 'testUser' });
+      context.props.should.be.deep.equal({ gitUser: {
+          login: 'testUser'
+        }
+      });
 
       Generator.prototype.prompting.askForGithubUser.restore();
     });

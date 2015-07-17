@@ -4,6 +4,7 @@ var path = require('path');
 var _ = require('lodash');
 var Promise = require('bluebird');
 var helpers = require('yeoman-generator').test;
+var spawn = require('cross-spawn');
 
 var testDirectory = Promise.promisify(helpers.testDirectory);
 
@@ -45,7 +46,21 @@ function run(generator) {
   });
 }
 
+function test() {
+  return new Promise(function(resolve, reject) {
+    var npmProcess = spawn('npm', ['test'], {stdio: 'inherit'});
+    npmProcess.on('exit', function(returnCode) {
+      if(returnCode === 0) {
+        resolve();
+      } else {
+        reject('NPM test returned with error code ' + returnCode);
+      }
+    });
+  });
+}
+
 module.exports = {
   prepare: prepare,
-  run: run
+  run: run,
+  test: test
 };

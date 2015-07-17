@@ -14,20 +14,18 @@
     "scaffold"
   ],
   "author": {
-    "name": "<%= githubUser.name || githubUser.login %>",
-    "email": "<%= githubUser.email %>",
-    "url": "<%= githubUser.htmlUrl %>"
+    "name": "<%= gitUser.name || gitUser.login %>",
+    "email": "<%= gitUser.email %>",
+    "url": "<%= gitUser.htmlUrl %>"
   },
   "main": "app/index.js",
-  "repository": "<%= githubUser.login %>/<%= generatorName %>",
+  "repository": "<%= gitUser.login %>/<%= generatorName %>",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/_mocha test/node"
   },
   "dependencies": {
     "chalk": "^1.1.0",
-    "gh-got": "^1.1.0",
     "lodash": "^3.6.0",
-    "npm-name": "^1.0.1",
     "underscore.string": "^3.0.3",
     "yeoman-generator": "^0.20.1",
     "yosay": "^1.0.4"
@@ -36,6 +34,7 @@
     "bluebird": "^2.9.33",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.1.0",
+    "eslint": "^0.24.1",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "sinon": "^1.15.3",
