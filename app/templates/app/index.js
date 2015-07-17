@@ -26,9 +26,9 @@ var <%= s.classify(generatorName) %> = yeoman.generators.Base.extend({
 
     // Print message
     this.log(yosay(
-      'Create your own ' +
+      'Scaffold an application with ' +
       chalk.yellow('Yeoman') +
-      ' generator with superpowers!'
+      ' generator.'
     ));
   }
 });
