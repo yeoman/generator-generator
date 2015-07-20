@@ -1,16 +1,14 @@
-# generator-generator
+# generator-yeoman-generator
 
-[![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator)
+[![Build Status](https://secure.travis-ci.org/zckrs/generator-yeoman-generator.svg?branch=master)](https://travis-ci.org/zckrs/generator-yeoman-generator)
 
 > [Yeoman](http://yeoman.io) generator for generator.
-
-<!-- ![Yo dawg, I heard you like generators?](http://i.imgur.com/2gqiift.jpg) -->
 
 
 ## Install
 
 ```
-$ npm install --global generator-generator
+$ npm install --global generator-yeoman-generator
 ```
 
 
@@ -37,7 +35,7 @@ $ yo generator
 
 ## Changelog
 
-[All changes listed in the GitHub releases](https://github.com/yeoman/generator-generator/releases).
+[All changes listed in the GitHub releases](https://github.com/zckrs/generator-yeoman-generator/releases).
 
 
 ## Contributing

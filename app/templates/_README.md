@@ -54,4 +54,4 @@ MIT © [<%= gitUser.name %>](https://github.com/<%= gitUser.login %>)
 
 
 ***
-*generated with [generator-generator](https://github.com/yeoman/generator-generator)*
+*generated with [generator-yeoman-generator](https://github.com/zckrs/generator-yeoman-generator)*
