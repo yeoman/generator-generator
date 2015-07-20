@@ -32,11 +32,22 @@ describe('generator-yeoman-generator inception tests', function () {
           'app/templates/_README.md',
           'app/templates/CONTRIBUTING.md',
           'app/templates/editorconfig',
+          'app/templates/eslintrc',
           'app/templates/gitattributes',
           'app/templates/gitignore',
           'app/templates/travis.yml',
           'app/index.js',
+          'test/node/test-configuring.js',
+          'test/node/test-end.js',
+          'test/node/test-index.js',
+          'test/node/test-initializing.js',
+          'test/node/test-install.js',
+          'test/node/test-prompting.js',
+          'test/node/test-writing.js',
+          'test/.eslintrc',
           '.editorconfig',
+          '.eslintignore',
+          '.eslintrc',
           '.gitattributes',
           '.gitignore',
           '.travis.yml',
@@ -51,9 +62,7 @@ describe('generator-yeoman-generator inception tests', function () {
     });
 
     it('should pass test', function () {
-      return inception.test().then(function () {
-
-      });
+      return inception.test();
     });
   });
 

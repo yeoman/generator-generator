@@ -21,7 +21,7 @@
   "main": "app/index.js",
   "repository": "yeoman/generator-yeoman-generator",
   "scripts": {
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node && ./node_modules/.bin/_mocha test/inception"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node && ./node_modules/.bin/_mocha test/inception/test-inception.js"
   },
   "dependencies": {
     "chalk": "^1.1.0",

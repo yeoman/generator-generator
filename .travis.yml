@@ -4,3 +4,10 @@ node_js:
   - 'iojs'
   - '0.12'
   - '0.10'
+
+matrix:
+  fast_finish: true
+
+before_script:
+  - git config user.name "Travis-CI"
+  - git config user.email "travis-ci@test.com"

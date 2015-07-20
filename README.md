@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/zckrs/generator-yeoman-generator.svg?branch=master)](https://travis-ci.org/zckrs/generator-yeoman-generator)
 
-> [Yeoman](http://yeoman.io) generator for generator.
+> [Yeoman](http://yeoman.io) generator for yeoman-generator.
 
 
 ## Install

@@ -9,7 +9,7 @@ var spawn = require('cross-spawn');
 var testDirectory = Promise.promisify(helpers.testDirectory);
 
 var skipOptions = {
-  skipInstall: true,
+  skipInstall: false,
   skipWelcomeMessage: true,
   skipMessage: true
 };

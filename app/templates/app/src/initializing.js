@@ -33,6 +33,7 @@ module.exports = function(<%= s.classify(generatorName) %>) {
       this.user.github.username(function (err, username) {
         if (err) {
           this.log.error(err);
+          done();
           return;
         }
 
