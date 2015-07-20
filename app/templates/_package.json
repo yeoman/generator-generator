@@ -21,7 +21,7 @@
   "main": "app/index.js",
   "repository": "<%= gitUser.login %>/<%= generatorName %>",
   "scripts": {
-    "test": "./node_modules/.bin/_mocha test/node"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node"
   },
   "dependencies": {
     "chalk": "^1.1.0",
@@ -35,6 +35,7 @@
     "chai": "^2.3.0",
     "chai-as-promised": "^5.1.0",
     "eslint": "^0.24.1",
+    "istanbul": "^0.3.17",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "sinon": "^1.15.3",
