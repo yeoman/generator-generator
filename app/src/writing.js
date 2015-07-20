@@ -2,13 +2,13 @@
 
 var s = require('underscore.string');
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(Generator) {
 
   /**
    * Where you write the generator specific files
    * @type {Object}
    */
-  SuperbGenerator.prototype.writing = {
+  Generator.prototype.writing = {
     /*
      * Aplly templating on files
      */

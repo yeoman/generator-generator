@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(Generator) {
 
   /**
    * Where installation are run
    */
-  SuperbGenerator.prototype.install = function install() {
+  Generator.prototype.install = function install() {
     this.installDependencies({bower: false});
   };
 

@@ -3,13 +3,13 @@
 var _ = require('lodash');
 var s = require('underscore.string');
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(Generator) {
 
   /**
    * Where you prompt users for options (where you'd call `this.prompt()`)
    * @type {Object}
    */
-  SuperbGenerator.prototype.prompting = {
+  Generator.prototype.prompting = {
     /**
      * Ask a Github username
      */

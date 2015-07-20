@@ -2,13 +2,13 @@
 
 var path = require('path');
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(Generator) {
 
   /**
    * Your initialization methods (checking current project state, getting configs, etc)
    * @type {Object}
    */
-  SuperbGenerator.prototype.initializing = {
+  Generator.prototype.initializing = {
     /**
      * Determine the generatorName either from the current directory
      * or the parameter of the generator

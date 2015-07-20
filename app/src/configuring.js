@@ -1,12 +1,12 @@
 'use strict';
 
-module.exports = function(SuperbGenerator) {
+module.exports = function(Generator) {
 
   /**
    * Configure the project
    * and saving configurations in `.yo-rc.json`
    */
-  SuperbGenerator.prototype.configuring = {
+  Generator.prototype.configuring = {
     /**
      * Set `.yo-rc.json` value with object `this.props`
      */

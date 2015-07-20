@@ -4,11 +4,11 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-var SuperbGenerator = yeoman.generators.Base.extend({
+var Generator = yeoman.generators.Base.extend({
 
   /**
    * Extend default class 'Base' of yeoman-generator
-   * @return {SuperbGenerator} a new sub class
+   * @return {Generator} a new sub class
    */
   constructor: function constructor() {
     yeoman.generators.Base.apply(this, arguments);
@@ -37,11 +37,11 @@ var SuperbGenerator = yeoman.generators.Base.extend({
  * Require our custom run loop with priorities
  * http://yeoman.io/authoring/running-context.html#the_run_loop
  */
-require('./src/initializing')(SuperbGenerator);
-require('./src/prompting')(SuperbGenerator);
-require('./src/configuring')(SuperbGenerator);
-require('./src/writing')(SuperbGenerator);
-require('./src/install')(SuperbGenerator);
-require('./src/end')(SuperbGenerator);
+require('./src/initializing')(Generator);
+require('./src/prompting')(Generator);
+require('./src/configuring')(Generator);
+require('./src/writing')(Generator);
+require('./src/install')(Generator);
+require('./src/end')(Generator);
 
-module.exports = SuperbGenerator;
+module.exports = Generator;
