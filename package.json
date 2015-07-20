@@ -21,7 +21,8 @@
   "main": "app/index.js",
   "repository": "yeoman/generator-yeoman-generator",
   "scripts": {
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node && ./node_modules/.bin/_mocha test/inception/test-inception.js"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node && ./node_modules/.bin/_mocha test/inception/test-inception.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
     "chalk": "^1.1.0",
@@ -34,6 +35,7 @@
     "bluebird": "^2.9.33",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.1.0",
+    "coveralls": "^2.11.3",
     "cross-spawn": "^1.0.4",
     "eslint": "^0.24.1",
     "istanbul": "^0.3.17",

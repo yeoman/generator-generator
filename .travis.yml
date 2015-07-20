@@ -11,3 +11,6 @@ matrix:
 before_script:
   - git config user.name "Travis-CI"
   - git config user.email "travis-ci@test.com"
+
+after_success:
+  - npm run coveralls
