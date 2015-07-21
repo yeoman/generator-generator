@@ -1,42 +1,50 @@
 {
-  "name": "generator-generator",
-  "version": "0.8.1",
+  "name": "generator-yeoman-generator",
+  "version": "1.0.0",
   "description": "Generate a Yeoman generator",
   "keywords": [
+    "javascript",
     "yeoman-generator",
     "generator",
     "inception",
     "init",
     "create",
-    "boilerplate"
+    "boilerplate",
+    "template",
+    "scaffold"
   ],
   "author": {
-    "name": "Pascal Hartig",
-    "email": "phartig@rdrei.net",
-    "url": "http://yeoman.io"
+    "name": "Mehdy Dara",
+    "email": "mdara@eleven-labs.com",
+    "url": "https://github.com/zckrs"
   },
   "main": "app/index.js",
-  "repository": "yeoman/generator-generator",
+  "repository": "yeoman/generator-yeoman-generator",
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover _mocha -- test/node && _mocha test/inception/test-inception.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
-    "github": "^0.2.1",
+    "chalk": "^1.1.0",
     "lodash": "^3.6.0",
-    "npm-name": "^1.0.1",
-    "superb": "^1.0.0",
     "underscore.string": "^3.0.3",
-    "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.0"
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
-    "mocha": "*",
-    "mockery": "^1.4.0"
+    "bluebird": "^2.9.33",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.1.0",
+    "coveralls": "^2.11.3",
+    "cross-spawn": "^1.0.4",
+    "eslint": "^0.24.1",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
   },
   "license": "MIT",
   "files": [
-    "app",
-    "subgenerator"
+    "app"
   ]
 }

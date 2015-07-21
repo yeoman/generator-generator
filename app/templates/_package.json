@@ -1,30 +1,48 @@
 {
-  "name": "<%= appname %>",
-  "version": "0.0.0",
+  "name": "<%= generatorName %>",
+  "version": "0.0.1",
   "description": "Yeoman generator",
-  "license": "MIT",
-  "main": "app/index.js",
-  "repository": "<%= githubUser %>/<%= appname %>",
-  "author": {
-    "name": "<%= realname %>",
-    "email": "<%= email %>",
-    "url": "<%= githubUrl %>"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "files": [
-    "<%= appGeneratorDir %>"
-  ],
   "keywords": [
-    "yeoman-generator"
+    "javascript",
+    "yeoman-generator",
+    "generator",
+    "inception",
+    "init",
+    "create",
+    "boilerplate",
+    "template",
+    "scaffold"
   ],
+  "author": {
+    "name": "<%= gitUser.name || gitUser.login %>",
+    "email": "<%= gitUser.email %>",
+    "url": "<%= gitUser.htmlUrl %>"
+  },
+  "main": "app/index.js",
+  "repository": "<%= gitUser.login %>/<%= generatorName %>",
+  "scripts": {
+    "test": "istanbul cover _mocha -- test/node"
+  },
   "dependencies": {
-    "yeoman-generator": "^0.19.0",
-    "chalk": "^1.0.0",
-    "yosay": "^1.0.2"
+    "chalk": "^1.1.0",
+    "lodash": "^3.6.0",
+    "underscore.string": "^3.0.3",
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
-    "mocha": "*"
-  }
+    "bluebird": "^2.9.33",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.1.0",
+    "eslint": "^0.24.1",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "mockery": "^1.4.0",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
+  },
+  "license": "MIT",
+  "files": [
+    "app"
+  ]
 }

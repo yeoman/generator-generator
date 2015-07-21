@@ -1,67 +1,65 @@
-# generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator)
+# generator-yeoman-generator
 
-> Generate a Yeoman generator
+[![Build Status](https://secure.travis-ci.org/zckrs/generator-yeoman-generator.svg?branch=master)](https://travis-ci.org/zckrs/generator-yeoman-generator)
+[![Coverage Status](https://coveralls.io/repos/zckrs/generator-yeoman-generator/badge.svg?branch=master&service=github)](https://coveralls.io/github/zckrs/generator-yeoman-generator?branch=master)
 
-Maintainer: [Pascal Hartig](https://github.com/passy)
-
-![Yo dawg, I heard you like generators?](http://i.imgur.com/2gqiift.jpg)
+> [Yeoman](http://yeoman.io) generator for yeoman-generator.
 
 
-## Getting started
+## Install
 
-- Install: `npm install -g generator-generator`
-- Run: `yo generator`
-
-If during generation you get an error like `API rate limit exceeded`, you need to log in to GitHub
-and [create a new API token](https://github.com/settings/tokens/new), then add:
-```bash
-export GITHUB_TOKEN='YOUR_NEW_TOKEN'
 ```
-to your `.bashrc`, `.zshrc`, `.profile` or another file that is run on shell initialization. In new terminal shells
-you shouldn't see this error anymore.
+$ npm install --global generator-yeoman-generator
+```
 
 
-## Commands
+## Usage
 
-* `yo generator` shows a wizard for generating a new generator
-* `yo generator:subgenerator NAME` generates a subgenerator with the name NAME
+Create a new directory, and go into:
+```
+mkdir my-new-generator && cd $_
+```
+
+With [yo](https://github.com/yeoman/yo):
+
+```
+$ yo generator
+```
 
 
 ## What do you get?
 
-Scaffolds out a complete project directory structure for you:
+Scaffolds out a complete generator directory structure for you:
+<pre>
+├──  app/
+│   ├──  src/
+│   ├──  templates/
+│   └──  index.js
+├──  test/
+│   └──  node/
+├──  gulp/
+├──  .editorconfig
+├──  .eslintignore
+├──  .eslintrc
+├──  .gitattributes
+├──  .gitignore
+├──  .travis.yml
+├──  CONTRIBUTING.md
+├──  package.json
+└──  README.md
+</pre>
 
-    .
-    ├── generators
-    │   └── app
-    │       ├── index.js
-    │       └── templates
-    │           ├── _bower.json
-    │           ├── _package.json
-    │           ├── editorconfig
-    │           └── jshintrc
-    ├── .editorconfig
-    ├── .gitattributes
-    ├── .gitignore
-    ├── .jshintrc
-    ├── .travis.yml
-    ├── .yo-rc.json
-    ├── package.json
-    ├── README.md
-    └── test
-        └── test-app.js
+
+## Changelog
+
+[All changes listed in the GitHub releases](https://github.com/zckrs/generator-yeoman-generator/releases).
 
 
 ## Contributing
 
-See the [contribution docs](https://github.com/yeoman/yeoman/blob/master/contributing.md).
-
-When submitting an issue, please follow [the
-guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission).
-Especially important is to make sure Yeoman is up-to-date, and providing the
-command or commands that cause the issue.
+See the [guidelines](CONTRIBUTING.md).
 
 
 ## License
 
-MIT © Pascal Hartig <phartig@rdrei.net> and other contributors
+MIT
