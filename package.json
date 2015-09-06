@@ -29,7 +29,8 @@
   },
   "devDependencies": {
     "mocha": "^2.2.5",
-    "mockery": "^1.4.0"
+    "mockery": "^1.4.0",
+    "yeoman-assert": "^2.1.0"
   },
   "license": "MIT",
   "files": [

@@ -1,25 +1,9 @@
 'use strict';
 var fs = require('fs');
 var path = require('path');
-var assert = require('yeoman-generator').assert;
+var assert = require('yeoman-assert');
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
-
-function assertObjectContains(obj, content) {
-  Object.keys(content).forEach(function (key) {
-    if (typeof content[key] === 'object') {
-      assertObjectContains(content[key], obj[key]);
-      return;
-    }
-
-    assert.equal(content[key], obj[key]);
-  });
-}
-
-function assertJSONFileContains(filename, content) {
-  var obj = JSON.parse(fs.readFileSync(filename, 'utf8'));
-  assertObjectContains(obj, content);
-}
 
 describe('generator:app', function () {
   before(function () {
@@ -70,7 +54,7 @@ describe('generator:app', function () {
     });
 
     it('fills package.json with correct information', function () {
-      assertJSONFileContains('package.json' ,{
+      assert.JSONFileContent('package.json' ,{
         name: 'generator-temp',
         files: ['generators'],
         keywords: ['yeoman-generator']
