@@ -40,7 +40,8 @@ module.exports = generators.Base.extend({
       options: {
         babel: false,
         boilerplate: false,
-        name: this.props.name
+        name: this.props.name,
+        skipInstall: this.options.skipInstall
       }
     }, {
       local: require('generator-node').app

@@ -5,21 +5,27 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var mockery = require('mockery');
 
+function assertObjectContains(obj, content) {
+  Object.keys(content).forEach(function (key) {
+    if (typeof content[key] === 'object') {
+      assertObjectContains(content[key], obj[key]);
+      return;
+    }
+
+    assert.equal(content[key], obj[key]);
+  });
+}
+
+function assertJSONFileContains(filename, content) {
+  var obj = JSON.parse(fs.readFileSync(filename, 'utf8'));
+  assertObjectContains(obj, content);
+}
+
 describe('generator:app', function () {
   before(function () {
-    mockery.enable({warnOnUnregistered: false});
-    mockery.registerMock('github', function () {
-      return {
-        user: {
-          getFrom: function (data, cb) {
-            cb(null, JSON.stringify({
-              name: 'Tyrion Lannister',
-              email: 'imp@casterlyrock.com',
-              html_url: 'https://github.com/imp'
-            }));
-          }
-        }
-      };
+    mockery.enable({
+      warnOnReplace: false,
+      warnOnUnregistered: false
     });
 
     mockery.registerMock('superb', function () {
@@ -39,77 +45,36 @@ describe('generator:app', function () {
     before(function (done) {
       helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
-          name: 'temp',
-          githubUser: 'imp',
-          pkgName: false
+          name: 'generator-temp',
+          description: 'A node generator',
+          homepage: 'http://yeoman.io',
+          githubAccount: 'yeoman',
+          authorName: 'The Yeoman Team',
+          authorEmail: 'hi@yeoman.io',
+          authorUrl: 'http://yeoman.io',
+          keywords: [],
+          license: 'MIT'
         })
         .on('end', done);
     });
 
     it('creates files', function () {
       var expected = [
-        '.yo-rc.json',
-        '.gitignore',
-        '.gitattributes',
-        '.jshintrc',
+        'package.json',
         'generators/app/index.js',
-        'generators/app/templates/_package.json',
-        'generators/app/templates/_bower.json',
-        'generators/app/templates/jshintrc',
-        'generators/app/templates/editorconfig'
+        'generators/app/templates/dummyfile.txt',
+        'test/app.js'
       ];
 
       assert.file(expected);
     });
 
     it('fills package.json with correct information', function () {
-      assert.fileContent('package.json',  /"name": "generator-temp"/);
-    });
-
-    it('update package.json file array', function () {
-      var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-      assert.equal(pkg.files[0], 'generators');
-    });
-
-    it('setup travis.CI config', function () {
-      assert.fileContent(
-        '.travis.yml',
-        /node_js/
-      );
-    });
-
-    it('escapes possible apostrophes from superb in index.js', function () {
-      assert.fileContent('generators/app/index.js', /Welcome to the cat\\'s meow/);
-    });
-  });
-
-  describe('--flat', function () {
-    before(function (done) {
-      helpers.run(path.join(__dirname, '../app'))
-        .withOptions({
-          flat: true
-        })
-        .withPrompts({
-          githubUser: 'imp',
-          generatorName: 'temp',
-          pkgName: false
-        })
-        .on('end', done);
-    });
-
-    it('creates flat files structure', function () {
-      assert.file([
-        'app/index.js',
-        'app/templates/_package.json',
-        'app/templates/_bower.json',
-        'app/templates/jshintrc',
-        'app/templates/editorconfig'
-      ]);
-    });
-
-    it('update package.json file array', function () {
-      var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-      assert.equal(pkg.files[0], 'app');
+      assertJSONFileContains('package.json' ,{
+        name: 'generator-temp',
+        files: ['generators'],
+        keywords: ['yeoman-generator']
+      });
     });
   });
 });

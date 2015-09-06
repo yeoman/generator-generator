@@ -27,7 +27,8 @@ module.exports = generators.Base.extend({
       this.templatePath('index.js'),
       this.destinationPath(path.join('generators', this.namespace, 'index.js')),
       {
-        superb: superb(),
+        // Escape apostrophes from superb to not conflict with JS strings
+        superb: superb().replace('\'', '\\\''),
         generatorName: this.generatorName
       }
     );

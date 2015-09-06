@@ -3,9 +3,19 @@ var path = require('path');
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var fs = require('fs');
+var mockery = require('mockery');
 
 describe('generator:subgenerator', function () {
   before(function (done) {
+    mockery.enable({
+      warnOnReplace: false,
+      warnOnUnregistered: false
+    });
+
+    mockery.registerMock('superb', function () {
+      return 'cat\'s meow';
+    });
+
     helpers.run(path.join(__dirname, '../subgenerator'))
       .withArguments(['foo', '--force'])
       .inTmpDir(function (tmpDir) {
@@ -15,41 +25,21 @@ describe('generator:subgenerator', function () {
         );
       })
       .on('end', done);
+  });
+
+  after(function () {
+    mockery.disable();
   });
 
   it('creates files', function () {
     assert.file([
       'generators/foo/index.js',
-      'generators/foo/templates/somefile.js',
-      'test/foo.js'
-    ]);
-  });
-});
-
-describe('generator:subgenerator (with flat structure)', function () {
-  before(function (done) {
-    helpers.run(path.join(__dirname, '../subgenerator'))
-      .withArguments(['foo', '--force'])
-      .withLocalConfig({ structure: 'flat' })
-      .inTmpDir(function (tmpDir) {
-        fs.writeFileSync(
-          path.join(tmpDir, 'package.json'),
-          '{"name": "generator-foo", "files":[]}'
-        );
-      })
-      .on('end', done);
-  });
-
-  it('creates files', function () {
-    assert.file([
-      'foo/index.js',
-      'foo/templates/somefile.js',
+      'generators/foo/templates/dummyfile.txt',
       'test/foo.js'
     ]);
   });
 
-  it('update package.json file array', function () {
-    var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    assert.equal(pkg.files[0], 'foo');
+  it('escapes possible apostrophes from superb', function () {
+    assert.fileContent('generators/foo/index.js', 'Welcome to the cat\\\'s meow');
   });
 });
