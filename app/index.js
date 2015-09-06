@@ -1,29 +1,18 @@
 'use strict';
 var path = require('path');
-var url = require('url');
 var generators = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 var askName = require('inquirer-npm-name');
-var superb = require('superb');
 var _ = require('lodash');
+var extend = require('deep-extend');
 
 function makeGeneratorName(name) {
+  name = _.kebabCase(name);
   name = name.indexOf('generator-') === 0 ? name : 'generator-' + name;
-  return _.kebabCase(name);
+  return name;
 }
 
 module.exports = generators.Base.extend({
-  constructor: function () {
-    generators.Base.apply(this, arguments);
-
-    this.option('flat', {
-      type: Boolean,
-      required: false,
-      defaults: false,
-      desc: 'When specified, generators will be created at the top level of the project.'
-    });
-
+  initializing: function () {
     this.props = {};
   },
 
@@ -39,9 +28,8 @@ module.exports = generators.Base.extend({
         return str.length > 0;
       }
     }, this, function (name) {
-      name = name.indexOf('generator-') === 0 ? name : 'generator-' + name;
       this.props.name = name;
-      done()
+      done();
     }.bind(this));
   },
 
@@ -58,14 +46,43 @@ module.exports = generators.Base.extend({
       local: require('generator-node').app
     });
 
-    this.composeWith('generator:base', {
-      options: {
-        flat: this.options.flat,
-        name: this.props.name
-      }
+    this.composeWith('generator:subgenerator', {
+      arguments: ['app']
     }, {
-      local: require.resolve('../base')
+      local: require.resolve('../subgenerator')
     });
+  },
+
+  writing: {
+    _readme: function () {
+      // TODO generate own readme
+      // TODO move this to app generator
+      this.fs.template(
+        this.templatePath('README.md'),
+        this.destinationPath('README.md'),
+        {
+
+        }
+      );
+    },
+
+    pkg: function () {
+      var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      extend(pkg, {
+        files: ['generators'],
+        dependencies: {
+          'yeoman-generator': '^0.20.2',
+          chalk: '^1.0.0',
+          yosay: '^1.0.2'
+        },
+        devDependencies: {
+          'yeoman-assert': '^2.0.0'
+        }
+      });
+      pkg.keywords = pkg.keywords || [];
+      pkg.keywords.push('yeoman-generator');
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    }
   },
 
   install: function () {

@@ -9,7 +9,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the <%= superb.replace('\'', '\\\'') %> ' + chalk.red('<%= generatorName %>') + ' generator!'
+      'Welcome to the <%= superb %> ' + chalk.red('<%= generatorName %>') + ' generator!'
     ));
 
     var prompts = [{
@@ -27,28 +27,11 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
-  writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
-    },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
-    }
+  writing: function () {
+    this.fs.copy(
+      this.templatePath('dummyfile.txt'),
+      this.destinationPath('dummyfile.txt')
+    );
   },
 
   install: function () {

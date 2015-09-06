@@ -1,26 +1,49 @@
-// TODO replace most code with generator:base
 'use strict';
 var path = require('path');
-var yeoman = require('yeoman-generator');
+var url = require('url');
+var generators = require('yeoman-generator');
+var chalk = require('chalk');
+var yosay = require('yosay');
+var npmName = require('npm-name');
+var superb = require('superb');
+var _ = require('lodash');
+var extend = require('deep-extend');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = generators.Base.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments);
-    this.argument('name', {
-      required: true,
+    generators.Base.apply(this, arguments);
+
+    this.argument('namespace', {
       type: String,
-      desc: 'The subgenerator name'
+      required: true,
+      description: 'Generator namespace'
     });
   },
 
-  defaults: function () {
-    this.composeWith('generator:base', {
-      options: {
-        flat: this.config.get('structure') === 'flat',
-        name: this.name
+  writing: function () {
+    var generatorName = this.fs.readJSON(this.destinationPath('package.json')).name;
+
+    this.fs.copyTpl(
+      this.templatePath('index.js'),
+      this.destinationPath(path.join('generators', this.namespace, 'index.js')),
+      {
+        superb: superb(),
+        generatorName: this.generatorName
       }
-    }, {
-      local: require.resolve('../base')
-    });
+    );
+
+    this.fs.copy(
+      this.templatePath('templates/**'),
+      this.destinationPath(path.join('generators', this.namespace, 'templates'))
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('test.js'),
+      this.destinationPath('test/' + this.namespace + '.js'),
+      {
+        namespace: this.namespace,
+        generatorName: this.generatorName
+      }
+    );
   }
 });
