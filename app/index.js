@@ -41,6 +41,7 @@ module.exports = generators.Base.extend({
         babel: false,
         boilerplate: false,
         name: this.props.name,
+        projectRoot: 'generators',
         skipInstall: this.options.skipInstall
       }
     }, {
@@ -70,7 +71,6 @@ module.exports = generators.Base.extend({
     pkg: function () {
       var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       extend(pkg, {
-        files: ['generators'],
         dependencies: {
           'yeoman-generator': '^0.20.2',
           chalk: '^1.0.0',
@@ -82,6 +82,7 @@ module.exports = generators.Base.extend({
       });
       pkg.keywords = pkg.keywords || [];
       pkg.keywords.push('yeoman-generator');
+
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
   },

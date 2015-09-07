@@ -17,7 +17,8 @@ describe('generator:subgenerator', function () {
     });
 
     helpers.run(path.join(__dirname, '../subgenerator'))
-      .withArguments(['foo', '--force'])
+      .withArguments(['foo'])
+      .withOptions({force: true})
       .inTmpDir(function (tmpDir) {
         fs.writeFileSync(
           path.join(tmpDir, 'package.json'),
