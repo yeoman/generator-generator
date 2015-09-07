@@ -1,13 +1,7 @@
 'use strict';
 var path = require('path');
-var url = require('url');
 var generators = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var npmName = require('npm-name');
 var superb = require('superb');
-var _ = require('lodash');
-var extend = require('deep-extend');
 
 module.exports = generators.Base.extend({
   constructor: function () {
