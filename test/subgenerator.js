@@ -40,6 +40,11 @@ describe('generator:subgenerator', function () {
     ]);
   });
 
+  it('configures the test file', function () {
+    assert.fileContent('test/foo.js', 'describe(\'generator-foo:foo');
+    assert.fileContent('test/foo.js', '../generators/foo');
+  });
+
   it('escapes possible apostrophes from superb', function () {
     assert.fileContent('generators/foo/index.js', 'Welcome to the cat\\\'s meow');
   });

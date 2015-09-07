@@ -23,7 +23,7 @@ module.exports = generators.Base.extend({
       {
         // Escape apostrophes from superb to not conflict with JS strings
         superb: superb().replace('\'', '\\\''),
-        generatorName: this.generatorName
+        generatorName: generatorName
       }
     );
 
@@ -37,7 +37,7 @@ module.exports = generators.Base.extend({
       this.destinationPath('test/' + this.namespace + '.js'),
       {
         namespace: this.namespace,
-        generatorName: this.generatorName
+        generatorName: generatorName
       }
     );
   }

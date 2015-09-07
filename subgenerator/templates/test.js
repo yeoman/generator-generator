@@ -1,23 +1,19 @@
 'use strict';
-
 var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-generator').test;
 
-describe('<%= generatorName %>:app', function () {
+describe('<%- generatorName %>:<%- namespace %>', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({skipInstall: true})
-      .withPrompts({someOption: true})
+    helpers.run(path.join(__dirname, '../generators/<%- namespace %>'))
+      .withOptions({someOption: true})
+      .withPrompts({someAnswer: true})
       .on('end', done);
   });
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
-      'package.json',
-      '.editorconfig',
-      '.jshintrc'
+      'dummyfile.txt'
     ]);
   });
 });
