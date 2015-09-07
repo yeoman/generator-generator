@@ -1,4 +1,4 @@
-# <%= appname %> [![Build Status](https://secure.travis-ci.org/<%= githubUser %>/<%= appname %>.png?branch=master)](https://travis-ci.org/<%= githubUser %>/<%= appname %>)
+# <%- generatorName %> [![Build Status](https://secure.travis-ci.org/<%- githubAccount %>/<%- generatorName %>.png?branch=master)](https://travis-ci.org/<%- githubAccount %>/<%- generatorName %>)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,16 +23,16 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install <%= appname %> from npm, run:
+To install <%- generatorName %> from npm, run:
 
 ```bash
-npm install -g <%= appname %>
+npm install -g <%- generatorName %>
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo <%= generatorName %>
+yo <%- generatorName %>
 ```
 
 ### Getting To Know Yeoman
@@ -44,4 +44,4 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 ## License
 
-MIT
+<%- license %>

@@ -44,6 +44,7 @@ describe('generator:app', function () {
 
     it('creates files', function () {
       var expected = [
+        'README.md',
         'package.json',
         'generators/app/index.js',
         'generators/app/templates/dummyfile.txt',
@@ -66,6 +67,13 @@ describe('generator:app', function () {
         },
         keywords: ['yeoman-generator']
       });
+    });
+
+    it('fills the README with project data', function () {
+      assert.fileContent('README.md', 'yo generator-temp');
+      assert.fileContent('README.md', 'npm install -g generator-temp');
+      assert.fileContent('README.md', '## License\n\nMIT');
+      assert.fileContent('README.md', 'yeoman/generator-temp');
     });
   });
 });

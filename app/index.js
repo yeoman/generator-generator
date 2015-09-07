@@ -56,14 +56,14 @@ module.exports = generators.Base.extend({
   },
 
   writing: {
-    _readme: function () {
-      // TODO generate own readme
-      // TODO move this to app generator
-      this.fs.template(
+    readme: function () {
+      this.fs.copyTpl(
         this.templatePath('README.md'),
         this.destinationPath('README.md'),
         {
-
+          generatorName: this.props.name,
+          license: '', // TODO get real data
+          githubAccount: '' // TODO get real data
         }
       );
     },
