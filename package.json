@@ -15,7 +15,7 @@
   "main": "app/index.js",
   "repository": "yeoman/generator-generator",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
     "chalk": "^1.0.0",
@@ -23,8 +23,9 @@
     "generator-node": "^1.4.0",
     "inquirer-npm-name": "^1.0.0",
     "lodash": "^3.6.0",
+    "mkdirp": "^0.5.1",
     "superb": "^1.0.0",
-    "yeoman-generator": "^0.20.2",
+    "yeoman-generator": "^0.21.1",
     "yosay": "^1.0.0"
   },
   "devDependencies": {

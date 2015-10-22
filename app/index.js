@@ -1,9 +1,11 @@
 'use strict';
 var path = require('path');
+var fs = require('fs');
 var generators = require('yeoman-generator');
 var askName = require('inquirer-npm-name');
 var _ = require('lodash');
 var extend = require('deep-extend');
+var mkdirp = require('mkdirp');
 
 function makeGeneratorName(name) {
   name = _.kebabCase(name);
@@ -34,7 +36,14 @@ module.exports = generators.Base.extend({
   },
 
   defaults: function () {
-    // TODO enforce folder name before starting the generation process
+    if (path.basename(this.destinationPath()) !== this.props.name) {
+      this.log(
+        'Your generator must be inside a folder named ' + this.props.name + '\n' +
+        'I\'ll automatically create this folder.'
+      );
+      mkdirp(this.props.name);
+      this.destinationRoot(this.destinationPath(this.props.name));
+    }
 
     this.composeWith('node:app', {
       options: {
@@ -57,6 +66,7 @@ module.exports = generators.Base.extend({
 
   writing: {
     readme: function () {
+      // TODO this README is overwritten by generator-node, we need to fix this
       this.fs.copyTpl(
         this.templatePath('README.md'),
         this.destinationPath('README.md'),
