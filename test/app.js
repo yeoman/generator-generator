@@ -73,11 +73,11 @@ describe('generator:app', function () {
       });
     });
 
-    // TODO: generator-node is overwriting our readme, need to fix.
-    it.skip('fills the README with project data', function () {
-      assert.fileContent('README.md', 'yo generator-temp');
+    it('fills the README with project data', function () {
+      assert.fileContent('README.md', '# generator-temp');
+      assert.fileContent('README.md', 'npm install -g yo');
       assert.fileContent('README.md', 'npm install -g generator-temp');
-      assert.fileContent('README.md', '## License\n\nMIT');
+      assert.fileContent('README.md', 'yo generator-temp');
       assert.fileContent('README.md', 'yeoman/generator-temp');
     });
   });

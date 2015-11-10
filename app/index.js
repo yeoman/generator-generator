@@ -45,13 +45,18 @@ module.exports = generators.Base.extend({
       this.destinationRoot(this.destinationPath(this.props.name));
     }
 
+    var readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
+
     this.composeWith('node:app', {
       options: {
         babel: false,
         boilerplate: false,
         name: this.props.name,
         projectRoot: 'generators',
-        skipInstall: this.options.skipInstall
+        skipInstall: this.options.skipInstall,
+        readme: readmeTpl({
+          generatorName: this.props.name
+        })
       }
     }, {
       local: require('generator-node').app
@@ -65,19 +70,6 @@ module.exports = generators.Base.extend({
   },
 
   writing: {
-    readme: function () {
-      // TODO this README is overwritten by generator-node, we need to fix this
-      this.fs.copyTpl(
-        this.templatePath('README.md'),
-        this.destinationPath('README.md'),
-        {
-          generatorName: this.props.name,
-          license: '', // TODO get real data
-          githubAccount: '' // TODO get real data
-        }
-      );
-    },
-
     pkg: function () {
       var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       extend(pkg, {

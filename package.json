@@ -20,7 +20,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "deep-extend": "^0.4.0",
-    "generator-node": "^1.4.0",
+    "generator-node": "^1.7.0",
     "inquirer-npm-name": "^1.0.0",
     "lodash": "^3.6.0",
     "mkdirp": "^0.5.1",
