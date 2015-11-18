@@ -1,6 +1,5 @@
 'use strict';
 var path = require('path');
-var fs = require('fs');
 var generators = require('yeoman-generator');
 var askName = require('inquirer-npm-name');
 var _ = require('lodash');
