@@ -1,4 +1,5 @@
-# generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator)
+# generator-generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-generator.svg?branch=master)](https://travis-ci.org/yeoman/generator-generator) [![Coverage Status](https://coveralls.io/repos/SBoudrias/generator-generator/badge.svg?branch=master&service=github)](https://coveralls.io/github/SBoudrias/generator-generator?branch=master)
+
 
 > Yeoman generator generating a Yeoman generator
 
