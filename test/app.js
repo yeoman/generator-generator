@@ -76,7 +76,7 @@ describe('generator:app', function () {
       assert.fileContent('README.md', '# generator-temp');
       assert.fileContent('README.md', 'npm install -g yo');
       assert.fileContent('README.md', 'npm install -g generator-temp');
-      assert.fileContent('README.md', 'yo generator-temp');
+      assert.fileContent('README.md', 'yo temp');
       assert.fileContent('README.md', 'yeoman/generator-temp');
     });
   });
