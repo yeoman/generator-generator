@@ -10,7 +10,7 @@ npm install -g <%- generatorName %>
 Then generate your new project:
 
 ```bash
-yo <%- generatorName %>
+yo <%- yoName %>
 ```
 
 ## Getting To Know Yeoman

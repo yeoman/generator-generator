@@ -54,7 +54,8 @@ module.exports = generators.Base.extend({
         projectRoot: 'generators',
         skipInstall: this.options.skipInstall,
         readme: readmeTpl({
-          generatorName: this.props.name
+          generatorName: this.props.name,
+          yoName: this.props.name.replace('generator-', '')
         })
       }
     }, {
