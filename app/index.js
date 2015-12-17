@@ -69,24 +69,22 @@ module.exports = generators.Base.extend({
     });
   },
 
-  writing: {
-    pkg: function () {
-      var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-      extend(pkg, {
-        dependencies: {
-          'yeoman-generator': '^0.21.1',
-          chalk: '^1.0.0',
-          yosay: '^1.0.2'
-        },
-        devDependencies: {
-          'yeoman-assert': '^2.0.0'
-        }
-      });
-      pkg.keywords = pkg.keywords || [];
-      pkg.keywords.push('yeoman-generator');
+  writing: function () {
+    var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    extend(pkg, {
+      dependencies: {
+        'yeoman-generator': '^0.21.1',
+        chalk: '^1.0.0',
+        yosay: '^1.0.2'
+      },
+      devDependencies: {
+        'yeoman-assert': '^2.0.0'
+      }
+    });
+    pkg.keywords = pkg.keywords || [];
+    pkg.keywords.push('yeoman-generator');
 
-      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    }
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   },
 
   install: function () {
