@@ -34,7 +34,7 @@ module.exports = generators.Base.extend({
     }.bind(this));
   },
 
-  defaults: function () {
+  default: function () {
     if (path.basename(this.destinationPath()) !== this.props.name) {
       this.log(
         'Your generator must be inside a folder named ' + this.props.name + '\n' +
