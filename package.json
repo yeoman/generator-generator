@@ -29,7 +29,7 @@
     "lodash": "^3.6.0",
     "mkdirp": "^0.5.1",
     "superb": "^1.0.0",
-    "yeoman-generator": "^0.21.1",
+    "yeoman-generator": "^0.22.2",
     "yosay": "^1.0.2"
   },
   "devDependencies": {
@@ -37,13 +37,14 @@
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^0.9.0",
+    "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.0.0",
     "gulp-nsp": "^2.1.0",
     "gulp-plumber": "^1.0.0",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
-    "yeoman-assert": "^2.0.0"
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
   },
   "license": "MIT"
 }
