@@ -61,7 +61,7 @@ describe('generator:app', function () {
       assert.JSONFileContent('package.json', {
         name: 'generator-temp',
         dependencies: {
-          'yeoman-generator': '^0.21.1',
+          'yeoman-generator': '^0.22.0',
           chalk: '^1.0.0',
           yosay: '^1.0.2'
         },
