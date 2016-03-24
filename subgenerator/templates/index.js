@@ -4,6 +4,7 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
+
   prompting: function () {
     var done = this.async();
 
@@ -14,14 +15,14 @@ module.exports = yeoman.Base.extend({
 
     var prompts = [{
       type: 'confirm',
-      name: 'someOption',
+      name: 'someAnswer',
       message: 'Would you like to enable this option?',
       default: true
     }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      // To access props later use this.props.someOption;
+      // To access props later use this.props.someAnswer;
 
       done();
     }.bind(this));
