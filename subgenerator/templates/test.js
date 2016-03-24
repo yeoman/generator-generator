@@ -6,8 +6,6 @@ var helpers = require('yeoman-test');
 describe('<%- generatorName %>:<%- namespace %>', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/<%- namespace %>'))
-      .withArguments(['arg-value'])
-      .withOptions({someOption: true})
       .withPrompts({someAnswer: true})
       .on('end', done);
   });
