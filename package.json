@@ -26,7 +26,7 @@
     "deep-extend": "^0.4.0",
     "generator-node": "^1.7.0",
     "inquirer-npm-name": "^1.0.0",
-    "lodash": "^3.6.0",
+    "lodash": "^4.6.1",
     "mkdirp": "^0.5.1",
     "superb": "^1.0.0",
     "yeoman-generator": "^0.22.2",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "gulp": "^3.6.0",
     "gulp-coveralls": "^0.1.0",
-    "gulp-eslint": "^1.0.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.0.0",
