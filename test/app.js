@@ -3,6 +3,7 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 var mockery = require('mockery');
+var Promise = require('pinkie-promise');
 
 describe('generator:app', function () {
   before(function () {
@@ -15,8 +16,8 @@ describe('generator:app', function () {
       return 'cat\'s meow';
     });
 
-    mockery.registerMock('npm-name', function (name, fn) {
-      fn(null, true);
+    mockery.registerMock('npm-name', function () {
+      return Promise.resolve(true);
     });
   });
 
@@ -25,8 +26,8 @@ describe('generator:app', function () {
   });
 
   describe('defaults', function () {
-    before(function (done) {
-      helpers.run(path.join(__dirname, '../app'))
+    before(function () {
+      return helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
           name: 'generator-temp',
           description: 'A node generator',
@@ -38,7 +39,7 @@ describe('generator:app', function () {
           keywords: [],
           license: 'MIT'
         })
-        .on('end', done);
+        .toPromise();
     });
 
     it('created and CD into a folder named like the generator', function () {

@@ -6,7 +6,7 @@ var fs = require('fs');
 var mockery = require('mockery');
 
 describe('generator:subgenerator', function () {
-  before(function (done) {
+  before(function () {
     mockery.enable({
       warnOnReplace: false,
       warnOnUnregistered: false
@@ -16,7 +16,7 @@ describe('generator:subgenerator', function () {
       return 'cat\'s meow';
     });
 
-    helpers.run(path.join(__dirname, '../subgenerator'))
+    return helpers.run(path.join(__dirname, '../subgenerator'))
       .withArguments(['foo'])
       .withOptions({force: true})
       .inTmpDir(function (tmpDir) {
@@ -25,7 +25,7 @@ describe('generator:subgenerator', function () {
           '{"name": "generator-foo", "files":[]}'
         );
       })
-      .on('end', done);
+      .toPromise();
   });
 
   after(function () {

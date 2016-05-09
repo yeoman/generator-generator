@@ -18,9 +18,8 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function () {
-    var done = this.async();
 
-    askName({
+    return askName({
       name: 'name',
       message: 'Your generator name',
       default: makeGeneratorName(path.basename(process.cwd())),
@@ -28,9 +27,8 @@ module.exports = generators.Base.extend({
       validate: function (str) {
         return str.length > 0;
       }
-    }, this, function (name) {
-      this.props.name = name;
-      done();
+    }, this).then(function (props) {
+      this.props.name = props.name;
     }.bind(this));
   },
 

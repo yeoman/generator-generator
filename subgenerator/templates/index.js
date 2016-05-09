@@ -6,7 +6,6 @@ var yosay = require('yosay');
 module.exports = yeoman.Base.extend({
 
   prompting: function () {
-    var done = this.async();
 
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -20,19 +19,20 @@ module.exports = yeoman.Base.extend({
       default: true
     }];
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
+    return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
+      this.props = props;
 
-      done();
     }.bind(this));
   },
 
   writing: function () {
+
     this.fs.copy(
       this.templatePath('dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
     );
+    
   },
 
   install: function () {
