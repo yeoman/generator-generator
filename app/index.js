@@ -18,7 +18,6 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function () {
-
     return askName({
       name: 'name',
       message: 'Your generator name',
@@ -71,9 +70,9 @@ module.exports = generators.Base.extend({
     var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     extend(pkg, {
       dependencies: {
-        'yeoman-generator': '^0.22.0',
+        'yeoman-generator': '^0.23.0',
         chalk: '^1.0.0',
-        yosay: '^1.0.2'
+        yosay: '^1.0.0'
       },
       devDependencies: {
         'yeoman-test': '^1.0.0',
