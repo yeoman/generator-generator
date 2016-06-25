@@ -24,7 +24,7 @@ module.exports = generators.Base.extend({
       default: makeGeneratorName(path.basename(process.cwd())),
       filter: makeGeneratorName,
       validate: function (str) {
-        return str.length > 0;
+        return str.length > 'generator-'.length;
       }
     }, this).then(function (props) {
       this.props.name = props.name;
