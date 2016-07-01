@@ -21,6 +21,9 @@
     "test": "gulp",
     "prepublish": "gulp prepublish"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "dependencies": {
     "chalk": "^1.0.0",
     "deep-extend": "^0.4.0",
