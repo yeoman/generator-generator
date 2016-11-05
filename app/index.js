@@ -70,13 +70,13 @@ module.exports = generators.Base.extend({
     var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     extend(pkg, {
       dependencies: {
-        'yeoman-generator': '^0.23.0',
-        chalk: '^1.0.0',
-        yosay: '^1.0.0'
+        'yeoman-generator': '^0.24.1',
+        chalk: '^1.1.3',
+        yosay: '^1.2.1'
       },
       devDependencies: {
-        'yeoman-test': '^1.0.0',
-        'yeoman-assert': '^2.0.0'
+        'yeoman-test': '^1.5.1',
+        'yeoman-assert': '^2.2.1'
       }
     });
     pkg.keywords = pkg.keywords || [];
