@@ -1,6 +1,6 @@
 'use strict';
 var path = require('path');
-var generators = require('yeoman-generator');
+var Generator = require('yeoman-generator');
 var askName = require('inquirer-npm-name');
 var _ = require('lodash');
 var extend = require('deep-extend');
@@ -12,12 +12,12 @@ function makeGeneratorName(name) {
   return name;
 }
 
-module.exports = generators.Base.extend({
-  initializing: function () {
+module.exports = class extends Generator {
+  initializing() {
     this.props = {};
-  },
+  }
 
-  prompting: function () {
+  prompting() {
     return askName({
       name: 'name',
       message: 'Your generator name',
@@ -29,9 +29,9 @@ module.exports = generators.Base.extend({
     }, this).then(function (props) {
       this.props.name = props.name;
     }.bind(this));
-  },
+  }
 
-  default: function () {
+  default() {
     if (path.basename(this.destinationPath()) !== this.props.name) {
       this.log(
         'Your generator must be inside a folder named ' + this.props.name + '\n' +
@@ -64,9 +64,9 @@ module.exports = generators.Base.extend({
     }, {
       local: require.resolve('../subgenerator')
     });
-  },
+  }
 
-  writing: function () {
+  writing() {
     var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     extend(pkg, {
       dependencies: {
@@ -83,9 +83,9 @@ module.exports = generators.Base.extend({
     pkg.keywords.push('yeoman-generator');
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-  },
+  }
 
-  install: function () {
+  install() {
     this.installDependencies({bower: false});
   }
-});
+};
