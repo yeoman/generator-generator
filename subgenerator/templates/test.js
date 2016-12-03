@@ -3,9 +3,9 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('<%- generatorName %>:<%- namespace %>', function () {
+describe('<%- generatorName %>:<%- name %>', function () {
   before(function () {
-    return helpers.run(path.join(__dirname, '../generators/<%- namespace %>'))
+    return helpers.run(path.join(__dirname, '../generators/<%- name %>'))
       .withPrompts({someAnswer: true})
       .toPromise();
   });

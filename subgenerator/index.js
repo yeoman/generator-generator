@@ -7,10 +7,15 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('namespace', {
+    this.log('arguments', arguments);
+    this.log('args', args);
+    this.log('opts', opts);
+    this.log(' this.options.name', this.options.name);
+
+    this.option('name', {
       type: String,
       required: true,
-      desc: 'Generator namespace'
+      desc: 'Generator name'
     });
   }
 
@@ -19,7 +24,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('index.js'),
-      this.destinationPath(path.join('generators', this.options.namespace, 'index.js')),
+      this.destinationPath(path.join('generators', this.options.name, 'index.js')),
       {
         // Escape apostrophes from superb to not conflict with JS strings
         superb: superb().replace('\'', '\\\''),
@@ -29,14 +34,14 @@ module.exports = class extends Generator {
 
     this.fs.copy(
       this.templatePath('templates/**'),
-      this.destinationPath(path.join('generators', this.options.namespace, 'templates'))
+      this.destinationPath(path.join('generators', this.options.name, 'templates'))
     );
 
     this.fs.copyTpl(
       this.templatePath('test.js'),
-      this.destinationPath('test/' + this.options.namespace + '.js'),
+      this.destinationPath('test/' + this.options.name + '.js'),
       {
-        namespace: this.options.namespace,
+        name: this.options.name,
         generatorName: generatorName
       }
     );
