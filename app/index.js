@@ -43,7 +43,7 @@ module.exports = class extends Generator {
 
     var readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
-    this.composeWith(require.resolve('generator-node/generators/app/index.js'), {
+    this.composeWith(require.resolve('generator-node/generators/app'), {
       babel: false,
       boilerplate: false,
       name: this.props.name,
@@ -55,7 +55,7 @@ module.exports = class extends Generator {
       })
     });
 
-    this.composeWith('generator:subgenerator', {
+    this.composeWith(require.resolve('../subgenerator'), {
       arguments: ['app']
     });
   }
