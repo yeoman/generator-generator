@@ -43,26 +43,20 @@ module.exports = class extends Generator {
 
     var readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
-    this.composeWith('node:app', {
-      options: {
-        babel: false,
-        boilerplate: false,
-        name: this.props.name,
-        projectRoot: 'generators',
-        skipInstall: this.options.skipInstall,
-        readme: readmeTpl({
-          generatorName: this.props.name,
-          yoName: this.props.name.replace('generator-', '')
-        })
-      }
-    }, {
-      local: require('generator-node').app
+    this.composeWith(require.resolve('generator-node/generators/app/index.js'), {
+      babel: false,
+      boilerplate: false,
+      name: this.props.name,
+      projectRoot: 'generators',
+      skipInstall: this.options.skipInstall,
+      readme: readmeTpl({
+        generatorName: this.props.name,
+        yoName: this.props.name.replace('generator-', '')
+      })
     });
 
     this.composeWith('generator:subgenerator', {
       arguments: ['app']
-    }, {
-      local: require.resolve('../subgenerator')
     });
   }
 
