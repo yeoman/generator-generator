@@ -3,8 +3,8 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-module.exports = class extends Generator {
-  prompting() {
+module.exports = Generator.extend({
+  prompting: function () {
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the <%- superb %> ' + chalk.red('<%= generatorName %>') + ' generator!'
@@ -21,16 +21,16 @@ module.exports = class extends Generator {
       // To access props later use this.props.someAnswer;
       this.props = props;
     }.bind(this));
-  }
+  },
 
-  writing() {
+  writing: function () {
     this.fs.copy(
       this.templatePath('dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
     );
-  }
+  },
 
-  install() {
+  install: function () {
     this.installDependencies();
   }
-};
+});
