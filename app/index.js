@@ -62,15 +62,17 @@ module.exports = class extends Generator {
 
   writing() {
     var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    var generatorGeneratorPkg = this.fs.readJSON(path.normalize(this.resolved.replace(/app\/index.js/, 'package.json')));
+
     extend(pkg, {
       dependencies: {
-        'yeoman-generator': '^1.0.0',
-        chalk: '^1.1.3',
-        yosay: '^1.2.1'
+        'yeoman-generator': generatorGeneratorPkg.dependencies['yeoman-generator'],
+        chalk: generatorGeneratorPkg.dependencies.chalk,
+        yosay: generatorGeneratorPkg.dependencies.yosay
       },
       devDependencies: {
-        'yeoman-test': '^1.6.0',
-        'yeoman-assert': '^2.2.1'
+        'yeoman-test': generatorGeneratorPkg.devDependencies['yeoman-test'],
+        'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert']
       }
     });
     pkg.keywords = pkg.keywords || [];
