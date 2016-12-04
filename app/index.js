@@ -62,7 +62,7 @@ module.exports = class extends Generator {
 
   writing() {
     var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    var generatorGeneratorPkg = this.fs.readJSON(path.normalize(this.resolved.replace(/app\/index.js/, 'package.json')));
+    var generatorGeneratorPkg = require('../package.json');
 
     extend(pkg, {
       dependencies: {
