@@ -1,10 +1,10 @@
 'use strict';
-var path = require('path');
-var Generator = require('yeoman-generator');
-var askName = require('inquirer-npm-name');
-var _ = require('lodash');
-var extend = require('deep-extend');
-var mkdirp = require('mkdirp');
+const path = require('path');
+const Generator = require('yeoman-generator');
+const askName = require('inquirer-npm-name');
+const _ = require('lodash');
+const extend = require('deep-extend');
+const mkdirp = require('mkdirp');
 
 function makeGeneratorName(name) {
   name = _.kebabCase(name);
@@ -23,12 +23,12 @@ module.exports = class extends Generator {
       message: 'Your generator name',
       default: makeGeneratorName(path.basename(process.cwd())),
       filter: makeGeneratorName,
-      validate: function (str) {
+      validate: str => {
         return str.length > 'generator-'.length;
       }
-    }, this).then(function (props) {
+    }, this).then(props => {
       this.props.name = props.name;
-    }.bind(this));
+    });
   }
 
   default() {
@@ -41,7 +41,7 @@ module.exports = class extends Generator {
       this.destinationRoot(this.destinationPath(this.props.name));
     }
 
-    var readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
+    const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
     this.composeWith(require.resolve('generator-node/generators/app'), {
       babel: false,
@@ -61,8 +61,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    var pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    var generatorGeneratorPkg = require('../package.json');
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const generatorGeneratorPkg = require('../package.json');
 
     extend(pkg, {
       dependencies: {

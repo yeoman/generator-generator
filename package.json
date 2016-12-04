@@ -47,8 +47,7 @@
     "mocha": "^3.2.0",
     "mockery": "^2.0.0",
     "yeoman-assert": "^2.2.1",
-    "yeoman-test": "^1.6.0",
-    "pinkie-promise": "^2.0.1"
+    "yeoman-test": "^1.6.0"
   },
   "license": "MIT"
 }

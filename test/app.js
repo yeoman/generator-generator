@@ -1,32 +1,31 @@
 'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var mockery = require('mockery');
-var Promise = require('pinkie-promise');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const mockery = require('mockery');
 
-describe('generator:app', function () {
-  before(function () {
+describe('generator:app', () => {
+  before(() => {
     mockery.enable({
       warnOnReplace: false,
       warnOnUnregistered: false
     });
 
-    mockery.registerMock('superb', function () {
+    mockery.registerMock('superb', () => {
       return 'cat\'s meow';
     });
 
-    mockery.registerMock('npm-name', function () {
+    mockery.registerMock('npm-name', () => {
       return Promise.resolve(true);
     });
   });
 
-  after(function () {
+  after(() => {
     mockery.disable();
   });
 
-  describe('defaults', function () {
-    before(function () {
+  describe('defaults', () => {
+    before(() => {
       return helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
           name: 'generator-temp',
@@ -42,12 +41,12 @@ describe('generator:app', function () {
         .toPromise();
     });
 
-    it('created and CD into a folder named like the generator', function () {
+    it('created and CD into a folder named like the generator', () => {
       assert.equal(path.basename(process.cwd()), 'generator-temp');
     });
 
-    it('creates files', function () {
-      var expected = [
+    it('creates files', () => {
+      const expected = [
         'README.md',
         'package.json',
         'generators/app/index.js',
@@ -58,7 +57,7 @@ describe('generator:app', function () {
       assert.file(expected);
     });
 
-    it('fills package.json with correct information', function () {
+    it('fills package.json with correct information', () => {
       assert.JSONFileContent('package.json', {
         name: 'generator-temp',
         dependencies: {
@@ -74,7 +73,7 @@ describe('generator:app', function () {
       });
     });
 
-    it('fills the README with project data', function () {
+    it('fills the README with project data', () => {
       assert.fileContent('README.md', '# generator-temp');
       assert.fileContent('README.md', 'npm install -g yo');
       assert.fileContent('README.md', 'npm install -g generator-temp');
