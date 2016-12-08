@@ -17,8 +17,8 @@ describe('generator:subgenerator', () => {
     });
 
     return helpers.run(path.join(__dirname, '../subgenerator'))
+      .withArguments(['foo'])
       .withOptions({
-        name: 'foo',
         force: true
       })
       .inTmpDir(tmpDir => {

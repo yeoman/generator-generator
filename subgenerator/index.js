@@ -7,10 +7,10 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('name', {
+    this.argument('name', {
       type: String,
       required: true,
-      desc: 'Generator name'
+      description: 'Generator name'
     });
   }
 

@@ -56,7 +56,7 @@ module.exports = class extends Generator {
     });
 
     this.composeWith(require.resolve('../subgenerator'), {
-      name: 'app'
+      arguments: ['app']
     });
   }
 
