@@ -1,44 +1,44 @@
 'use strict';
-var path = require('path');
-var generators = require('yeoman-generator');
-var superb = require('superb');
+const path = require('path');
+const Generator = require('yeoman-generator');
+const superb = require('superb');
 
-module.exports = generators.Base.extend({
-  constructor: function () {
-    generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
 
-    this.argument('namespace', {
+    this.argument('name', {
       type: String,
       required: true,
-      description: 'Generator namespace'
+      description: 'Generator name'
     });
-  },
+  }
 
-  writing: function () {
-    var generatorName = this.fs.readJSON(this.destinationPath('package.json')).name;
+  writing() {
+    const generatorName = this.fs.readJSON(this.destinationPath('package.json')).name;
 
     this.fs.copyTpl(
       this.templatePath('index.js'),
-      this.destinationPath(path.join('generators', this.namespace, 'index.js')),
+      this.destinationPath(path.join('generators', this.options.name, 'index.js')),
       {
         // Escape apostrophes from superb to not conflict with JS strings
         superb: superb().replace('\'', '\\\''),
-        generatorName: generatorName
+        generatorName
       }
     );
 
     this.fs.copy(
       this.templatePath('templates/**'),
-      this.destinationPath(path.join('generators', this.namespace, 'templates'))
+      this.destinationPath(path.join('generators', this.options.name, 'templates'))
     );
 
     this.fs.copyTpl(
       this.templatePath('test.js'),
-      this.destinationPath('test/' + this.namespace + '.js'),
+      this.destinationPath('test/' + this.options.name + '.js'),
       {
-        namespace: this.namespace,
-        generatorName: generatorName
+        name: this.options.name,
+        generatorName
       }
     );
   }
-});
+};
