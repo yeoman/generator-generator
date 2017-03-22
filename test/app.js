@@ -63,7 +63,7 @@ describe('generator:app', () => {
         dependencies: {
           'yeoman-generator': '^1.0.0',
           chalk: '^1.1.3',
-          yosay: '^1.2.1'
+          yosay: '^2.0.0'
         },
         devDependencies: {
           'yeoman-test': '^1.6.0',
