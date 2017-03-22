@@ -8,11 +8,12 @@ const istanbul = require('gulp-istanbul');
 const nsp = require('gulp-nsp');
 const plumber = require('gulp-plumber');
 const coveralls = require('gulp-coveralls');
+const eslintConfig = require('./.eslintrc.json');
 
 gulp.task('static', () => {
   return gulp.src('**/*.js')
     .pipe(excludeGitignore())
-    .pipe(eslint())
+    .pipe(eslint({baseConfig: eslintConfig}))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
