@@ -3,14 +3,13 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('<%- generatorName %>:<%- name %>', function () {
-  before(function () {
+describe('<%- generatorName %>:<%- name %>', () => {
+  before(() => {
     return helpers.run(path.join(__dirname, '../generators/<%- name %>'))
-      .withPrompts({someAnswer: true})
-      .toPromise();
+      .withPrompts({someAnswer: true});
   });
 
-  it('creates files', function () {
+  it('creates files', () => {
     assert.file([
       'dummyfile.txt'
     ]);

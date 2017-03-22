@@ -26,8 +26,7 @@ describe('generator:subgenerator', () => {
           path.join(tmpDir, 'package.json'),
           '{"name": "generator-foo", "files":[]}'
         );
-      })
-      .toPromise();
+      });
   });
 
   after(() => {
