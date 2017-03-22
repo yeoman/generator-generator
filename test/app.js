@@ -58,16 +58,16 @@ describe('generator:app', () => {
     });
 
     it('fills package.json with correct information', () => {
-      assert.JSONFileContent('package.json', {
+      assert.JSONFileContent('package.json', { // eslint-disable-line new-cap
         name: 'generator-temp',
         dependencies: {
           'yeoman-generator': generatorGeneratorPkg.dependencies['yeoman-generator'],
           chalk: generatorGeneratorPkg.dependencies.chalk,
-          yosay: generatorGeneratorPkg.dependencies.yosay,
+          yosay: generatorGeneratorPkg.dependencies.yosay
         },
         devDependencies: {
           'yeoman-test': generatorGeneratorPkg.devDependencies['yeoman-test'],
-          'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert'],
+          'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert']
         },
         keywords: ['yeoman-generator']
       });

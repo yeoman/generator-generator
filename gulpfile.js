@@ -8,7 +8,7 @@ const istanbul = require('gulp-istanbul');
 const nsp = require('gulp-nsp');
 const plumber = require('gulp-plumber');
 const coveralls = require('gulp-coveralls');
-const eslintConfig = require('./.eslintrc.json');
+const eslintConfig = require('./package.json').eslintConfig;
 
 gulp.task('static', () => {
   return gulp.src('**/*.js')

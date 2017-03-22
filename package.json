@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "eslint": "^3.15.0",
+    "eslint-config-xo-space": "^0.16.0",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-eslint": "^3.0.1",
@@ -49,6 +50,12 @@
     "mockery": "^2.0.0",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
   },
   "license": "MIT"
 }
