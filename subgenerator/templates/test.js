@@ -4,7 +4,7 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('<%- generatorName %>:<%- name %>', () => {
-  before(() => {
+  beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/<%- name %>'))
       .withPrompts({someAnswer: true});
   });

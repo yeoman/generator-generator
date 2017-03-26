@@ -51,7 +51,7 @@ describe('generator:app', () => {
         'package.json',
         'generators/app/index.js',
         'generators/app/templates/dummyfile.txt',
-        'test/app.js'
+        '__tests__/app.js'
       ];
 
       assert.file(expected);
