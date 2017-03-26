@@ -34,7 +34,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('test.js'),
-      this.destinationPath('test/' + this.options.name + '.js'),
+      this.destinationPath('__tests__/' + this.options.name + '.js'),
       {
         name: this.options.name,
         generatorName

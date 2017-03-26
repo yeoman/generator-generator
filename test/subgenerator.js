@@ -37,13 +37,13 @@ describe('generator:subgenerator', () => {
     assert.file([
       'generators/foo/index.js',
       'generators/foo/templates/dummyfile.txt',
-      'test/foo.js'
+      '__tests__/foo.js'
     ]);
   });
 
   it('configures the test file', () => {
-    assert.fileContent('test/foo.js', 'describe(\'generator-foo:foo');
-    assert.fileContent('test/foo.js', '../generators/foo');
+    assert.fileContent('__tests__/foo.js', 'describe(\'generator-foo:foo');
+    assert.fileContent('__tests__/foo.js', '../generators/foo');
   });
 
   it('escapes possible apostrophes from superb', () => {
