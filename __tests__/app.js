@@ -4,17 +4,10 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const generatorGeneratorPkg = require('../package.json');
 
+jest.mock('superb', () => () => 'cat\'s meow');
+jest.mock('npm-name', () => () => Promise.resolve(true));
+
 describe('generator:app', () => {
-  beforeEach(() => {
-    jest.mock('superb', () => {
-      return 'cat\'s meow';
-    });
-
-    jest.mock('npm-name', () => {
-      return () => Promise.resolve(true);
-    });
-  });
-
   describe('defaults', () => {
     beforeEach(() => {
       return helpers.run(path.join(__dirname, '../app'))

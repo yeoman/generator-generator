@@ -4,12 +4,10 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs');
 
+jest.mock('superb', () => () => 'cat\'s meow');
+
 describe('generator:subgenerator', () => {
   beforeEach(() => {
-    jest.mock('superb', () => {
-      return 'cat\'s meow';
-    });
-
     return helpers.run(path.join(__dirname, '../subgenerator'))
       .withArguments(['foo'])
       .withOptions({
