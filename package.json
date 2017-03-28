@@ -18,8 +18,9 @@
   ],
   "repository": "yeoman/generator-generator",
   "scripts": {
-    "test": "gulp",
-    "prepublish": "gulp prepublish"
+    "test": "jest",
+    "pretest": "eslint . --fix",
+    "prepublish": "nsp check"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -36,27 +37,26 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.15.0",
+    "coveralls": "^2.12.0",
+    "eslint": "^3.18.0",
     "eslint-config-xo-space": "^0.16.0",
-    "gulp": "^3.9.1",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-eslint": "^3.0.1",
-    "gulp-exclude-gitignore": "^1.1.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-nsp": "^2.4.2",
-    "gulp-plumber": "^1.1.0",
-    "mocha": "^3.2.0",
-    "mockery": "^2.0.0",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
+    "nsp": "^2.6.3",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   },
   "eslintConfig": {
     "extends": "xo-space",
     "env": {
-      "mocha": true,
       "jest": true
     }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "templates"
+    ]
   },
   "license": "MIT"
 }

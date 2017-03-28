@@ -3,16 +3,10 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs');
-const mockery = require('mockery');
 
 describe('generator:subgenerator', () => {
-  before(() => {
-    mockery.enable({
-      warnOnReplace: false,
-      warnOnUnregistered: false
-    });
-
-    mockery.registerMock('superb', () => {
+  beforeEach(() => {
+    jest.mock('superb', () => {
       return 'cat\'s meow';
     });
 
@@ -27,10 +21,6 @@ describe('generator:subgenerator', () => {
           '{"name": "generator-foo", "files":[]}'
         );
       });
-  });
-
-  after(() => {
-    mockery.disable();
   });
 
   it('creates files', () => {

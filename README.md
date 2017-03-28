@@ -36,10 +36,9 @@ Scaffolds out a complete generator directory structure for you:
 ├── .travis.yml
 ├── .yo-rc.json
 ├── package.json
-├── gulpfile.js
 ├── README.md
 ├── LICENSE
-└── test/
+└── __tests__/
     └── app.js
 ```
 
