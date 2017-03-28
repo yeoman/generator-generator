@@ -19,7 +19,7 @@
   "repository": "yeoman/generator-generator",
   "scripts": {
     "test": "jest",
-    "pretest": "eslint . --fix",
+    "pretest": "eslint . --ignore-path=.gitignore --fix",
     "prepublish": "nsp check"
   },
   "engines": {
