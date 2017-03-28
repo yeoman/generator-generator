@@ -73,6 +73,9 @@ module.exports = class extends Generator {
       devDependencies: {
         'yeoman-test': generatorGeneratorPkg.devDependencies['yeoman-test'],
         'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert']
+      },
+      jest: {
+        testPathIgnorePatterns: ['templates']
       }
     });
     pkg.keywords = pkg.keywords || [];

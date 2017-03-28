@@ -10,4 +10,4 @@ Example:
 
         generator/app/index.js: Main generator script
         generator/app/templates/: Templates for files created by your generator
-        test/: Unit tests for your generator
+        __test__/: Unit tests for your generator

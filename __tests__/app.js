@@ -2,31 +2,14 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
-const mockery = require('mockery');
 const generatorGeneratorPkg = require('../package.json');
 
+jest.mock('superb', () => () => 'cat\'s meow');
+jest.mock('npm-name', () => () => Promise.resolve(true));
+
 describe('generator:app', () => {
-  before(() => {
-    mockery.enable({
-      warnOnReplace: false,
-      warnOnUnregistered: false
-    });
-
-    mockery.registerMock('superb', () => {
-      return 'cat\'s meow';
-    });
-
-    mockery.registerMock('npm-name', () => {
-      return Promise.resolve(true);
-    });
-  });
-
-  after(() => {
-    mockery.disable();
-  });
-
   describe('defaults', () => {
-    before(() => {
+    beforeEach(() => {
       return helpers.run(path.join(__dirname, '../app'))
         .withPrompts({
           name: 'generator-temp',
