@@ -50,7 +50,7 @@ gulp.task('test', ['pre-test'], cb => {
 
 gulp.task('coveralls', ['test'], () => {
   if (!process.env.CI) {
-    return;
+    return undefined;
   }
 
   return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
