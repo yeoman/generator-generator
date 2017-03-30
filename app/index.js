@@ -82,6 +82,11 @@ module.exports = class extends Generator {
     pkg.keywords.push('yeoman-generator');
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+
+    this.fs.copy(
+      this.templatePath('eslintignore'),
+      this.destinationPath('.eslintignore')
+    );
   }
 
   install() {
