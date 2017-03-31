@@ -44,7 +44,6 @@ module.exports = class extends Generator {
     const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
     this.composeWith(require.resolve('generator-node/generators/app'), {
-      babel: false,
       boilerplate: false,
       name: this.props.name,
       projectRoot: 'generators',
