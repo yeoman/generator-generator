@@ -1250,9 +1250,9 @@ generator-license@^5.1.0:
     git-config "^0.0.7"
     yeoman-generator "^1.0.1"
 
-generator-node@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/generator-node/-/generator-node-2.0.1.tgz#af10b89c318051f9199645c2bdb6365eb3a8502e"
+generator-node@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/generator-node/-/generator-node-2.1.0.tgz#bd85aa714b32f33f38e4c40807716eca4ae2eab3"
   dependencies:
     chalk "^1.1.3"
     generator-jest "^1.2.0"
@@ -2450,10 +2450,6 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-mockery@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/mockery/-/mockery-2.0.0.tgz#0569a11a1848461fdc347cf8cca2df2f3129bc03"
 
 moment@2.x.x:
   version "2.18.1"
