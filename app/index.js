@@ -83,6 +83,10 @@ module.exports = class extends Generator {
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
+  conflicts() {
+    this.fs.append(this.destinationPath('.eslintignore'), '**/templates\n');
+  }
+
   install() {
     this.installDependencies({bower: false});
   }

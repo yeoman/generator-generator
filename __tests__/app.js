@@ -30,6 +30,7 @@ describe('generator:app', () => {
 
     it('creates files', () => {
       const expected = [
+        '.eslintignore',
         'README.md',
         'package.json',
         'generators/app/index.js',
@@ -62,6 +63,10 @@ describe('generator:app', () => {
       assert.fileContent('README.md', 'npm install -g generator-temp');
       assert.fileContent('README.md', 'yo temp');
       assert.fileContent('README.md', 'yeoman/generator-temp');
+    });
+
+    it('fills the .eslintignore with correct content', () => {
+      assert.fileContent('.eslintignore', '**/templates\n');
     });
   });
 });
