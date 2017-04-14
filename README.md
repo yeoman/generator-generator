@@ -30,14 +30,14 @@ Scaffolds out a complete generator directory structure for you:
 │       └── templates/
 │           └── dummyfile.txt
 ├── .editorconfig
+├── .eslintignore
 ├── .gitattributes
 ├── .gitignore
-├── .eslintrc
 ├── .travis.yml
 ├── .yo-rc.json
-├── package.json
-├── README.md
 ├── LICENSE
+├── README.md
+├── package.json
 └── __tests__/
     └── app.js
 ```
