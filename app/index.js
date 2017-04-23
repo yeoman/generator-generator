@@ -87,7 +87,4 @@ module.exports = class extends Generator {
     this.fs.append(this.destinationPath('.eslintignore'), '**/templates\n');
   }
 
-  install() {
-    this.installDependencies({bower: false});
-  }
 };
