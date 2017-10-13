@@ -47,7 +47,7 @@
     "yeoman-test": "^1.6.0"
   },
   "eslintConfig": {
-    "extends": "xo-space",
+    "extends": "xo-space/esnext",
     "env": {
       "jest": true,
       "node": true
