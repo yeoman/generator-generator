@@ -88,6 +88,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies({bower: false});
+    this.installDependencies({ bower: false });
   }
 };
