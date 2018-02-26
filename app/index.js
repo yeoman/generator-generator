@@ -18,15 +18,18 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    return askName({
-      name: 'name',
-      message: 'Your generator name',
-      default: makeGeneratorName(path.basename(process.cwd())),
-      filter: makeGeneratorName,
-      validate: str => {
-        return str.length > 'generator-'.length;
-      }
-    }, this).then(props => {
+    return askName(
+      {
+        name: 'name',
+        message: 'Your generator name',
+        default: makeGeneratorName(path.basename(process.cwd())),
+        filter: makeGeneratorName,
+        validate: str => {
+          return str.length > 'generator-'.length;
+        }
+      },
+      this
+    ).then(props => {
       this.props.name = props.name;
     });
   }
@@ -34,8 +37,9 @@ module.exports = class extends Generator {
   default() {
     if (path.basename(this.destinationPath()) !== this.props.name) {
       this.log(
-        'Your generator must be inside a folder named ' + this.props.name + '\n' +
-        'I\'ll automatically create this folder.'
+        `Your generator must be inside a folder named ${
+          this.props.name
+        }\nI'll automatically create this folder.`
       );
       mkdirp(this.props.name);
       this.destinationRoot(this.destinationPath(this.props.name));

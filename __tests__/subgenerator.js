@@ -4,11 +4,12 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs');
 
-jest.mock('superb', () => () => 'cat\'s meow');
+jest.mock('superb', () => () => "cat's meow");
 
 describe('generator:subgenerator', () => {
   beforeEach(() => {
-    return helpers.run(path.join(__dirname, '../subgenerator'))
+    return helpers
+      .run(path.join(__dirname, '../subgenerator'))
       .withArguments(['foo'])
       .withOptions({
         force: true
@@ -30,11 +31,11 @@ describe('generator:subgenerator', () => {
   });
 
   it('configures the test file', () => {
-    assert.fileContent('__tests__/foo.js', 'describe(\'generator-foo:foo');
+    assert.fileContent('__tests__/foo.js', "describe('generator-foo:foo");
     assert.fileContent('__tests__/foo.js', '../generators/foo');
   });
 
   it('escapes possible apostrophes from superb', () => {
-    assert.fileContent('generators/foo/index.js', 'Welcome to the cat\\\'s meow');
+    assert.fileContent('generators/foo/index.js', "Welcome to the cat\\'s meow");
   });
 });
