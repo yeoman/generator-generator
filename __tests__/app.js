@@ -4,24 +4,23 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const generatorGeneratorPkg = require('../package.json');
 
-jest.mock('superb', () => () => 'cat\'s meow');
+jest.mock('superb', () => () => "cat's meow");
 jest.mock('npm-name', () => () => Promise.resolve(true));
 
 describe('generator:app', () => {
   describe('defaults', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../app'))
-        .withPrompts({
-          name: 'generator-temp',
-          description: 'A node generator',
-          homepage: 'http://yeoman.io',
-          githubAccount: 'yeoman',
-          authorName: 'The Yeoman Team',
-          authorEmail: 'hi@yeoman.io',
-          authorUrl: 'http://yeoman.io',
-          keywords: [],
-          license: 'MIT'
-        });
+      return helpers.run(path.join(__dirname, '../app')).withPrompts({
+        name: 'generator-temp',
+        description: 'A node generator',
+        homepage: 'http://yeoman.io',
+        githubAccount: 'yeoman',
+        authorName: 'The Yeoman Team',
+        authorEmail: 'hi@yeoman.io',
+        authorUrl: 'http://yeoman.io',
+        keywords: [],
+        license: 'MIT'
+      });
     });
 
     it('created and CD into a folder named like the generator', () => {
@@ -42,7 +41,8 @@ describe('generator:app', () => {
     });
 
     it('fills package.json with correct information', () => {
-      assert.JSONFileContent('package.json', { // eslint-disable-line new-cap
+      // eslint-disable-next-line new-cap
+      assert.JSONFileContent('package.json', {
         name: 'generator-temp',
         dependencies: {
           'yeoman-generator': generatorGeneratorPkg.dependencies['yeoman-generator'],

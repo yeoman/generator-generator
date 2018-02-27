@@ -39,25 +39,37 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^4.8.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-xo-space": "^0.16.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "nsp": "^2.8.1",
+    "prettier": "^1.10.2",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
   },
   "eslintConfig": {
-    "extends": "xo-space/esnext",
+    "extends": [
+      "xo-space/esnext",
+      "prettier"
+    ],
     "env": {
       "jest": true,
       "node": true
     },
     "rules": {
-      "object-curly-spacing": [
+      "prettier/prettier": [
         "error",
-        "always"
+        {
+          "singleQuote": true,
+          "printWidth": 90
+        }
       ]
-    }
+    },
+    "plugins": [
+      "prettier"
+    ]
   },
   "jest": {
     "testEnvironment": "node",
