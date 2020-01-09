@@ -20,7 +20,7 @@
   "scripts": {
     "test": "jest",
     "pretest": "eslint . --fix",
-    "prepublish": "yarn audit"
+    "prepublishOnly": "yarn audit"
   },
   "engines": {
     "node": ">=4.0.0"
