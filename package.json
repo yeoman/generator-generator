@@ -43,8 +43,8 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-xo-space": "^0.20.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "jest": "^23.5.0",
-    "jest-cli": "^23.5.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
     "prettier": "^1.10.2",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
