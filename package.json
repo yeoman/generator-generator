@@ -33,7 +33,7 @@
     "lint-staged": "^7.2.2",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
-    "superb": "^3.0.0",
+    "superb": "^4.0.0",
     "yeoman-generator": "^3.1.1",
     "yosay": "^2.0.1"
   },

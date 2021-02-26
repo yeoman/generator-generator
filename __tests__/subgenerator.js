@@ -4,7 +4,7 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs');
 
-jest.mock('superb', () => () => "cat's meow");
+jest.mock('superb', () => ({ random: () => "cat's meow" }));
 
 describe('generator:subgenerator', () => {
   beforeEach(() => {

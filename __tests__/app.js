@@ -4,7 +4,7 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const generatorGeneratorPkg = require('../package.json');
 
-jest.mock('superb', () => () => "cat's meow");
+jest.mock('superb', () => ({ random: () => "cat's meow" }));
 jest.mock('npm-name', () => () => Promise.resolve(true));
 
 describe('generator:app', () => {

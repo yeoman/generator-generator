@@ -22,7 +22,7 @@ module.exports = class extends Generator {
       this.destinationPath(path.join('generators', this.options.name, 'index.js')),
       {
         // Escape apostrophes from superb to not conflict with JS strings
-        superb: superb().replace("'", "\\'"),
+        superb: superb.random().replace("'", "\\'"),
         generatorName
       }
     );
