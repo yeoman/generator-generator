@@ -29,7 +29,7 @@
     "chalk": "^2.1.0",
     "deep-extend": "^0.6.0",
     "generator-node": "^2.3.0",
-    "inquirer-npm-name": "^3.0.0",
+    "inquirer-npm-name": "^4.0.0",
     "lint-staged": "^7.2.2",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
