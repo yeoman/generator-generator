@@ -46,7 +46,7 @@
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
     "prettier": "^1.10.2",
-    "yeoman-assert": "^3.1.0",
+    "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.7.0"
   },
   "eslintConfig": {
