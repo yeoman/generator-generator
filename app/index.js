@@ -39,7 +39,7 @@ module.exports = class extends Generator {
       this.log(
         `Your generator must be inside a folder named ${this.props.name}\nI'll automatically create this folder.`
       );
-      mkdirp(this.props.name);
+      mkdirp.sync(this.props.name);
       this.destinationRoot(this.destinationPath(this.props.name));
     }
 
