@@ -88,8 +88,4 @@ module.exports = class extends Generator {
   conflicts() {
     this.fs.append(this.destinationPath('.eslintignore'), '**/templates\n');
   }
-
-  install() {
-    this.installDependencies({ bower: false });
-  }
 };
