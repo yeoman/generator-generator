@@ -69,4 +69,38 @@ describe('generator:app', () => {
       assert.fileContent('.eslintignore', '**/templates\n');
     });
   });
+
+  describe('scoped name', () => {
+    beforeEach(() => {
+      return helpers.run(path.join(__dirname, '../app')).withPrompts({
+        name: '@yeoman/generator-temp',
+        description: 'A node generator',
+        homepage: 'http://yeoman.io',
+        githubAccount: 'yeoman',
+        authorName: 'The Yeoman Team',
+        authorEmail: 'hi@yeoman.io',
+        authorUrl: 'http://yeoman.io',
+        keywords: [],
+        license: 'MIT'
+      });
+    });
+
+    it('created and CD into a folder named like the generator', () => {
+      assert.equal(path.basename(process.cwd()), 'generator-temp');
+    });
+
+    it('fills package.json with correct information', () => {
+      // eslint-disable-next-line new-cap
+      assert.JSONFileContent('package.json', {
+        name: '@yeoman/generator-temp'
+      });
+    });
+
+    it('fills the README with project data', () => {
+      assert.fileContent('README.md', '# @yeoman/generator-temp');
+      assert.fileContent('README.md', 'npm install -g yo');
+      assert.fileContent('README.md', 'npm install -g @yeoman/generator-temp');
+      assert.fileContent('README.md', 'yo @yeoman/temp');
+    });
+  });
 });

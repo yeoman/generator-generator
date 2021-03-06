@@ -6,10 +6,27 @@ const _ = require('lodash');
 const extend = require('deep-extend');
 const mkdirp = require('mkdirp');
 
+function parseScopedName(name) {
+  const nameFragments = name.split('/');
+  const parseResult = {
+    scopeName: '',
+    localName: name
+  };
+
+  if (nameFragments.length > 1) {
+    parseResult.scopeName = nameFragments[0];
+    parseResult.localName = nameFragments[1];
+  }
+
+  return parseResult;
+}
+
 function makeGeneratorName(name) {
+  const parsedName = parseScopedName(name);
+  name = parsedName.localName;
   name = _.kebabCase(name);
   name = name.indexOf('generator-') === 0 ? name : 'generator-' + name;
-  return name;
+  return parsedName.scopeName ? `${parsedName.scopeName}/${name}` : name;
 }
 
 module.exports = class extends Generator {
@@ -31,16 +48,17 @@ module.exports = class extends Generator {
       this
     ).then(props => {
       this.props.name = props.name;
+      Object.assign(this.props, parseScopedName(props.name));
     });
   }
 
   default() {
-    if (path.basename(this.destinationPath()) !== this.props.name) {
+    if (path.basename(this.destinationPath()) !== this.props.localName) {
       this.log(
-        `Your generator must be inside a folder named ${this.props.name}\nI'll automatically create this folder.`
+        `Your generator must be inside a folder named ${this.props.localName}\nI'll automatically create this folder.`
       );
-      mkdirp.sync(this.props.name);
-      this.destinationRoot(this.destinationPath(this.props.name));
+      mkdirp.sync(this.props.localName);
+      this.destinationRoot(this.destinationPath(this.props.localName));
     }
 
     const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
