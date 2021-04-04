@@ -8,7 +8,7 @@
 
 ## Getting started
 
-- Install: `npm install -g generator-generator`
+- Install: `npm install -g yo generator-generator`
 - Run: `yo generator`
 
 
