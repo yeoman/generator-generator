@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,5 +22,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm ci
-      - run: npm run test
+      - name: 📦 Install dependencies
+        run: npm ci
+      - name: 🧪 Run tests
+        run: npm run test
+  coveralls:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:  
+      - name: 📈 Report code coverage
+        uses: coverallsapp/github-action@348853a262cc37fa2f8abe2827729d193cbb00dc # v1.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
