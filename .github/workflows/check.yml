@@ -33,4 +33,5 @@ jobs:
       - name: 📈 Report code coverage
         uses: coverallsapp/github-action@348853a262cc37fa2f8abe2827729d193cbb00dc # v1.1.1
         with:
+          path-to-lcov: /coverage/lcov.info	
           github-token: ${{ secrets.GITHUB_TOKEN }}
