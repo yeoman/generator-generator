@@ -14,7 +14,7 @@ RUN \
 	  wget \
     sudo && \
   # install node.js
-  wget https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.gz -O /tmp/node.tar.gz && \
+  wget https://nodejs.org/dist/v18.15.0/node-v18.15.0-linux-x64.tar.gz -O /tmp/node.tar.gz && \
   tar -C /usr/local --strip-components 1 -xzf /tmp/node.tar.gz && \
   # install yeoman
   npm install -g yo && \
