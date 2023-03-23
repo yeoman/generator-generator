@@ -18,7 +18,7 @@
   ],
   "repository": "yeoman/generator-generator",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "pretest": "eslint . --fix",
     "prepublishOnly": "npm audit"
   },
