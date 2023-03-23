@@ -23,7 +23,7 @@
     "prepublishOnly": "npm audit"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
     "chalk": "^2.1.0",
