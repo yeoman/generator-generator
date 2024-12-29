@@ -1,4 +1,3 @@
-
 const path = require('path');
 const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
@@ -66,7 +65,7 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('generator-node/generators/app'), {
       boilerplate: false,
       name: this.props.name,
-      projectRoot: 'generators',
+      projectRoot: 'generators/app',
       skipInstall: this.options.skipInstall,
       readme: readmeTpl({
         generatorName: this.props.name,
