@@ -24,7 +24,7 @@ describe('generator:app', () => {
     });
 
     it('created and CD into a folder named like the generator', () => {
-      assert.equal(path.basename(process.cwd()), 'generator-temp');
+      assert.strictEqual(path.basename(process.cwd()), 'generator-temp');
     });
 
     it('creates files', () => {
@@ -86,7 +86,7 @@ describe('generator:app', () => {
     });
 
     it('created and CD into a folder named like the generator', () => {
-      assert.equal(path.basename(process.cwd()), 'generator-temp');
+      assert.strictEqual(path.basename(process.cwd()), 'generator-temp');
     });
 
     it('fills package.json with correct information', () => {
