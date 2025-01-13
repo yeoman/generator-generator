@@ -53,7 +53,9 @@ describe('generator:app', () => {
           'yeoman-test': generatorGeneratorPkg.devDependencies['yeoman-test'],
           'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert']
         },
-        keywords: ['yeoman-generator']
+        keywords: ['yeoman-generator'],
+        main: 'generators/app/index.js',
+        files: ['generators/app']
       });
     });
 
