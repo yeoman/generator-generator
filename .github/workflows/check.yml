@@ -1,0 +1,36 @@
+name: Check Changes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 19.x]
+    steps:
+      - uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+      - name: Set up Node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: 📦 Install dependencies
+        run: npm ci
+      - name: 🧪 Run tests
+        run: npm run test -- --coverage
+  coveralls:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:  
+      - name: 📈 Report code coverage
+        uses: coverallsapp/github-action@67662d24394fd74bffcf7b462d1b432814159afd # v2.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
