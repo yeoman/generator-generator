@@ -17,6 +17,40 @@
 * `yo generator` shows a wizard for generating a new generator
 * `yo generator:subgenerator <name>` generates a subgenerator with the name `<name>`
 
+## Using Docker
+
+Download the Dockerfile:
+
+```bash
+mkdir docker
+cd docker
+wget https://github.com/yeoman/generator-generator/raw/master/docker/Dockerfile
+```
+
+Build the Docker images:
+
+```bash
+docker build -t yeoman-generator:latest .
+```
+
+Make a folder where you want to generate the generator:
+
+```bash
+mkdir generator
+cd generator
+```
+
+Run the generator from image to generate generator:
+
+```bash
+docker run -it --rm -v $PWD:/home/yeoman/generator yeoman-generator
+```
+
+Run and attach interactive shell to the generator docker container to work from inside the running container:
+
+```bash
+docker run -it --rm -v $PWD:/home/yeoman/generator yeoman-generator /bin/bash
+```
 
 ## What do you get?
 
