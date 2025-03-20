@@ -40,7 +40,7 @@ module.exports = class extends Generator {
         message: 'Your generator name',
         default: makeGeneratorName(path.basename(process.cwd())),
         filter: makeGeneratorName,
-        validate: str => {
+        validate(str) {
           return str.length > 'generator-'.length;
         }
       },
@@ -96,7 +96,7 @@ module.exports = class extends Generator {
         testPathIgnorePatterns: ['templates']
       }
     });
-    pkg.keywords = pkg.keywords || [];
+    pkg.keywords ||= [];
     pkg.keywords.push('yeoman-generator');
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
