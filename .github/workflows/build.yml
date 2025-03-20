@@ -25,8 +25,7 @@ jobs:
       - name: npm ci
         run: npm ci
 
-      - name: npm lint
-        run: npm lint
+      - run: npm run lint
 
   test:
     runs-on: ubuntu-latest
