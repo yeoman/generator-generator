@@ -1,9 +1,11 @@
-const path = require('path');
-const Generator = require('yeoman-generator');
-const askName = require('inquirer-npm-name');
-const _ = require('lodash');
-const extend = require('deep-extend');
-const mkdirp = require('mkdirp');
+import path from 'path';
+import Generator from 'yeoman-generator';
+import askName from 'inquirer-npm-name';
+import _ from 'lodash';
+import extend from 'deep-extend';
+import mkdirp from 'mkdirp';
+
+import generatorGeneratorPkg from '../package.json';
 
 function parseScopedName(name) {
   const nameFragments = name.split('/');
@@ -28,7 +30,7 @@ function makeGeneratorName(name) {
   return parsedName.scopeName ? `${parsedName.scopeName}/${name}` : name;
 }
 
-module.exports = class extends Generator {
+export default class extends Generator {
   initializing() {
     this.props = {};
   }
@@ -62,7 +64,7 @@ module.exports = class extends Generator {
 
     const readmeTpl = _.template(this.fs.read(this.templatePath('README.md')));
 
-    this.composeWith(require.resolve('generator-node/generators/app'), {
+    this.composeWith(import.meta.resolve('generator-node/generators/app'), {
       boilerplate: false,
       name: this.props.name,
       projectRoot: 'generators',
@@ -73,14 +75,13 @@ module.exports = class extends Generator {
       })
     });
 
-    this.composeWith(require.resolve('../subgenerator'), {
+    this.composeWith(import.meta.resolve('../subgenerator'), {
       arguments: ['app']
     });
   }
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    const generatorGeneratorPkg = require('../package.json');
 
     extend(pkg, {
       dependencies: {
