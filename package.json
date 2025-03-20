@@ -19,7 +19,7 @@
   "repository": "yeoman/generator-generator",
   "scripts": {
     "test": "jest",
-    "pretest": "eslint . --fix",
+    "lint": "eslint .",
     "prepublishOnly": "npm audit"
   },
   "engines": {
@@ -39,37 +39,15 @@
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
-    "eslint": "^5.3.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-xo-space": "^0.20.0",
-    "eslint-plugin-prettier": "^2.6.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-config-xo-space": "^0.35.0",
+    "eslint-plugin-prettier": "^5.2.3",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
-    "prettier": "^1.19.1",
+    "prettier": "^3.5.3",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.7.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "xo-space/esnext",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "printWidth": 90
-        }
-      ]
-    },
-    "plugins": [
-      "prettier"
-    ]
   },
   "jest": {
     "testEnvironment": "node",
