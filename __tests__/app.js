@@ -1,8 +1,10 @@
-'use strict';
-const path = require('path');
-const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
-const generatorGeneratorPkg = require('../package.json');
+import path from 'path';
+import assert from 'yeoman-assert';
+import helpers from 'yeoman-test';
+import { jest } from '@jest/globals';
+
+import generatorGeneratorPkg from '../package.json';
+import { __dirname } from './dirname.cjs';
 
 jest.mock('superb', () => ({ random: () => "cat's meow" }));
 jest.mock('npm-name', () => () => Promise.resolve(true));

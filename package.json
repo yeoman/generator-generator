@@ -18,8 +18,7 @@
   ],
   "repository": "yeoman/generator-generator",
   "scripts": {
-    "test": "jest",
-    "pretest": "eslint . --fix",
+    "test": "npx cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "prepublishOnly": "npm audit"
   },
   "engines": {
@@ -38,7 +37,9 @@
     "yosay": "3.0.0"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "coveralls": "^3.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-xo-space": "^0.20.0",
@@ -74,7 +75,8 @@
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "templates"
-    ]
+    ],
+    "transform": {}
   },
   "license": "MIT",
   "type": "module"
