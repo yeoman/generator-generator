@@ -19,7 +19,7 @@
   "repository": "yeoman/generator-generator",
   "scripts": {
     "test": "jest",
-    "pretest": "eslint . --fix",
+    "lint": "eslint .",
     "prepublishOnly": "npm audit"
   },
   "engines": {
