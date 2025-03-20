@@ -19,6 +19,7 @@
   "repository": "yeoman/generator-generator",
   "scripts": {
     "test": "npx cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "pretest": "eslint . --fix",
     "prepublishOnly": "npm audit"
   },
   "engines": {
