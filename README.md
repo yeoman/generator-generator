@@ -3,7 +3,7 @@
 
 > Yeoman generator generating a Yeoman generator
 
-![Yo dawg, I heard you like generators?](http://i.imgur.com/2gqiift.jpg)
+![xzibit meme: "Yo dawg, I heard you like generators?"](http://i.imgur.com/2gqiift.jpg)
 
 
 ## Getting started
