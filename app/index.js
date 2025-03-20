@@ -96,7 +96,7 @@ module.exports = class extends Generator {
         testPathIgnorePatterns: ['templates']
       }
     });
-    pkg.keywords ||= [];
+    pkg.keywords = pkg.keywords || [];
     pkg.keywords.push('yeoman-generator');
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

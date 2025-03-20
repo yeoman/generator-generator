@@ -20,6 +20,9 @@ module.exports = defineConfig([
       reportUnusedDisableDirectives: 'error'
     },
     rules: {
+      // Only supported in Node >=15; we still support >=10 for now
+      'logical-assignment-operators': 'off',
+
       'prettier/prettier': [
         'error',
         {
