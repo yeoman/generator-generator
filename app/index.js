@@ -42,7 +42,7 @@ export default class extends Generator {
         message: 'Your generator name',
         default: makeGeneratorName(path.basename(process.cwd())),
         filter: makeGeneratorName,
-        validate: str => {
+        validate(str) {
           return str.length > 'generator-'.length;
         }
       },
