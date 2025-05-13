@@ -106,4 +106,4 @@ export default class extends Generator {
   conflicts() {
     this.fs.append(this.destinationPath('.eslintignore'), '**/templates\n');
   }
-};
+}
