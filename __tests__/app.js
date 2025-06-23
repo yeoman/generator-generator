@@ -1,106 +1,109 @@
-'use strict';
-const path = require('path');
-const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
-const generatorGeneratorPkg = require('../package.json');
+import { describe, it, beforeEach, vi } from "vitest";
+import { join, basename } from "path";
+import { strictEqual, file, JSONFileContent, fileContent } from "yeoman-assert";
+import { run } from "yeoman-test";
+import {
+  dependencies as _dependencies,
+  devDependencies as _devDependencies,
+} from "../package.json";
 
-jest.mock('superb', () => ({ random: () => "cat's meow" }));
-jest.mock('npm-name', () => () => Promise.resolve(true));
+vi.mock("superb", () => ({ random: () => "cat's meow" }));
+vi.mock("npm-name", () => () => Promise.resolve(true));
 
-describe('generator:app', () => {
-  describe('defaults', () => {
+describe("generator:app", () => {
+  describe("defaults", () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../app')).withPrompts({
-        name: 'generator-temp',
-        description: 'A node generator',
-        homepage: 'http://yeoman.io',
-        githubAccount: 'yeoman',
-        authorName: 'The Yeoman Team',
-        authorEmail: 'hi@yeoman.io',
-        authorUrl: 'http://yeoman.io',
+      return run(join(__dirname, "../app")).withPrompts({
+        name: "generator-temp",
+        description: "A node generator",
+        homepage: "http://yeoman.io",
+        githubAccount: "yeoman",
+        authorName: "The Yeoman Team",
+        authorEmail: "hi@yeoman.io",
+        authorUrl: "http://yeoman.io",
         keywords: [],
-        license: 'MIT'
+        license: "MIT",
       });
     });
 
-    it('created and CD into a folder named like the generator', () => {
-      assert.strictEqual(path.basename(process.cwd()), 'generator-temp');
+    it("created and CD into a folder named like the generator", () => {
+      strictEqual(basename(process.cwd()), "generator-temp");
     });
 
-    it('creates files', () => {
+    it("creates files", () => {
       const expected = [
-        '.eslintignore',
-        'README.md',
-        'package.json',
-        'generators/app/index.js',
-        'generators/app/templates/dummyfile.txt',
-        '__tests__/app.js'
+        ".eslintignore",
+        "README.md",
+        "package.json",
+        "generators/app/index.js",
+        "generators/app/templates/dummyfile.txt",
+        "__tests__/app.js",
       ];
 
-      assert.file(expected);
+      file(expected);
     });
 
-    it('fills package.json with correct information', () => {
+    it("fills package.json with correct information", () => {
       // eslint-disable-next-line new-cap
-      assert.JSONFileContent('package.json', {
-        name: 'generator-temp',
+      JSONFileContent("package.json", {
+        name: "generator-temp",
         dependencies: {
-          'yeoman-generator': generatorGeneratorPkg.dependencies['yeoman-generator'],
-          chalk: generatorGeneratorPkg.dependencies.chalk,
-          yosay: generatorGeneratorPkg.dependencies.yosay
+          "yeoman-generator": _dependencies["yeoman-generator"],
+          chalk: _dependencies.chalk,
+          yosay: _dependencies.yosay,
         },
         devDependencies: {
-          'yeoman-test': generatorGeneratorPkg.devDependencies['yeoman-test'],
-          'yeoman-assert': generatorGeneratorPkg.devDependencies['yeoman-assert']
+          "yeoman-test": _devDependencies["yeoman-test"],
+          "yeoman-assert": _devDependencies["yeoman-assert"],
         },
-        keywords: ['yeoman-generator']
+        keywords: ["yeoman-generator"],
       });
     });
 
-    it('fills the README with project data', () => {
-      assert.fileContent('README.md', '# generator-temp');
-      assert.fileContent('README.md', 'npm install -g yo');
-      assert.fileContent('README.md', 'npm install -g generator-temp');
-      assert.fileContent('README.md', 'yo temp');
-      assert.fileContent('README.md', 'yeoman/generator-temp');
+    it("fills the README with project data", () => {
+      fileContent("README.md", "# generator-temp");
+      fileContent("README.md", "npm install -g yo");
+      fileContent("README.md", "npm install -g generator-temp");
+      fileContent("README.md", "yo temp");
+      fileContent("README.md", "yeoman/generator-temp");
     });
 
-    it('fills the .eslintignore with correct content', () => {
-      assert.fileContent('.eslintignore', '**/templates\n');
+    it("fills the .eslintignore with correct content", () => {
+      fileContent(".eslintignore", "**/templates\n");
     });
   });
 
-  describe('scoped name', () => {
+  describe("scoped name", () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../app')).withPrompts({
-        name: '@yeoman/generator-temp',
-        description: 'A node generator',
-        homepage: 'http://yeoman.io',
-        githubAccount: 'yeoman',
-        authorName: 'The Yeoman Team',
-        authorEmail: 'hi@yeoman.io',
-        authorUrl: 'http://yeoman.io',
+      return run(join(__dirname, "../app")).withPrompts({
+        name: "@yeoman/generator-temp",
+        description: "A node generator",
+        homepage: "http://yeoman.io",
+        githubAccount: "yeoman",
+        authorName: "The Yeoman Team",
+        authorEmail: "hi@yeoman.io",
+        authorUrl: "http://yeoman.io",
         keywords: [],
-        license: 'MIT'
+        license: "MIT",
       });
     });
 
-    it('created and CD into a folder named like the generator', () => {
-      assert.strictEqual(path.basename(process.cwd()), 'generator-temp');
+    it("created and CD into a folder named like the generator", () => {
+      strictEqual(basename(process.cwd()), "generator-temp");
     });
 
-    it('fills package.json with correct information', () => {
+    it("fills package.json with correct information", () => {
       // eslint-disable-next-line new-cap
-      assert.JSONFileContent('package.json', {
-        name: '@yeoman/generator-temp'
+      JSONFileContent("package.json", {
+        name: "@yeoman/generator-temp",
       });
     });
 
-    it('fills the README with project data', () => {
-      assert.fileContent('README.md', '# @yeoman/generator-temp');
-      assert.fileContent('README.md', 'npm install -g yo');
-      assert.fileContent('README.md', 'npm install -g @yeoman/generator-temp');
-      assert.fileContent('README.md', 'yo @yeoman/temp');
+    it("fills the README with project data", () => {
+      fileContent("README.md", "# @yeoman/generator-temp");
+      fileContent("README.md", "npm install -g yo");
+      fileContent("README.md", "npm install -g @yeoman/generator-temp");
+      fileContent("README.md", "yo @yeoman/temp");
     });
   });
 });

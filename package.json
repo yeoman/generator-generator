@@ -18,7 +18,7 @@
   ],
   "repository": "yeoman/generator-generator",
   "scripts": {
-    "test": "jest",
+    "test": "vitest",
     "lint": "eslint .",
     "prepublishOnly": "npm audit"
   },
@@ -43,17 +43,10 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-config-xo-space": "^0.35.0",
     "eslint-plugin-prettier": "^5.2.3",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
     "prettier": "^3.5.3",
+    "vitest": "^3.2.4",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.7.0"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "templates"
-    ]
   },
   "license": "MIT"
 }
