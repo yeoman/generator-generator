@@ -53,7 +53,8 @@
   "jest": {
     "testPathIgnorePatterns": [
       "templates"
-    ]
+    ],
+    "transform": {}
   },
   "license": "MIT",
   "type": "module"
