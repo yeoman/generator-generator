@@ -50,12 +50,6 @@
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^10.1.0"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "templates"
-    ],
-    "transform": {}
-  },
   "license": "MIT",
   "type": "module"
 }
