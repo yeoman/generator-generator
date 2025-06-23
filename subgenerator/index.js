@@ -1,9 +1,8 @@
-'use strict';
-const path = require('path');
-const Generator = require('yeoman-generator');
-const superb = require('superb');
+import path from 'path';
+import Generator from 'yeoman-generator';
+import superb from 'superb';
 
-module.exports = class extends Generator {
+export default class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -41,4 +40,4 @@ module.exports = class extends Generator {
       }
     );
   }
-};
+}
