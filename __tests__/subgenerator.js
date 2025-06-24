@@ -1,29 +1,30 @@
-'use strict';
-const path = require('path');
-const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
-const fs = require('fs');
+import { describe, it, beforeEach, vi } from 'vitest';
+import { join } from 'path';
+import { file, fileContent } from 'yeoman-assert';
+import { run } from 'yeoman-test';
+import { writeFileSync } from 'fs';
 
-jest.mock('superb', () => ({ random: () => "cat's meow" }));
+vi.hoisted(() => {
+  require.cache[require.resolve('superb')] = { exports: { random: () => "cat's meow" } };
+});
 
 describe('generator:subgenerator', () => {
   beforeEach(() => {
-    return helpers
-      .run(path.join(__dirname, '../subgenerator'))
+    return run(join(__dirname, '../subgenerator'))
       .withArguments(['foo'])
       .withOptions({
         force: true
       })
       .inTmpDir(tmpDir => {
-        fs.writeFileSync(
-          path.join(tmpDir, 'package.json'),
+        writeFileSync(
+          join(tmpDir, 'package.json'),
           '{"name": "generator-foo", "files":[]}'
         );
       });
   });
 
   it('creates files', () => {
-    assert.file([
+    file([
       'generators/foo/index.js',
       'generators/foo/templates/dummyfile.txt',
       '__tests__/foo.js'
@@ -31,11 +32,11 @@ describe('generator:subgenerator', () => {
   });
 
   it('configures the test file', () => {
-    assert.fileContent('__tests__/foo.js', "describe('generator-foo:foo");
-    assert.fileContent('__tests__/foo.js', '../generators/foo');
+    fileContent('__tests__/foo.js', "describe('generator-foo:foo");
+    fileContent('__tests__/foo.js', '../generators/foo');
   });
 
   it('escapes possible apostrophes from superb', () => {
-    assert.fileContent('generators/foo/index.js', "Welcome to the cat\\'s meow");
+    fileContent('generators/foo/index.js', "Welcome to the cat\\'s meow");
   });
 });
