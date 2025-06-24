@@ -1,10 +1,10 @@
-import { describe, it, beforeEach, vi } from "vitest";
+import { describe, it, beforeEach, vi } from 'vitest';
 import { join } from 'path';
 import { file, fileContent } from 'yeoman-assert';
 import { run } from 'yeoman-test';
 import { writeFileSync } from 'fs';
 
-vi.hoisted(()=> { 
+vi.hoisted(() => {
   require.cache[require.resolve('superb')] = { exports: { random: () => "cat's meow" } };
 });
 
