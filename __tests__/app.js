@@ -7,8 +7,10 @@ import {
   devDependencies as _devDependencies,
 } from "../package.json";
 
-vi.mock("superb", () => ({ random: () => "cat's meow" }));
-vi.mock("npm-name", () => () => Promise.resolve(true));
+vi.hoisted(()=> { 
+  require.cache[require.resolve('superb')] = { exports: { random: () => "cat's meow" } };
+  require.cache[require.resolve('npm-name')] = { exports: () => Promise.resolve(true) };
+});
 
 describe("generator:app", () => {
   describe("defaults", () => {

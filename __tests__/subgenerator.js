@@ -4,7 +4,9 @@ import { file, fileContent } from 'yeoman-assert';
 import { run } from 'yeoman-test';
 import { writeFileSync } from 'fs';
 
-vi.mock('superb', () => ({ random: () => "cat's meow" }));
+vi.hoisted(()=> { 
+  require.cache[require.resolve('superb')] = { exports: { random: () => "cat's meow" } };
+});
 
 describe('generator:subgenerator', () => {
   beforeEach(() => {
