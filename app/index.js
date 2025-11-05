@@ -1,5 +1,5 @@
 const path = require('path');
-const Generator = require('yeoman-generator');
+const { default: Generator } = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
 const _ = require('lodash');
 const extend = require('deep-extend');
